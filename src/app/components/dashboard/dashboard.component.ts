@@ -169,4 +169,15 @@ export class DashboardComponent implements OnInit {
     console.log(this.interestedEventId);
   }
 
+
+  checkObject(val){
+    // return val instanceof Object;
+    console.log(val);
+    console.log(typeof val == 'object');
+    return typeof val == 'object';
+  }
+
+  checkNotObject(val){
+    return typeof val !== 'object';
+  }
 }

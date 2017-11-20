@@ -804,14 +804,14 @@
                         </select> -->
 
                         <select class="form-control ">
-                            <optgroup *ngFor="let key of objectKeys(locations)" label="{{locations[key]}}" [hidden]="locations[key] instanceof(Object) !==False">
-                              <ng-container *ngIf="locations[key] instanceof(Object)==True">
+                            <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
+                              <ng-container *ngIf="checkObject(locations[key])">
                                 <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
   
                               </ng-container>
                             </optgroup>
                             <optgroup label="other places">
-                              <option *ngFor="let key of objectKeys(locations)" [hidden]="locations[key]['$value']==undefined">{{locations[key]["$key"]}}</option>
+                              <option *ngFor="let key of objectKeys(locations)" [hidden]="checkObject(locations[key])">{{key}}</option>
                             </optgroup>
                           </select>
                       </div>
