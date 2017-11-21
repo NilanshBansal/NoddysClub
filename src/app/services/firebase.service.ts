@@ -10,11 +10,11 @@ import { Observable } from 'rxjs/Observable';
 export class FirebaseService {
   public items: Observable<any[]>;
   public objects: Observable<any[]>;
-//  items: FirebaseListObservable<any[]>;
-//  objects: FirebaseObjectObservable<any[]>;
+  //  items: FirebaseListObservable<any[]>;
+  //  objects: FirebaseObjectObservable<any[]>;
 
   constructor(private db: AngularFireDatabase,
-    private afs:AngularFirestore,
+    private afs: AngularFirestore,
     private router: Router,
     public afAuth: AngularFireAuth) {
 
@@ -27,8 +27,8 @@ export class FirebaseService {
    this.objects.subscribe(data=>{
      console.log(data);
    });*/
-  //  this.itemDoc = afs.doc<Item>('items/1');
-  //  this.item = this.itemDoc.valueChanges();
+    //  this.itemDoc = afs.doc<Item>('items/1');
+    //  this.item = this.itemDoc.valueChanges();
 
   }
 
@@ -40,7 +40,7 @@ export class FirebaseService {
      console.log("oehoe");
      this.objects=this.db.object('/items');
      console.log(this.objects.$ref);*/
-     //return this.db.list('/' + stringvar);
+    //return this.db.list('/' + stringvar);
     return this.db.list('/' + stringvar);
 
     /* this.objects = this.db.object("/" + stringvar);
@@ -48,21 +48,21 @@ export class FirebaseService {
 
 
   }
-  findObjects(stringvar){
-    return this.db.object('/'+ stringvar);
+  findObjects(stringvar) {
+    return this.db.object('/' + stringvar);
   }
-  getEvents(stringvar){
+  getEvents(stringvar) {
     /* return this.db.list('/' + stringvar , {
       query: {
         orderByKey:true,
         limitToFirst:5
       }
     }); */
-   return this.db.list('/' + stringvar, ref => ref.orderByKey().limitToFirst(5));
-   
+    return this.db.list('/' + stringvar, ref => ref.orderByKey().limitToFirst(5));
+
   }
 
-  getEventsWithStartAt(stringvar,startAt){
+  getEventsWithStartAt(stringvar, startAt) {
 
     /*return this.db.list('/' + stringvar  , {
       query: {
@@ -74,7 +74,7 @@ export class FirebaseService {
     return this.db.list('/' + stringvar, ref => ref.orderByKey().startAt(startAt).limitToFirst(6));
   }
 
-  getEventsWithEndAt(stringvar,endAt){
+  getEventsWithEndAt(stringvar, endAt) {
     /*console.log(endAt);
     return this.db.list('/' + stringvar  , {
       query: {
@@ -86,10 +86,10 @@ export class FirebaseService {
     return this.db.list('/' + stringvar, ref => ref.orderByKey().endAt(endAt).limitToLast(5));
   }
 
-  addData(stringvar, arrEvents) {
+  addEvents(stringvar, arrEvents) {
     var obj = {};
     // const itemRef = this.db.object("/" + stringvar, { preserveSnapshot: true });
-    const itemRef=this.db.object("/" + stringvar);
+    const itemRef = this.db.object("/" + stringvar);
     /* itemRef.subscribe(snapshot => {
       arrEvents.forEach(element => {
         element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
@@ -110,18 +110,27 @@ export class FirebaseService {
       arrEvents.forEach(element => {
         element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
 
-        if (snapshot.payload.val() == null || (snapshot.payload.val()!= null && snapshot.payload.val()[element["title"]] == undefined)) {
+        if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
           element["adminApproved"] = false;
           obj[element["title"]] = element;
 
           console.log(element["title"]);
         }
       });
-       console.log(obj);
-       console.log(Object.keys(obj).length);
+      console.log(obj);
+      console.log(Object.keys(obj).length);
       itemRef.update(obj);
     });
 
   }
 
+  addData(stringvar, objvar) {
+    var obj = {};
+    const itemRef = this.db.list("/" + stringvar);
+    console.log(objvar);
+    itemRef.push(objvar);
+  }
 }
+
+
+

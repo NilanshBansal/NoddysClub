@@ -153,6 +153,13 @@ body, html{
    height: 44px;
    font-size: 12px
  }
+
+ .modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+ }
+
  @media (max-width: 480px) {
    .remodal .reset__form .btn {
        margin: 10px auto 0

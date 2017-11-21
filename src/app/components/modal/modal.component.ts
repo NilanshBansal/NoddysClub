@@ -7,9 +7,10 @@ import {Component,OnInit} from '@angular/core';
        [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" >
+        <span *ngIf="display"><strong>{{allEvents[keyname]?.title}}</strong></span>
           <ng-content select=".app-modal-header"></ng-content>
-          <span *ngIf="display"><strong>{{allEvents[keyname]?.title}}</strong></span>
+          
         </div>
         <div class="modal-body">
         
@@ -40,7 +41,6 @@ export class ModalComponent {
     this.display=display;
     console.log(this.allEvents);
     
-    console.log("ptani");
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true, 100);
   }

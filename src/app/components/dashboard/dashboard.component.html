@@ -803,7 +803,7 @@
                           </optgroup>
                         </select> -->
 
-                        <select class="form-control ">
+                        <select class="form-control " id="locationInput">
                             <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
                               <ng-container *ngIf="checkObject(locations[key])">
                                 <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
@@ -826,7 +826,7 @@
                         <label style="font-weight: 500;">Categories</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control ">
+                        <select class="col-sm-10 form-control " id="categoryInput">
                           <option *ngFor="let category of categories">{{category}}</option>
                           <!-- <option *ngFor="let key of objectKeys(categories)">{{categories[key]["$value"]}}</option> -->
                         </select>
@@ -838,7 +838,7 @@
                         <label style="font-weight: 500;">Ages</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control ">
+                        <select class="col-sm-10 form-control " id="ageInput">
                           <option *ngFor="let age of ages">{{age}}</option>
                           <!-- <option *ngFor="let key of objectKeys(ages)">{{ages[key]["$value"]}}</option> -->
                         </select>
@@ -860,7 +860,7 @@
                           <option>Commercial property</option>
                           <option>Other</option>
                         </select> -->
-                        <input type="date" class="col-sm-10 form-control ">
+                        <input type="date" class="col-sm-10 form-control " id="dateInput">
                       </div>
                     </div>
 
@@ -871,13 +871,13 @@
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="email" class="form-control price-input" placeholder="min" />
+                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInput"/>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="email" class="form-control price-input" placeholder="max" />
+                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInput" />
                         </div>
                       </div>
                     </div>
@@ -1946,28 +1946,11 @@
   </div> -->
 
   <app-modal #modal>
-    <div class="app-modal-header">
+    <div class="app-modal-header" >
 
-
+      <button type="button" class="btn btn-default" (click)="modal.hide()" ><i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i></button>
     </div>
-    <div class="app-modal-body">
-
-      <div class="remodal">
-        <div class="reset-password-modal--info">
-          <div class="reset-password-modal--header">
-            <!-- Reset Your Password -->
-          </div>
-          <div class="reset-password-modal--description">
-            <!-- Please provide the email address you used when you signed up for your Noddy's Club account. -->
-            <br>
-            <!-- <br> We will send you an email with a link to reset your password. -->
-          </div>
-        </div>
-
-        <!-- <span style="font-size: 13px">hello{{keyname}}</span> -->
-      </div>
-
-    </div>
+    
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
     </div>
@@ -1977,6 +1960,7 @@
   <app-modal #modal2 id="hello">
     <div class="app-modal-header">
         <!-- header-->
+        <button type="button" class="btn btn-default" (click)="modal2.hide()" ><i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i></button>
 
     </div>
     <div class="app-modal-body">
