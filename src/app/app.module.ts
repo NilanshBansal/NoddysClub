@@ -19,6 +19,7 @@ import { AuthService } from "./services/auth.service";
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { AddEventComponent } from './components/add-event/add-event.component'; 
+import { HttpService } from './services/http.service';
 export const firebaseConfig = {
   
   
@@ -64,7 +65,7 @@ const appRoutes:Routes=[
     AngularFirestoreModule,
   
   ],
-  providers: [FirebaseService,AuthService],
+  providers: [FirebaseService,AuthService,HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
