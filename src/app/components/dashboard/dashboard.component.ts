@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { HttpService } from '../../services/http.service';
 
 
 @Component({
@@ -17,8 +18,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(private http: Http,
     private fs: FirebaseService,
-    public fb: FormBuilder
-  ) { }
+    public fb: FormBuilder,
+    public httpservice:HttpService,
+  ) {
+    this.Math=Math;
+   }
   try;
   interestedEventTitle;
   interestedEventId;
@@ -28,12 +32,13 @@ export class DashboardComponent implements OnInit {
   categoriesForm: FormGroup;
   count = 0;
   allData;
+  Math:any;
   objectKeys = Object.keys;
-  allEvents = {};
+  allEvents =[];
   td = new Date();
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   todaysDate = this.td.getDate() + this.months[this.td.getMonth()] + this.td.getFullYear();
-  city = "delhi";
+  city = "Delhi";
   locations;
   eventsArray = [];
   ages;
@@ -45,17 +50,16 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.reqEventsApi();
-    
+    /* let that=this;
+    setTimeout(function () {
+      that.getEventsFromDb();
+          alert('VIDEO HAS STOPPED');
+      
+  }, 5); */
 
-   
+   this.getEventsFromDb();
 
-     this.fs.getEvents("events").valueChanges().subscribe(data => {
-       console.log(data);
-      this.allEvents = data;
-      this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
      
-    });
-
 
     /* this.fs.findItems("locations").valueChanges().subscribe(data => {
       console.log("locations: ",data);
@@ -105,41 +109,121 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  reqEventsApi(){
-    this.http.get('https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids').subscribe((data) => {
-      this.allData = data.json();
+  getEventsFromDb(){
+   /*  this.fs.getEvents("events").valueChanges().subscribe(data => {
+      console.log(data);
+      console.log(this.city.toUpperCase());
+    //  var keys =Object.keys(data);
+    //  console.log(keys);
+    var count=0;
+     data.forEach(el => {
+       if(el["city"].toUpperCase()==this.city.toUpperCase()){
+         console.log(el);
+         this.allEvents.push(el);
+         count ++;
+       }
+     });
+     if(count==0){
+      alert("count 0");
+    }
+    //  this.allEvents = data;
+     console.log(this.allEvents);
+     this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    //  console.log(this.startAt);
+   }); */
+   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
+    this.allEvents = data;
+    console.log(data);
+    // this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    // console.log(this.startAt);
+    if(this.allEvents.length==0){
+      this.allEvents=this.allData;
       console.log(this.allData);
-      this.fs.addEvents("events", this.allData.events);
-
+    }
+   });
+   
+  
+   /* const promise =new Promise((resolve, reject) => {
+   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
+    this.allEvents = data;
+    console.log(data);
+    this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    console.log(this.startAt);
+    resolve();
+   });
+   }) */
+  /*  promise.then(()=>{
+     console.log("hehehgdj");
+    alert("resolved");
+   });
+    */
+  }
+  reqEventsApi(){
+    this.allData=[];
+    this.http.get('https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids').subscribe((data) => {
+      console.log(data.json());
+      this.allData = (data.json()).events;
+      console.log(this.allData);
+      this.fs.addEvents("events", this.allData);
     })
   }
   nextPage(){
     // console.log(this.startAt["$key"]);
-    console.log(this.startAt);
+    // console.log(this.startAt);
     //this.pageNo++;
-    this.fs.getEventsWithStartAt("events",this.startAt.title).valueChanges().subscribe(data=>{
-      this.allEvents=data;
+    /* this.fs.getEventsWithStartAt("events",this.startAt.title).valueChanges().subscribe(data=>{
+      //this.allEvents=data;
       if(Object.keys(this.allEvents).length == 2)
         {this.lastPage=true;}
       // console.log(data);
       // console.log("dekho");
       // console.log(data);
       // console.log(Object.keys(this.allEvents).length -1);
+      var count=0;
+      data.forEach(el => {
+        if(el["city"].toUpperCase()==this.city.toUpperCase()){
+          console.log(el);
+          this.allEvents[count]=el;
+          count++;
+        }
+      });
+      if(count==0){
+        alert("count 0");
+      }
       this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
       // console.log(this.startAt);
       this.endAt=this.allEvents[0];
       delete(this.allEvents[0]);
-    });
+    }); */
+
+
+
+   /*  this.fs.filterDataWithStartAt('city','Chennai',this.startAt.title).valueChanges().subscribe(data=>{
+      this.allEvents=data;
+      if(Object.keys(this.allEvents).length == 2)
+        {this.lastPage=true;}
+      console.log(data);
+      
+       console.log(Object.keys(this.allEvents).length -1);
+     
+    
+      
+      this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+      console.log(this.startAt);
+      this.endAt=this.allEvents[0];
+      delete(this.allEvents[0]);
+    }); */
   }
 
   prevPage(){
-    this.fs.getEventsWithEndAt("events",this.endAt.title).valueChanges().subscribe(data=>{
+   /*  this.fs.filterDataWithEndAt('city','Chennai',this.endAt.title).valueChanges().subscribe(data=>{
+      
       this.allEvents=data;
-      // console.log("prev: ",data);
+      console.log("prev: ",data);
       this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
       this.endAt=this.allEvents[0];
 
-    });
+    }); */
   }
 
 
@@ -153,6 +237,39 @@ export class DashboardComponent implements OnInit {
     console.log(event.from);
   }
 
+  updateFilter(input){
+    var locationInput=(<HTMLInputElement>document.getElementById("locationInput" + input)).value;
+    console.log(locationInput);
+    var categoryInput=(<HTMLInputElement>document.getElementById("categoryInput" + input)).value;
+    console.log(categoryInput);
+    var ageInput=(<HTMLInputElement>document.getElementById("ageInput" + input)).value;
+    console.log(ageInput);
+    var dateInput=(<HTMLInputElement>document.getElementById("dateInput" + input)).value;
+    console.log(dateInput);
+    var minPriceInput=(<HTMLInputElement>document.getElementById("minPriceInput" + input)).value;
+    console.log(minPriceInput);
+    var maxPriceInput=(<HTMLInputElement>document.getElementById("maxPriceInput" + input)).value;
+    console.log(maxPriceInput);
+    this.city=locationInput;
+    this.reqEventsApi() ;
+    let that=this;
+    setTimeout(function () {
+      if(that.allData.length!=0){
+        that.getEventsFromDb();
+        
+        }
+        else{
+          that.allEvents=[];
+        }
+      
+  }, 500);
+
+
+    /* if(this.allData.length!=0){
+    this.getEventsFromDb();
+    
+    } */
+  }
 
   submitUserForm(){
     var emailAddress=this.userInfoForm.value["email"];
@@ -165,26 +282,24 @@ export class DashboardComponent implements OnInit {
     this.fs.addData("interested",data);
     var closeModal=document.getElementById("closeModal");
     closeModal.click();
-
+    this.httpservice.postEmail(emailAddress,phone,this.interestedEventId,this.interestedEventTitle).subscribe((data)=>{
+      console.log(data);
+    },(err)=>{
+      console.log(err);
+    });
+  
   }
+
+  
   
   interested(key,allEvents){
     var btn=document.getElementById("interestedBtn");
     btn.click();
     this.interestedEventTitle=allEvents[key].title;
     this.interestedEventId=allEvents[key].id;
-    var locationInput=<HTMLInputElement>document.getElementById("locationInput");
-    console.log(locationInput.value);
-    var categoryInput=<HTMLInputElement>document.getElementById("categoryInput");
-    console.log(categoryInput.value);
-    var ageInput=<HTMLInputElement>document.getElementById("ageInput");
-    console.log(ageInput.value);
-    var dateInput=<HTMLInputElement>document.getElementById("dateInput");
-    console.log(dateInput.value);
-    var minPriceInput=<HTMLInputElement>document.getElementById("minPriceInput");
-    console.log(minPriceInput.value);
-    var maxPriceInput=<HTMLInputElement>document.getElementById("maxPriceInput");
-    console.log(maxPriceInput.value);
+    
+    
+
 
   }
 

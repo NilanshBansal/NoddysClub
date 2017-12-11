@@ -162,7 +162,7 @@
                       <div class="col-sm-6">
                         
 
-                        <select class="form-control " id="locationInput">
+                        <select class="form-control " id="locationInputmob">
                           <option>No selection</option>
                           <optgroup></optgroup>
                           <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
@@ -187,7 +187,7 @@
                         <label style="font-weight: 500;">Categories</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="categoryInput">
+                        <select class="col-sm-10 form-control " id="categoryInputmob">
                           <option>No selection</option>
                           <optgroup></optgroup>
                           <option *ngFor="let category of categories">{{category}}</option>
@@ -200,7 +200,7 @@
                         <label style="font-weight: 500;">Ages</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="ageInput">
+                        <select class="col-sm-10 form-control " id="ageInputmob">
                           <option>No selection</option>
                           <optgroup>categories</optgroup>
                           <option *ngFor="let age of ages">{{age}}</option>
@@ -214,7 +214,7 @@
                       </div>
                       <div class="col-sm-6">
                        
-                        <input type="date" class="col-sm-10 form-control " id="dateInput">
+                        <input type="date" class="col-sm-10 form-control " id="dateInputmob">
                       </div>
                     </div>
 
@@ -225,13 +225,13 @@
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInput" />
+                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputmob" />
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInput" />
+                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputmob" />
                         </div>
                       </div>
                     </div>
@@ -240,7 +240,7 @@
                     <div class="row filter-row">
 
                       <div class="col-sm-2 pull-right" style="margin-top: 10px;">
-                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter()">Update results</button>
+                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')">Update results</button>
 
                       </div>
                     </div>
@@ -858,7 +858,7 @@
                           </optgroup>
                         </select> -->
 
-                        <select class="form-control " id="locationInput">
+                        <select class="form-control " id="locationInputdesk">
                           <option>No selection</option>
                           <optgroup></optgroup>
                           <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
@@ -883,7 +883,7 @@
                         <label style="font-weight: 500;">Categories</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="categoryInput">
+                        <select class="col-sm-10 form-control " id="categoryInputdesk">
                           <option>No selection</option>
                           <optgroup></optgroup>
                           <option *ngFor="let category of categories">{{category}}</option>
@@ -897,7 +897,7 @@
                         <label style="font-weight: 500;">Ages</label>
                       </div>
                       <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="ageInput">
+                        <select class="col-sm-10 form-control " id="ageInputdesk">
                           <option>No selection</option>
                           <optgroup>categories</optgroup>
                           <option *ngFor="let age of ages">{{age}}</option>
@@ -921,7 +921,7 @@
                           <option>Commercial property</option>
                           <option>Other</option>
                         </select> -->
-                        <input type="date" class="col-sm-10 form-control " id="dateInput">
+                        <input type="date" class="col-sm-10 form-control " id="dateInputdesk">
                       </div>
                     </div>
 
@@ -932,13 +932,13 @@
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInput" />
+                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputdesk" />
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="input-group">
                           <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInput" />
+                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputdesk" />
                         </div>
                       </div>
                     </div>
@@ -972,7 +972,7 @@
                     <div class="row filter-row">
 
                       <div class="col-sm-2 pull-right" style="margin-top: 10px;">
-                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter()">Update results</button>
+                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')">Update results</button>
 
                       </div>
                     </div>
@@ -1404,7 +1404,7 @@
           </a>
         </div>
       </div> -->
-      <div *ngIf="count<5">
+      <div *ngIf="allEvents.length>0">
         <div class="row premium listing-row" *ngFor="let key of objectKeys(allEvents)">
           <!-- {{count++}} -->
           <!-- <div class="ribbon-wrapper-red">
@@ -1415,26 +1415,26 @@
 
 
           <div class="col-sm-10">
-            <h3>
-              <a class="" href="details.html" style="color:#333333;"> {{allEvents[key].title}}</a>
+            <h5>
+              <a class="" href="details.html" style="color:#333333; font-weight:700"> {{allEvents[key].title}}</a>
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
 
-
-            </h3>
+            </h5>
+            
+            <span>
+              <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
+            <!-- <br> -->
+            <span>
+              | <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
+            
+            <span>
+               | <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+            
+            <span>
+               | <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
             <br>
             <span>
-              <b>Price: </b>₹ {{allEvents[key].price[0]["value"]}}</span>
-            <br>
-            <span>
-              <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
-            <br>
-            <span>
-              <b>Start Time: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-            <br>
-            <span>
-              <b>End Time: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-            <br>
-            <span>
-              <b>Venue: </b>{{allEvents[key].venue["name"] + allEvents[key].venue["address"]}}</span>
+              <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
             <br>
 
             <br>
@@ -1460,7 +1460,7 @@
 
             <strong>Diesel</strong>
           </p> -->
-            <p>
+            <!-- <p> -->
               <span class="classified_links pull-right">
                 <a class="link-info underline" href="#">Share</a>&nbsp;
                 <!-- <a class="link-info underline" href="#">Add to favorites</a> -->
@@ -1468,9 +1468,12 @@
                 <!-- <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp; -->
                 <!-- <a class="link-info underline" href="#">Contact</a> -->
               </span>
-            </p>
+            <!-- </p> -->
           </div>
         </div>
+      </div>
+      <div *ngIf="allEvents.length==0">
+        <h1>No Events Found</h1>
       </div>
       <!-- <div class="row premium listing-row">
 
@@ -1805,19 +1808,18 @@
         </p>
       </div>
     </div> -->
-
-      <div>
+<!-- PAGINATION  BUTTONS -->
+      <!-- <div>
         <ul class="pagination pull-right">
           <li>
             <a (click)="prevPage()">Prev</a>
           </li>
 
           <li>
-            <!--  <a *ngIf="!lastPage" (click)="nextPage()">Next</a> -->
             <a (click)="nextPage()">Next</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
     </div>
 
