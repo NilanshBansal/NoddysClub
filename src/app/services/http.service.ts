@@ -10,10 +10,10 @@ export class HttpService {
     private http: Http
   ) {}
 
-  getUser() {
+ /*  getUser() {
     return this.http.get(`https://conduit.productionready.io/api/profiles/eric`)
     .map((res:Response) => res.json());
-  }
+  } */
 
   postEmail(emailAddress: String, phone: String, interestedEventId: String,interestedEventTitle:String): Observable<string>{
     alert("inside post email");

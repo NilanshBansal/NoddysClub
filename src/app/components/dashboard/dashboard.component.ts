@@ -24,6 +24,9 @@ export class DashboardComponent implements OnInit {
     this.Math=Math;
    }
   try;
+  parseDate=Date.parse;
+  today=new Date();
+  todayTimestamp=Date.parse(this.today.toString());
   interestedEventTitle;
   interestedEventId;
   locationsForm: FormGroup;

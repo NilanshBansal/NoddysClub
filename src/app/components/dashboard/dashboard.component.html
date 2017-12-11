@@ -1405,16 +1405,16 @@
         </div>
       </div> -->
       <div *ngIf="allEvents.length>0">
-        <div class="row premium listing-row" *ngFor="let key of objectKeys(allEvents)">
+        <div  *ngFor="let key of objectKeys(allEvents)">
           <!-- {{count++}} -->
           <!-- <div class="ribbon-wrapper-red">
           <div class="ribbon-red">&nbsp;
             <span>Featured</span>
           </div>
         </div> -->
+        <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[0]['date'].split(':')[0])>=todayTimestamp">
 
-
-          <div class="col-sm-10">
+          <div class="col-sm-10 " >
             <h5>
               <a class="" href="details.html" style="color:#333333; font-weight:700"> {{allEvents[key].title}}</a>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
@@ -1470,6 +1470,7 @@
               </span>
             <!-- </p> -->
           </div>
+        </div>
         </div>
       </div>
       <div *ngIf="allEvents.length==0">
