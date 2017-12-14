@@ -253,7 +253,8 @@ export class DashboardComponent implements OnInit {
     console.log(minPriceInput);
     var maxPriceInput=(<HTMLInputElement>document.getElementById("maxPriceInput" + input)).value;
     console.log(maxPriceInput);
-    this.city=locationInput;
+    if (locationInput != 'No selection')
+      this.city = locationInput;
     this.reqEventsApi() ;
     let that=this;
     setTimeout(function () {
