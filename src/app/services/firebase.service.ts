@@ -61,7 +61,7 @@ export class FirebaseService {
     return this.db.list('/' + stringvar, ref => ref.orderByKey().limitToFirst(5));
 
   }
-
+  
   getEventsWithStartAt(stringvar, startAt) {
 
     /*return this.db.list('/' + stringvar  , {
@@ -85,6 +85,31 @@ export class FirebaseService {
     } );*/
     return this.db.list('/' + stringvar, ref => ref.orderByKey().endAt(endAt).limitToLast(5));
   }
+filterdata(order,equal){
+  // return this.db.list('/events', ref => ref.orderByChild(order).equalTo(equal).limitToFirst(5));
+  return this.db.list('/events', ref => ref.orderByChild(order).equalTo(equal));
+}
+
+/* filterDataWithStartAt(order,equal,startAt){
+  return this.db.list('/events' , ref => ref.orderByChild(order).startAt(startAt).equalTo(equal).limitToFirst(6));
+  
+} */
+
+/* filterDataWithEndAt(order,equal,endAt){
+   return this.db.list('/events' , ref => ref.orderByChild(order).equalTo(equal).endAt(endAt).limitToLast(5));
+  
+
+  //  ref
+  // .orderBy('genre')
+  // .equalTo('comedy')
+  // .on('child_added', function(snapshot) { 
+  //     var movie = snapshot.val();
+  //     if (movie.lead == 'Jack Nicholson') {
+  //         console.log(movie);
+  //     }
+  // });
+ 
+} */
 
   addEvents(stringvar, arrEvents) {
     var obj = {};

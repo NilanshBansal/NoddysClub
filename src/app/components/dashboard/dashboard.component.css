@@ -567,7 +567,8 @@ LISTINGS
 .listings .premium.listing-row {
   background: #FFFFDD;
   background: #E0F4FF;
-  border-bottom: 1px solid #c6ebff;
+  /* border-bottom: 1px solid #c6ebff; */
+  border-bottom: 7px solid white;
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
@@ -765,6 +766,7 @@ p.muted {
   left: 10px;
   position: fixed;
 }
+
 /* Dropzoe.css */
 /* The MIT License */
 .dropzone,
@@ -1444,7 +1446,7 @@ p.muted {
 .fa-download:before {
   content: "\f019";
 }
-.fa-arrow-circle-o-down:before {
+.fa-ar-circle-o-down:before {
   content: "\f01a";
 }
 .fa-arrow-circle-o-up:before {
