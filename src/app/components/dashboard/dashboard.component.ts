@@ -270,26 +270,6 @@ export class DashboardComponent implements OnInit {
     btn.click();
     this.interestedEventTitle=allEvents[key].title;
     this.interestedEventId=allEvents[key].id;
-<<<<<<< HEAD
-    var locationInput=(<HTMLInputElement>document.getElementById("locationInput")).value;
-    console.log(locationInput);
-    var categoryInput=(<HTMLInputElement>document.getElementById("categoryInput")).value;
-    console.log(categoryInput);
-    var ageInput=(<HTMLInputElement>document.getElementById("ageInput")).value;
-    console.log(ageInput);
-    var dateInput=(<HTMLInputElement>document.getElementById("dateInput")).value;
-    console.log(dateInput);
-    var minPriceInput=(<HTMLInputElement>document.getElementById("minPriceInput")).value;
-    console.log(minPriceInput);
-    var maxPriceInput=(<HTMLInputElement>document.getElementById("maxPriceInput")).value;
-    console.log(maxPriceInput);
-    this.city=locationInput;
-    this.reqEventsApi();
-=======
-    
-    
->>>>>>> fa4ede119be4ddb6a5430fb0971c861ac68351ff
-
 
   }
 
