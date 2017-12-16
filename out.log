@@ -1,0 +1,7 @@
+Starting up http-server, serving ./dist
+Available on:
+  http://127.0.0.1:8080
+  http://172.31.25.139:8080
+Hit CTRL-C to stop the server
+[Sun Nov 26 2017 12:06:42 GMT+0000 (UTC)] "GET /" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+[Sun Nov 26 2017 12:06:42 GMT+0000 (UTC)] "GET /" Error (404): "Not found"

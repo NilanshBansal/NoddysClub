@@ -47,15 +47,9 @@ export class DashboardComponent implements OnInit {
     this.reqEventsApi();
     
 
-   
+   this.getEventsFromDb();
 
-     this.fs.getEvents("events").valueChanges().subscribe(data => {
-       console.log(data);
-      this.allEvents = data;
-      this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
      
-    });
-
 
     /* this.fs.findItems("locations").valueChanges().subscribe(data => {
       console.log("locations: ",data);
@@ -105,6 +99,22 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  getEventsFromDb(){
+    this.fs.getEvents("events").valueChanges().subscribe(data => {
+      console.log(data);
+     this.allEvents = data;
+     var keys =Object.keys(data);
+     console.log(keys);
+     keys.forEach(key => {
+       if(data["key"]["city"]!=this.city){
+         console.log(data["key"]);
+       }
+     });
+     this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    
+   });
+
+  }
   reqEventsApi(){
     this.http.get('https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids').subscribe((data) => {
       this.allData = data.json();
@@ -173,18 +183,21 @@ export class DashboardComponent implements OnInit {
     btn.click();
     this.interestedEventTitle=allEvents[key].title;
     this.interestedEventId=allEvents[key].id;
-    var locationInput=<HTMLInputElement>document.getElementById("locationInput");
-    console.log(locationInput.value);
-    var categoryInput=<HTMLInputElement>document.getElementById("categoryInput");
-    console.log(categoryInput.value);
-    var ageInput=<HTMLInputElement>document.getElementById("ageInput");
-    console.log(ageInput.value);
-    var dateInput=<HTMLInputElement>document.getElementById("dateInput");
-    console.log(dateInput.value);
-    var minPriceInput=<HTMLInputElement>document.getElementById("minPriceInput");
-    console.log(minPriceInput.value);
-    var maxPriceInput=<HTMLInputElement>document.getElementById("maxPriceInput");
-    console.log(maxPriceInput.value);
+    var locationInput=(<HTMLInputElement>document.getElementById("locationInput")).value;
+    console.log(locationInput);
+    var categoryInput=(<HTMLInputElement>document.getElementById("categoryInput")).value;
+    console.log(categoryInput);
+    var ageInput=(<HTMLInputElement>document.getElementById("ageInput")).value;
+    console.log(ageInput);
+    var dateInput=(<HTMLInputElement>document.getElementById("dateInput")).value;
+    console.log(dateInput);
+    var minPriceInput=(<HTMLInputElement>document.getElementById("minPriceInput")).value;
+    console.log(minPriceInput);
+    var maxPriceInput=(<HTMLInputElement>document.getElementById("maxPriceInput")).value;
+    console.log(maxPriceInput);
+    this.city=locationInput;
+    this.reqEventsApi();
+
 
   }
 

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 8080 --host 0.0.0.0 --disableHostCheck true ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -29,6 +29,7 @@
     "core-js": "^2.4.1",
     "firebase": "^4.6.2",
     "font-awesome": "^4.7.0",
+    "forever-monitor": "^1.7.1",
     "jquery": "^3.2.1",
     "ng2-ion-range-slider": "^1.0.3",
     "rxjs": "^5.4.2",
