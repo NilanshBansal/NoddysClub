@@ -112,24 +112,56 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  getEventsFromDb(){
-
-    this.fs.getEvents("events").valueChanges().subscribe(data => {
+ getEventsFromDb(){
+   /*  this.fs.getEvents("events").valueChanges().subscribe(data => {
       console.log(data);
-     this.allEvents = data;
-     var keys =Object.keys(data);
-     console.log(keys);
-     keys.forEach(key => {
-       if(data["key"]["city"]!=this.city){
-         console.log(data["key"]);
+      console.log(this.city.toUpperCase());
+    //  var keys =Object.keys(data);
+    //  console.log(keys);
+    var count=0;
+     data.forEach(el => {
+       if(el["city"].toUpperCase()==this.city.toUpperCase()){
+         console.log(el);
+         this.allEvents.push(el);
+         count ++;
        }
      });
+     if(count==0){
+      alert("count 0");
+    }
+    //  this.allEvents = data;
+     console.log(this.allEvents);
      this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
-    
+    //  console.log(this.startAt);
+   }); */
+   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
+    this.allEvents = data;
+    console.log(data);
+    // this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    // console.log(this.startAt);
+    if(this.allEvents.length==0){
+      this.allEvents=this.allData;
+      console.log(this.allData);
+    }
    });
-
-
+   
+  
+   /* const promise =new Promise((resolve, reject) => {
+   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
+    this.allEvents = data;
+    console.log(data);
+    this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
+    console.log(this.startAt);
+    resolve();
+   });
+   }) */
+  /*  promise.then(()=>{
+     console.log("hehehgdj");
+    alert("resolved");
+   });
+    */
   }
+
   reqEventsApi(){
     this.allData=[];
     this.http.get('https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids').subscribe((data) => {
