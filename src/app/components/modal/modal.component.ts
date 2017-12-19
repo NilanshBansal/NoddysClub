@@ -16,7 +16,7 @@ import {Component,OnInit} from '@angular/core';
         
         
         <span *ngIf="display" style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
-        
+        <br>
           <ng-content select=".app-modal-body"></ng-content>
         </div>
         <div class="modal-footer">
