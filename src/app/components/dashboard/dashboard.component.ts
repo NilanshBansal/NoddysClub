@@ -50,17 +50,17 @@ export class DashboardComponent implements OnInit {
   startAt=null;
   pageNo=1;
   endAt=null;
-
+  //selectedCity="";
   ngOnInit() {
+    /* if(localStorage.getItem('city')==null){
+      this.city=prompt("Enter city","Delhi");
+      localStorage.setItem('city',this.city);
+    } */
+    
     this.reqEventsApi();
-    /* let that=this;
-    setTimeout(function () {
-      that.getEventsFromDb();
-          alert('VIDEO HAS STOPPED');
-      
-  }, 5); */
 
-   this.getEventsFromDb();
+
+   this.getEventsFromDb(null,null,null,null,null,null,null);
 
      
 
@@ -111,56 +111,145 @@ export class DashboardComponent implements OnInit {
 
 
   }
-
- getEventsFromDb(){
-   /*  this.fs.getEvents("events").valueChanges().subscribe(data => {
-      console.log(data);
-      console.log(this.city.toUpperCase());
-    //  var keys =Object.keys(data);
-    //  console.log(keys);
-    var count=0;
-     data.forEach(el => {
-       if(el["city"].toUpperCase()==this.city.toUpperCase()){
-         console.log(el);
-         this.allEvents.push(el);
-         count ++;
-       }
-     });
-     if(count==0){
-      alert("count 0");
-    }
-    //  this.allEvents = data;
-     console.log(this.allEvents);
-     this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
-    //  console.log(this.startAt);
-   }); */
-   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
-    this.allEvents = data;
-    console.log(data);
-    // this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
-    // console.log(this.startAt);
-    if(this.allEvents.length==0){
-      this.allEvents=this.allData;
-      console.log(this.allData);
-    }
-   });
-   
-  
-   /* const promise =new Promise((resolve, reject) => {
-   this.fs.filterdata('city',this.city).valueChanges().subscribe(data=>{
-    this.allEvents = data;
-    console.log(data);
-    this.startAt=this.allEvents[Object.keys(this.allEvents).length -1];
-    console.log(this.startAt);
-    resolve();
-   });
-   }) */
-  /*  promise.then(()=>{
-     console.log("hehehgdj");
-    alert("resolved");
-   });
-    */
+  removeitem(){
+    alert("hi");
+    this.fs.removeData();
   }
+
+
+  getEventsFromDb(locationInput,categoryInput,minPriceInput,maxPriceInput,startAge,endAge,dateInput){
+    
+   var items=[];
+   var spliceIndex=[];
+ this.fs.filterdata('myCityCaps',this.city.toUpperCase()).valueChanges().subscribe(data=>{
+   console.log(data);
+   items=data.slice();
+   this.allEvents=[];
+   var len=items.length;
+   console.log(len);
+  
+   
+ for(var i=0;i<len;i++){
+    
+    
+    if(maxPriceInput!=null && minPriceInput!=null)
+    {
+     if(minPriceInput>maxPriceInput || minPriceInput<0 || maxPriceInput<0)
+     {  
+       alert("Invalid input");
+       //clear all the filter fields
+       return;
+     }
+     if(minPriceInput>parseInt(items[i]["price"][0]["value"]) || maxPriceInput<parseInt(items[i]["price"][0]["value"])){
+      spliceIndex.push(i);
+     }
+ 
+    }
+ 
+   if(minPriceInput!=null && maxPriceInput==null){
+     if(minPriceInput>parseInt(items[i]["price"][0]["value"])){
+      spliceIndex.push(i);
+     }
+   }
+ 
+   if(maxPriceInput!=null && minPriceInput==null){
+     if(maxPriceInput<parseInt(items[i]["price"][0]["value"])){
+       spliceIndex.push(i);
+     }
+   }
+ 
+  } 
+  console.log(spliceIndex);
+  var spliceLen=spliceIndex.length;
+  console.log(spliceLen);
+  
+  
+  var len=items.length;
+  console.log(len);
+ console.log(items);
+   
+ if(locationInput!=null && data.length != spliceIndex.length){
+   for(var i=0;i<items.length;i++){
+     
+       if(items[i]["myLocation"].toUpperCase()!=locationInput.toUpperCase()){
+        if(spliceIndex.indexOf(i)==-1){
+          spliceIndex.push(i);
+        
+        }
+       
+     }
+   }
+   }
+
+   console.log(spliceIndex);
+   var spliceLen=spliceIndex.length;
+   console.log(spliceLen);
+   
+   console.log(items);
+    var len=items.length;
+    console.log(len);
+
+    if(categoryInput!=null && data.length != spliceIndex.length){
+  for(var i=0;i<len;i++){
+       if(items[i]["myCategory"].toUpperCase()!=categoryInput.toUpperCase()){
+         if(spliceIndex.indexOf(i)==-1){
+          spliceIndex.push(i);
+        
+        }
+
+       }
+     }
+   } 
+   var len=items.length;
+
+   for(var i=0;i<len;i++){
+    
+    if(endAge!=null && startAge!=null)
+    {
+     if(startAge>endAge || startAge<0 || endAge<0)
+     {  
+       alert("Invalid input");
+       //clear all the filter fields
+       return;
+     }
+     if(startAge<parseInt(items[i]["myAge"]["start"]) && endAge<parseInt(items[i]["myAge"]["start"]) || startAge>parseInt(items[i]["myAge"]["end"]) && endAge>parseInt(items[i]["myAge"]["end"])){
+      
+      if(spliceIndex.indexOf(i)==-1){
+        spliceIndex.push(i);
+      }
+     }
+    }
+  } 
+  console.log(items);
+  var len=items.length;
+  console.log(len);
+
+  if(dateInput!=null && data.length != spliceIndex.length){
+  for(var i=0;i<len;i++){
+    
+    if(dateInput!=Date.parse(items[i]["upcoming_occurrences"][0]["date"].split(':')[0])){
+      if(spliceIndex.indexOf(i)==-1){
+        spliceIndex.push(i);
+      }
+    }
+  }
+  }
+  
+   var spliceLen=spliceIndex.length;
+   spliceIndex.sort(function(a,b){ return b - a; });
+   
+   for(var i=0;i<spliceLen;i++){
+    items.splice(spliceIndex[i],1);
+  }
+
+  var spliceLen=spliceIndex.length;
+  
+  this.allEvents = items;
+  
+  });
+  
+   }
+
 
   reqEventsApi(){
     this.allData=[];
@@ -233,7 +322,6 @@ export class DashboardComponent implements OnInit {
 
   ngAfterViewInit() {
     console.log("after init");
-
   }
 
   myOnChange(event) {
@@ -242,25 +330,79 @@ export class DashboardComponent implements OnInit {
   }
 
   updateFilter(input){
-    var locationInput=(<HTMLInputElement>document.getElementById("locationInput" + input)).value;
-    console.log(locationInput);
+    var locationInput=null;
+    var cityInput=(<HTMLInputElement>document.getElementById("cityInput" + input)).value;
+    var lI=(<HTMLInputElement>document.getElementById("locationInput" + input));
+    if(lI)
+    {
+      locationInput=lI.value;
+    }
+    var minPriceInputno=-1;
+    var maxPriceInputno=-1;
+    var startAge=-1;
+    var endAge=-1;
+    var parsedDate;
     var categoryInput=(<HTMLInputElement>document.getElementById("categoryInput" + input)).value;
-    console.log(categoryInput);
     var ageInput=(<HTMLInputElement>document.getElementById("ageInput" + input)).value;
-    console.log(ageInput);
     var dateInput=(<HTMLInputElement>document.getElementById("dateInput" + input)).value;
-    console.log(dateInput);
-    var minPriceInput=(<HTMLInputElement>document.getElementById("minPriceInput" + input)).value;
-    console.log(minPriceInput);
-    var maxPriceInput=(<HTMLInputElement>document.getElementById("maxPriceInput" + input)).value;
-    console.log(maxPriceInput);
-    if (locationInput != 'No selection')
-      this.city = locationInput;
+    var minPriceInput:string=(<HTMLInputElement>document.getElementById("minPriceInput" + input)).value;
+    var maxPriceInput:string=(<HTMLInputElement>document.getElementById("maxPriceInput" + input)).value;
+    parsedDate=Date.parse(dateInput);
+    if(isNaN(parsedDate)){
+      parsedDate=null;
+    }
+    if (cityInput != 'No selection')
+      this.city = cityInput;
     this.reqEventsApi() ;
+    
+    if(locationInput=='No selection'){
+      locationInput=null;
+    }
+    if(categoryInput=='No selection'){
+      categoryInput=null;
+    }
+    if(minPriceInput==''){
+      minPriceInputno=null;
+    }
+    
+    if(minPriceInputno!=null){
+      minPriceInputno=parseInt(minPriceInput);
+    }
+    if(maxPriceInput==''){
+      maxPriceInputno=null;
+    }
+    if(maxPriceInputno!=null){
+      maxPriceInputno=parseInt(maxPriceInput);
+    }
+
+    if(ageInput=='No selection'){
+      startAge=null;
+      endAge=null;
+    }
+
+    if(ageInput[1]!='-'){
+      startAge=parseInt(ageInput[0] + ageInput[1]);
+      if(ageInput[2]=='-'){
+        endAge=parseInt(ageInput[3] + ageInput[4]);
+      }
+      if(ageInput[2]=='+'){
+        endAge=50;
+      }
+    }
+    else{
+      startAge=parseInt(ageInput[0]);
+      if(ageInput[3]==' '){
+        endAge=parseInt(ageInput[2]);
+      }
+      if(ageInput[4]==' '){
+        endAge=parseInt(ageInput[2] + ageInput[3]);
+      }
+    }
+
     let that=this;
     setTimeout(function () {
       if(that.allData.length!=0){
-        that.getEventsFromDb();
+        that.getEventsFromDb(locationInput,categoryInput,minPriceInputno,maxPriceInputno,startAge,endAge,parsedDate);
         
         }
         else{
@@ -268,12 +410,6 @@ export class DashboardComponent implements OnInit {
         }
       
   }, 500);
-
-
-    /* if(this.allData.length!=0){
-    this.getEventsFromDb();
-    
-    } */
   }
 
   submitUserForm(){

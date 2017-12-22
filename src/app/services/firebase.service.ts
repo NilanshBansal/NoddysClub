@@ -112,7 +112,7 @@ filterdata(order,equal){
 } */
 
   addEvents(stringvar, arrEvents) {
-    var obj = {};
+    let obj = {};
     // const itemRef = this.db.object("/" + stringvar, { preserveSnapshot: true });
     const itemRef = this.db.object("/" + stringvar);
     /* itemRef.subscribe(snapshot => {
@@ -132,19 +132,32 @@ filterdata(order,equal){
     }); */
 
     itemRef.snapshotChanges().subscribe(snapshot => {
+      //console.log("checking");
+      obj={};
       arrEvents.forEach(element => {
         element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
-
+        //console.log(element["title"] );
         if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
-          element["adminApproved"] = false;
-          obj[element["title"]] = element;
-
-          console.log(element["title"]);
+          //console.log("dekhoji");
+          element["myAdminApproved"] = false;
+          element["myDisplayTitle"]=element["title"];
+          element["myLocation"]="";
+          element["myLocationCaps"]="";
+          element["myCityCaps"]=element["city"].toUpperCase();
+          element["myCategory"]="";
+          element["myCategoryCaps"]="";
+          element["myAge"]={
+           "start":0,
+           "end":0
+          };
+          obj[element["myDisplayTitle"]] = element;
+          //console.log(element["myDisplayTitle"]);
         }
       });
       console.log(obj);
-      console.log(Object.keys(obj).length);
+      //console.log(Object.keys(obj).length);
       itemRef.update(obj);
+      console.log("done");
     });
 
   }
@@ -154,6 +167,11 @@ filterdata(order,equal){
     const itemRef = this.db.list("/" + stringvar);
     console.log(objvar);
     itemRef.push(objvar);
+  }
+  removeData(){
+
+    const itemRef = this.db.list("/events");
+    itemRef.remove();
   }
 }
 

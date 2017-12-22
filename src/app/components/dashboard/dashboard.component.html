@@ -39,13 +39,23 @@
   <div class="container">
 
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <div class="btn-group fa-pull-right">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-      <a href="index.html" class="navbar-brand ">
+        <button type="button" class="navbar-toggle" data-target=".navbar-collap" data-toggle="collapse">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+        </button>
+      </div>
+
+
+
+
+
+      <a class="navbar-brand ">
         <span class="logo">
           <!-- <strong>Noddy's Club</strong>
           <span class="handwriting"></span>
@@ -114,7 +124,7 @@
 
 
 
-<div class="jumbotron home-tron-search well ">
+<!-- <div class=" home-tron-search  "> -->
   <div class="container">
     <div class="row">
 
@@ -123,7 +133,7 @@
 
           <div class="row">
 
-            <div class="col-sm-8 col-xs-9" style="text-align: center">
+            <!-- <div class="col-sm-8 col-xs-9" style="text-align: center">
               <div class="row">
 
                 <div class="col-sm-12 col-sm-offset-1">
@@ -136,26 +146,55 @@
 
 
               </div>
-            </div>
-            
- <div class="dropdown visible-xs">
+            </div> -->
+
+            <!--  <div class="dropdown visible-xs">
   <button class="btn btn-primary dropdown-toggle" data-target=".navbar-collap" data-toggle="collapse">
       <i class="fa fa-filter" aria-hidden="true" style="font-size:15px;"></i>
   </button>
  
  
-</div>
-            
-          <div class="collapse navbar-collap">
+</div> -->
+
+            <div class="collapse navbar-collap">
 
               <ul class="nav navbar-nav navbar-right visible-xs">
                 <div class="panel panel-default">
-              <div class="panel-heading">Filters</div>
-              <div class="panel-body">
-                <form class="form-inline mini" style="margin-bottom: 0px;">
-                  <fieldset>
+                  <div class="panel-heading">Filters</div>
+                  <div class="panel-body">
+                    <form class="form-inline mini" style="margin-bottom: 0px;">
+                      <fieldset>
 
-                    <div class="row filter-row">
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 500;">Cities</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="col-sm-10 form-control" id="cityInputmob" #cityInputmobValue>
+                              <option>No selection</option>
+                              <optgroup></optgroup>
+                              <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row filter-row" *ngIf="checkObject(locations[cityInputmobValue.value])">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 500;">Locations</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="form-control " id="locationInputmob">
+                              <option>No selection</option>
+
+                              <optgroup *ngIf="checkObject(locations[cityInputmobValue.value])">
+                                <option *ngFor="let innerkey of objectKeys(locations[cityInputmobValue.value])">{{innerkey}}</option>
+                              </optgroup>
+                            </select>
+                          </div>
+                        </div>
+
+
+                        <!-- <div class="row filter-row">
                       <div class="col-sm-6">
                         <label style="font-weight: 500;">Locations</label>
                       </div>
@@ -177,82 +216,84 @@
                         </select>
                       </div>
                     </div>
+ -->
 
 
 
 
-
-                    <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Categories</label>
-                      </div>
-                      <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="categoryInputmob">
-                          <option>No selection</option>
-                          <optgroup></optgroup>
-                          <option *ngFor="let category of categories">{{category}}</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Ages</label>
-                      </div>
-                      <div class="col-sm-6">
-                        <select class="col-sm-10 form-control " id="ageInputmob">
-                          <option>No selection</option>
-                          <optgroup>categories</optgroup>
-                          <option *ngFor="let age of ages">{{age}}</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Date</label>
-                      </div>
-                      <div class="col-sm-6">
-                       
-                        <input type="date" class="col-sm-10 form-control " id="dateInputmob">
-                      </div>
-                    </div>
-
-                    <div class="row filter-row">
-                      <div class="col-sm-12">
-                        <label style="font-weight: 500;">Price range</label>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="input-group">
-                          <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputmob" />
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 500;">Categories</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="col-sm-10 form-control " id="categoryInputmob">
+                              <option>No selection</option>
+                              <optgroup></optgroup>
+                              <option *ngFor="let category of categories">{{category}}</option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="input-group">
-                          <span class="input-group-addon">₹</span>
-                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputmob" />
+
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 500;">Ages</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="col-sm-10 form-control " id="ageInputmob">
+                              <option>No selection</option>
+                              <optgroup>categories</optgroup>
+                              <option *ngFor="let age of ages">{{age}}</option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    
 
-                    <div class="row filter-row">
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 500;">Date</label>
+                          </div>
+                          <div class="col-sm-6">
 
-                      <div class="col-sm-2 pull-right" style="margin-top: 10px;">
-                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')">Update results</button>
+                            <input type="date" class="col-sm-10 form-control " id="dateInputmob">
+                          </div>
+                        </div>
 
-                      </div>
-                    </div>
+                        <div class="row filter-row">
+                          <div class="col-sm-12">
+                            <label style="font-weight: 500;">Price range</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="input-group">
+                              <span class="input-group-addon">₹</span>
+                              <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputmob" />
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="input-group">
+                              <span class="input-group-addon">₹</span>
+                              <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputmob" />
+                            </div>
+                          </div>
+                        </div>
 
 
-                  </fieldset>
-                </form>
-              </div>
-            </div> 
+                        <div class="row filter-row">
+
+                          <div class="col-sm-2 pull-right" style="margin-top: 10px;">
+
+                            <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')" [disabled]="cityInputmobValue.value=='No selection'">Update results</button> -->
+                            <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')">Update results</button>
+
+                          </div>
+                        </div>
 
 
-          
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+
+
+
               </ul>
             </div>
             <!-- <div class="hidden-sm hidden-md hidden-lg col-xs-3" style="text-align: center">
@@ -272,7 +313,7 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
 
 
 <div class="container">
@@ -836,17 +877,28 @@
               <div class="panel-body">
                 <form class="form-inline mini" style="margin-bottom: 0px;">
                   <fieldset>
-
                     <div class="row filter-row">
+                      <div class="col-sm-6">
+                        <label style="font-weight: 500;">Cities</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <select class="col-sm-10 form-control" id="cityInputdesk" #cityInputdeskValue>
+                          <option>No selection</option>
+                          <optgroup></optgroup>
+                          <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- <div class="row filter-row">
                       <div class="col-sm-6">
                         <label style="font-weight: 500;">Locations</label>
                       </div>
-                      <div class="col-sm-6">
-                        <!-- <select class=" form-control ">
+                      <div class="col-sm-6"> -->
+                    <!-- <select class=" form-control ">
                             <option *ngFor="let key of objectKeys(locations)" [disabled]="locations[key]['$value']==undefined">{{locations[key]["$key"]}}</option>        
                         </select> -->
 
-                        <!-- <select class=" form-control ">
+                    <!-- <select class=" form-control ">
                           <optgroup *ngFor="let key of objectKeys(locations)" label="{{locations[key]['$key']}}" [hidden]="locations[key]['$value']!==undefined">
                             <ng-container *ngIf="locations[key]['$value']==undefined">
                               <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
@@ -857,6 +909,13 @@
                             <option *ngFor="let key of objectKeys(locations)" [hidden]="locations[key]['$value']==undefined">{{locations[key]["$key"]}}</option>
                           </optgroup>
                         </select> -->
+
+                    <!-- NEW CODE -->
+                    <!-- <div class="row filter-row">
+                            <div class="col-sm-6">
+                              <label style="font-weight: 500;">Locations</label>
+                            </div>
+                            <div class="col-sm-6">
 
                         <select class="form-control " id="locationInputdesk">
                           <option>No selection</option>
@@ -872,10 +931,22 @@
                           </optgroup>
                         </select>
                       </div>
+                    </div>  -->
+
+                    <div class="row filter-row" *ngIf="checkObject(locations[cityInputdeskValue.value])">
+                      <div class="col-sm-6">
+                        <label style="font-weight: 500;">Locations</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <select class="form-control " id="locationInputdesk">
+                          <option>No selection</option>
+
+                          <optgroup *ngIf="checkObject(locations[cityInputdeskValue.value])">
+                            <option *ngFor="let innerkey of objectKeys(locations[cityInputdeskValue.value])">{{innerkey}}</option>
+                          </optgroup>
+                        </select>
+                      </div>
                     </div>
-
-
-
 
 
                     <div class="row filter-row">
@@ -972,8 +1043,9 @@
                     <div class="row filter-row">
 
                       <div class="col-sm-2 pull-right" style="margin-top: 10px;">
-                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')">Update results</button>
-
+                        <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')" [disabled]="cityInputdeskValue.value=='No selection'">Update results</button> -->
+                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')" >Update results</button>
+                        
                       </div>
                     </div>
 
@@ -1405,45 +1477,48 @@
         </div>
       </div> -->
       <div *ngIf="allEvents.length>0">
-        <div  *ngFor="let key of objectKeys(allEvents)">
+        <div *ngFor="let key of objectKeys(allEvents)">
           <!-- {{count++}} -->
           <!-- <div class="ribbon-wrapper-red">
           <div class="ribbon-red">&nbsp;
             <span>Featured</span>
           </div>
         </div> -->
-        <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[0]['date'].split(':')[0])>=todayTimestamp">
+          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[0]['date'].split(':')[0])>=todayTimestamp">
 
-          <div class="col-sm-10 " >
-            <h5>
-              <a class="" href="details.html" style="color:#333333; font-weight:700"> {{allEvents[key].title}}</a>
-              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
+            <div class="col-sm-10 ">
+              <h5>
+                <a class="" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
 
-            </h5>
-            
-            <span>
-              <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
-            <!-- <br> -->
-            <span>
-              | <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
-            
-            <span>
-               | <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-            
-            <span>
-               | <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-            <br>
-            <span>
-              <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
-            <br>
+              </h5>
 
-            <br>
-            <button class="btn btn-primary" (click)="modal.show(key,allEvents,true)">View More</button>
-            <button id="interestedBtn" (click)="modal2.show(key,allEvents,false)" [hidden]="true"></button>
-            <button class="btn btn-info" (click)="interested(key,allEvents)">I am interested</button>
-            <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+              <span>
+                <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
+              <!-- <br> -->
+              <span>
+                |
+                <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
 
-            <!-- <p class="muted">Located in
+              <span>
+                |
+                <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+
+              <span>
+                |
+                <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+              <br>
+              <span>
+                <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
+              <br>
+
+              <br>
+              <button class="btn btn-primary" (click)="modal.show(key,allEvents,true)">View More</button>
+              <button id="interestedBtn" (click)="modal2.show(key,allEvents,false)" [hidden]="true"></button>
+              <button class="btn btn-info" (click)="interested(key,allEvents)">I am interested</button>
+              <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+
+              <!-- <p class="muted">Located in
             <strong>Richmond, London</strong>
           </p>
           <p class="muted">Posted Feb 05, 2014 to
@@ -1460,17 +1535,13 @@
 
             <strong>Diesel</strong>
           </p> -->
-            <!-- <p> -->
-              <span class="classified_links pull-right">
+              <!-- <p> -->
+             <!--  <span class="classified_links pull-right">
                 <a class="link-info underline" href="#">Share</a>&nbsp;
-                <!-- <a class="link-info underline" href="#">Add to favorites</a> -->
-                <!-- &nbsp; -->
-                <!-- <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp; -->
-                <!-- <a class="link-info underline" href="#">Contact</a> -->
-              </span>
-            <!-- </p> -->
+              </span> -->
+              <!-- </p> -->
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div *ngIf="allEvents.length==0">
@@ -1809,7 +1880,7 @@
         </p>
       </div>
     </div> -->
-<!-- PAGINATION  BUTTONS -->
+      <!-- PAGINATION  BUTTONS -->
       <!-- <div>
         <ul class="pagination pull-right">
           <li>
@@ -1983,7 +2054,7 @@
           <img src={{allEvents[key].img_url}} height="250px" width="250px">
         </div> -->
   <!-- <div class=".right">
-          <b>Title: </b>{{allEvents[key].title}}
+          <b>Title: </b>{{allEvents[key].myDisplayTitle}}
           <br>
           <span>
             <b>Price: </b>₹ {{allEvents[key].price[0]["value"]}}</span>
@@ -2012,9 +2083,9 @@
   <app-modal #modal>
     <div class="app-modal-header">
 
-      <button type="button" class="btn btn-default" (click)="modal.hide()">
+     <!--  <button type="button" class="btn btn-default" (click)="modal.hide()">
         <i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i>
-      </button>
+      </button> -->
     </div>
 
     <div class="app-modal-footer">
