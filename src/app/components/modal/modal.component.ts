@@ -8,15 +8,27 @@ import {Component,OnInit} from '@angular/core';
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header" >
-        <span *ngIf="display"><strong>{{allEvents[keyname]?.title}}</strong></span>
+        <span *ngIf="display"><strong>{{allEvents[keyname]?.myDisplayTitle}}</strong></span>
           <ng-content select=".app-modal-header"></ng-content>
           
         </div>
         <div class="modal-body">
+        <div *ngIf="display">
+        <img [src]="allEvents[keyname]?.img_url">
+        <br><br>
+        <span  style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
+        <span  style="font-size: 13px"><b>Price:</b> ₹ {{allEvents[keyname]?.price[0]['value']}}</span><br>
+        <span><b>Date: </b> {{allEvents[keyname]?.upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
+        <br>
+        <span><b>Starts: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+        <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+        <span><b>Venue: </b>{{allEvents[keyname]?.venue["name"] + ", " }}</span><br>
+        <span>{{allEvents[keyname]?.venue["address"] + ", " + allEvents[keyname]?.venue["city"]}}</span><br>
         
         
-        <span *ngIf="display" style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
+        </div>
         
+        <br>
           <ng-content select=".app-modal-body"></ng-content>
         </div>
         <div class="modal-footer">
