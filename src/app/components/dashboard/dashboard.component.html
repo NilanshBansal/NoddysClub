@@ -34,7 +34,7 @@
 -->
 
 
-
+<!-- <button (click)="removeitem()">Clear Db</button> -->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
 
@@ -66,7 +66,22 @@
       </a>
 
     </div>
+    <br>
 
+<!-- <div  class="navbar-left" data-radium="true" data-reactid="56"> -->
+  
+           
+              
+          <select style="font-size: 1.5rem; display: inline-block; position: relative; color: rgb(119, 119, 119); cursor: pointer;" data-radium="true"  id="cityDropdown" class="selectpicker" (change)="cityChanged($event.target.value)" >
+                <option data-radium="true"  *ngFor="let key of objectKeys(locations)" >
+                    <span style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
+                        class="dropdown-city" data-radium="true" data-reactid="63" >{{key}}</span>
+                </option>
+                
+              </select>
+              <!-- <span  style="color: rgb(119, 119, 119); cursor: pointer; padding-left: 0.7rem;" aria-hidden="true" class="fa fa-caret-down hidden-xs"
+              data-radium="true" data-reactid="58"></span> -->
+    <!-- </div> -->
 
 
     <div class="collapse navbar-collapse">
@@ -165,7 +180,7 @@
                     <form class="form-inline mini" style="margin-bottom: 0px;">
                       <fieldset>
 
-                        <div class="row filter-row">
+                       <!--  <div class="row filter-row">
                           <div class="col-sm-6">
                             <label style="font-weight: 500;">Cities</label>
                           </div>
@@ -176,9 +191,9 @@
                               <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
 
-                        <div class="row filter-row" *ngIf="checkObject(locations[cityInputmobValue.value])">
+                        <div class="row filter-row" >
                           <div class="col-sm-6">
                             <label style="font-weight: 500;">Locations</label>
                           </div>
@@ -186,8 +201,8 @@
                             <select class="form-control " id="locationInputmob">
                               <option>No selection</option>
 
-                              <optgroup *ngIf="checkObject(locations[cityInputmobValue.value])">
-                                <option *ngFor="let innerkey of objectKeys(locations[cityInputmobValue.value])">{{innerkey}}</option>
+                              <optgroup *ngIf="checkObject(locations[city])">
+                                <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
                               </optgroup>
                             </select>
                           </div>
@@ -877,7 +892,7 @@
               <div class="panel-body">
                 <form class="form-inline mini" style="margin-bottom: 0px;">
                   <fieldset>
-                    <div class="row filter-row">
+                    <!-- <div class="row filter-row">
                       <div class="col-sm-6">
                         <label style="font-weight: 500;">Cities</label>
                       </div>
@@ -888,7 +903,7 @@
                           <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="row filter-row">
                       <div class="col-sm-6">
                         <label style="font-weight: 500;">Locations</label>
@@ -933,7 +948,7 @@
                       </div>
                     </div>  -->
 
-                    <div class="row filter-row" *ngIf="checkObject(locations[cityInputdeskValue.value])">
+                    <div class="row filter-row" >
                       <div class="col-sm-6">
                         <label style="font-weight: 500;">Locations</label>
                       </div>
@@ -941,8 +956,8 @@
                         <select class="form-control " id="locationInputdesk">
                           <option>No selection</option>
 
-                          <optgroup *ngIf="checkObject(locations[cityInputdeskValue.value])">
-                            <option *ngFor="let innerkey of objectKeys(locations[cityInputdeskValue.value])">{{innerkey}}</option>
+                          <optgroup *ngIf="checkObject(locations[city])">
+                            <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
                           </optgroup>
                         </select>
                       </div>
@@ -1497,20 +1512,24 @@
                 <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
               <!-- <br> -->
               <span>
-                |
+                
                 <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
 
               <span>
-                |
+                
                 <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
 
               <span>
-                |
+                
                 <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
               <br>
               <span>
                 <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
               <br>
+              <span *ngIf="allEvents[key].myLocation!=''">
+                <b>Locality: </b>{{allEvents[key].myLocation}}
+                <br>
+              </span>
 
               <br>
               <button class="btn btn-primary" (click)="modal.show(key,allEvents,true)">View More</button>
@@ -2095,26 +2114,15 @@
 
 
   <app-modal #modal2 id="hello">
-    <div class="app-modal-header">
-      <!-- header-->
-      <button type="button" class="btn btn-default" (click)="modal2.hide()">
-        <i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i>
-      </button>
-
-    </div>
+   
     <div class="app-modal-body">
       <!--Whatever content you like, form fields, anything-->
 
       <div class="remodal">
-        <div class="reset-password-modal--info">
-          <div class="reset-password-modal--header">
-            Submit Your Details
+          <div class="reset-password-modal--header" style="font-size:25px;">
+            We will contact you!<br><br>
           </div>
-          <div class="reset-password-modal--description">
-            We will contact you !
-            <br>
-          </div>
-        </div>
+          
         <form class="reset__form" [formGroup]="userInfoForm" (submit)="submitUserForm()" novalidate>
 
 

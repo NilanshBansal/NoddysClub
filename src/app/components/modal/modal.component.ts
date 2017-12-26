@@ -16,18 +16,27 @@ import {Component,OnInit} from '@angular/core';
         <div *ngIf="display">
         <img [src]="allEvents[keyname]?.img_url">
         <br><br>
-        <span  style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
+        <span *ngIf="allEvents[keyname].myCategory!=''"><b>Category: </b>{{allEvents[keyname]?.myCategory}}</span><br>
+        <span ><b>Age Group: </b>{{allEvents[keyname]?.myAge["lower"] + ' - ' + allEvents[keyname]?.myAge["upper"]}}  Yrs</span><br>
         <span  style="font-size: 13px"><b>Price:</b> ₹ {{allEvents[keyname]?.price[0]['value']}}</span><br>
         <span><b>Date: </b> {{allEvents[keyname]?.upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
-        <br>
+        
         <span><b>Starts: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-        <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+        <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
         <span><b>Venue: </b>{{allEvents[keyname]?.venue["name"] + ", " }}</span><br>
         <span>{{allEvents[keyname]?.venue["address"] + ", " + allEvents[keyname]?.venue["city"]}}</span><br>
+        <span *ngIf="allEvents[keyname].myLocation!=''"><b>Locality: </b>{{allEvents[keyname]?.myLocation}}</span>
+        <span *ngIf="allEvents[keyname].myPincode!=''"><b>Pincode: </b>{{ allEvents[keyname]?.myPincode}}</span><br>
+       
+        <span *ngIf="allEvents[keyname].myContactDetails['contactPerson']!=''"><b>Contact Person : </b>{{ allEvents[keyname]?.myContactDetails["contactPerson"]}}</span>
+        <span *ngIf="allEvents[keyname].myContactDetails['telephoneNo']!=''"><b>Tel : </b>{{ allEvents[keyname]?.myContactDetails["telephoneNo"]}}</span><br>
+        
+        <span  style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
+        <span *ngIf="allEvents[keyname].url!=''"><b>Booking Url : </b><a [href]="allEvents[keyname]?.url">{{allEvents[keyname]?.url}}</a></span>
+        
         
         
 
-        <span *ngIf="display" style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
         </div>
         
 

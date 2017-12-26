@@ -142,13 +142,18 @@ filterdata(order,equal){
           element["myAdminApproved"] = false;
           element["myDisplayTitle"]=element["title"];
           element["myLocation"]="";
-          element["myLocationCaps"]="";
+          element["myPincode"]="";
+          // element["myLocationCaps"]="";
           element["myCityCaps"]=element["city"].toUpperCase();
           element["myCategory"]="";
-          element["myCategoryCaps"]="";
+          // element["myCategoryCaps"]="";
+          element["myContactDetails"]={
+            "telephoneNo":"",
+            "contactPerson":""
+          };
           element["myAge"]={
-           "start":0,
-           "end":0
+           "lower":0,
+           "upper":0
           };
           obj[element["myDisplayTitle"]] = element;
           //console.log(element["myDisplayTitle"]);

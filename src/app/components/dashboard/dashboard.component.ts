@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewChecked } from '@angular/core';
 import { Http } from '@angular/http';
 import { FirebaseService } from "../../services/firebase.service";
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -111,6 +111,12 @@ export class DashboardComponent implements OnInit {
 
 
   }
+  ngAfterViewChecked(){
+    var cityDropdown=(<HTMLInputElement>document.getElementById("cityDropdown"));
+    cityDropdown.value=this.city;
+  }
+  
+  
   removeitem(){
     alert("hi");
     this.fs.removeData();
@@ -118,8 +124,8 @@ export class DashboardComponent implements OnInit {
 
 
   getEventsFromDb(locationInput,categoryInput,minPriceInput,maxPriceInput,startAge,endAge,dateInput){
-    
-   var items=[];
+
+    var items=[];
    var spliceIndex=[];
  this.fs.filterdata('myCityCaps',this.city.toUpperCase()).valueChanges().subscribe(data=>{
    console.log(data);
@@ -212,7 +218,7 @@ export class DashboardComponent implements OnInit {
        //clear all the filter fields
        return;
      }
-     if(startAge<parseInt(items[i]["myAge"]["start"]) && endAge<parseInt(items[i]["myAge"]["start"]) || startAge>parseInt(items[i]["myAge"]["end"]) && endAge>parseInt(items[i]["myAge"]["end"])){
+     if(startAge<parseInt(items[i]["myAge"]["lower"]) && endAge<parseInt(items[i]["myAge"]["lower"]) || startAge>parseInt(items[i]["myAge"]["upper"]) && endAge>parseInt(items[i]["myAge"]["upper"])){
       
       if(spliceIndex.indexOf(i)==-1){
         spliceIndex.push(i);
@@ -320,15 +326,29 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  ngAfterViewInit() {
-    console.log("after init");
-  }
+  
 
   myOnChange(event) {
     console.log(event);
     console.log(event.from);
   }
-
+  cityChanged(cityInput){
+    // var cityDropdown=(<HTMLInputElement>document.getElementById("cityDropdown"));
+    this.city=cityInput;
+    this.reqEventsApi();
+    let that=this;
+    setTimeout(function () {
+      if(that.allData.length!=0){
+        that.getEventsFromDb(null,null,null,null,null,null,null);
+        
+        }
+        else{
+          that.allEvents=[];
+        }
+      
+  }, 500);
+    
+  }
   updateFilter(input){
     var locationInput=null;
     var cityInput=(<HTMLInputElement>document.getElementById("cityInput" + input)).value;
@@ -398,18 +418,10 @@ export class DashboardComponent implements OnInit {
         endAge=parseInt(ageInput[2] + ageInput[3]);
       }
     }
-
-    let that=this;
-    setTimeout(function () {
-      if(that.allData.length!=0){
-        that.getEventsFromDb(locationInput,categoryInput,minPriceInputno,maxPriceInputno,startAge,endAge,parsedDate);
+    
+        this.getEventsFromDb(locationInput,categoryInput,minPriceInputno,maxPriceInputno,startAge,endAge,parsedDate);
         
-        }
-        else{
-          that.allEvents=[];
-        }
-      
-  }, 500);
+       
   }
 
   submitUserForm(){
