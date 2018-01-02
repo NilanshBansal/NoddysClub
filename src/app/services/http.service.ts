@@ -16,7 +16,6 @@ export class HttpService {
   } */
 
   postEmail(emailAddress: String, phone: String, interestedEventId: String,interestedEventTitle:String,interestedOccurrenceDate:String): Observable<string>{
-    alert("inside post email");
           let headers = new Headers({ 
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded'

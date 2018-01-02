@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
 
     }); */
     this.fs.findObjects("locations").valueChanges().subscribe(data => {
-      console.log("locations: ",data);
+      // console.log("locations: ",data);
       this.locations = data;
 
     });
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit {
     
     }); */
     this.fs.findObjects("ages").valueChanges().subscribe(data => {
-      console.log("ages: ",data);
+      // console.log("ages: ",data);
       this.ages = data;
 
     
@@ -122,7 +122,7 @@ export class DashboardComponent implements OnInit {
   }); */
 
   this.fs.findObjects("categories").valueChanges().subscribe(data => {
-    console.log("categories: ",data);
+    // console.log("categories: ",data);
     this.categories = data;
 
     
@@ -196,8 +196,8 @@ export class DashboardComponent implements OnInit {
   
   
   var len=items.length;
-  console.log(len);
- console.log(items);
+  // console.log(len);
+//  console.log(items);
    
  if(locationInput!=null && data.length != spliceIndex.length){
    for(var i=0;i<items.length;i++){
@@ -212,13 +212,13 @@ export class DashboardComponent implements OnInit {
    }
    }
 
-   console.log(spliceIndex);
+  //  console.log(spliceIndex);
    var spliceLen=spliceIndex.length;
-   console.log(spliceLen);
+  //  console.log(spliceLen);
    
-   console.log(items);
+  //  console.log(items);
     var len=items.length;
-    console.log(len);
+    // console.log(len);
 
     if(categoryInput!=null && data.length != spliceIndex.length){
   for(var i=0;i<len;i++){
@@ -251,9 +251,9 @@ export class DashboardComponent implements OnInit {
      }
     }
   } 
-  console.log(items);
+  // console.log(items);
   var len=items.length;
-  console.log(len);
+  // console.log(len);
 
   if(dateInput!=null && data.length != spliceIndex.length){
   for(var i=0;i<len;i++){

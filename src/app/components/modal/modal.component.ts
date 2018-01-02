@@ -65,7 +65,6 @@ export class ModalComponent {
     this.allEvents=allEvents;
     this.display=display;
     this.occurrence=occurrence;
-    console.log(this.allEvents);
     
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true, 100);
