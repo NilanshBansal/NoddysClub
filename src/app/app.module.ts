@@ -16,6 +16,7 @@ import { ModalComponent } from "./components/modal/modal.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AuthService } from "./services/auth.service";
 
+import { FacebookModule } from 'ngx-facebook';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { AddEventComponent } from './components/add-event/add-event.component'; 
@@ -63,6 +64,7 @@ const appRoutes:Routes=[
     HttpModule,
     IonRangeSliderModule,
     AngularFirestoreModule,
+    FacebookModule.forRoot(),
   
   ],
   providers: [FirebaseService,AuthService,HttpService],

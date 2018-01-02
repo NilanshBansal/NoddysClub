@@ -35,6 +35,7 @@
 
 
 <!-- <button (click)="removeitem()">Clear Db</button> -->
+<!-- <button (click)="share('http://13.126.181.44:8080/')">FAce</button> -->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
 
@@ -87,7 +88,7 @@
     <div class="collapse navbar-collapse">
 
       <ul class="nav navbar-nav navbar-right visible-xs">
-        <li class="active">
+       <!--  <li class="active">
           <a href="#">Home</a>
         </li>
         <li>
@@ -101,7 +102,7 @@
         </li>
         <li>
           <a href="account_dashboard.html">My account</a>
-        </li>
+        </li> -->
         <li>
           <a href="account_ad_create.html">Add Event</a>
         </li>
@@ -113,10 +114,12 @@
 
 
             <!-- <a data-toggle="modal" data-target="#modalLogin" href="#">Login</a>  -->
-            <a [routerLink]="['/login']">Login</a> |
+
+
+            <!-- <a [routerLink]="['/login']">Login</a> |
             <a href="register.html">Classes</a> |
             <a href="listings.html">Listings</a> |
-            <a href="account_dashboard.html">My account</a>
+            <a href="account_dashboard.html">My account</a> -->
             <a class="btn btn-warning post-ad-btn" [routerLink]="['/addevent']">Add Event</a>
 
           </div>
@@ -1499,7 +1502,7 @@
             <span>Featured</span>
           </div>
         </div> -->
-          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[0]['date'].split(':')[0])>=todayTimestamp">
+          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp">
 
             <div class="col-sm-10 ">
               <h5>
@@ -1560,7 +1563,7 @@
               </span> -->
               <!-- </p> -->
             </div>
-          </div>
+          </div>         
         </div>
       </div>
       <div *ngIf="allEvents.length==0">

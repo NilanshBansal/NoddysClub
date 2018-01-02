@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
+import { FacebookService, UIParams, UIResponse ,InitParams} from 'ngx-facebook';
 
 
 @Component({
@@ -20,8 +21,16 @@ export class DashboardComponent implements OnInit {
     private fs: FirebaseService,
     public fb: FormBuilder,
     public httpservice:HttpService,
+    private facebookService: FacebookService
   ) {
     this.Math=Math;
+    let initParams: InitParams = {
+      appId: '1950221055301408',
+      xfbml: true,
+      version: 'v2.10'
+    };
+
+    facebookService.init(initParams);
    }
   try;
   parseDate=Date.parse;
@@ -51,6 +60,21 @@ export class DashboardComponent implements OnInit {
   pageNo=1;
   endAt=null;
   //selectedCity="";
+
+  share(url: string) {
+    
+     let params: UIParams = {
+      // href: 'https://github.com/zyra/ngx-facebook',
+       href:url,
+       method: 'share'
+     };
+    
+     this.facebookService.ui(params)
+       .then((res: UIResponse) => console.log(res))
+       .catch((e: any) => console.error(e));
+    
+   }
+
   ngOnInit() {
     /* if(localStorage.getItem('city')==null){
       this.city=prompt("Enter city","Delhi");
@@ -133,7 +157,7 @@ export class DashboardComponent implements OnInit {
    this.allEvents=[];
    var len=items.length;
    console.log(len);
-  
+
    
  for(var i=0;i<len;i++){
     
@@ -240,6 +264,28 @@ export class DashboardComponent implements OnInit {
     }
   }
   }
+
+  for(var i=0;i<items.length;i++){
+    console.log("i:" , i);
+    console.log(items.length);
+   console.log("out");
+   
+    if(Date.parse(items[i]["upcoming_occurrences"][items[i]["upcoming_occurrences"].length -1]["date"].split(':')[0])<this.todayTimestamp){
+      console.log("in");
+      console.log(i);
+      console.log(Date.parse(items[i]["upcoming_occurrences"][items[i]["upcoming_occurrences"].length -1]["date"].split(':')[0]));
+     console.log(this.todayTimestamp);
+      //items.splice(i,1);
+      if(spliceIndex.indexOf(i)==-1){
+       spliceIndex.push(i);
+     
+     }
+    console.log(items.length);
+    
+    }
+  }
+
+
   
    var spliceLen=spliceIndex.length;
    spliceIndex.sort(function(a,b){ return b - a; });
@@ -351,7 +397,7 @@ export class DashboardComponent implements OnInit {
   }
   updateFilter(input){
     var locationInput=null;
-    var cityInput=(<HTMLInputElement>document.getElementById("cityInput" + input)).value;
+    var cityInput=(<HTMLInputElement>document.getElementById("cityDropdown")).value;
     var lI=(<HTMLInputElement>document.getElementById("locationInput" + input));
     if(lI)
     {

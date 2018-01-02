@@ -32,6 +32,7 @@
     "forever-monitor": "^1.7.1",
     "jquery": "^3.2.1",
     "ng2-ion-range-slider": "^1.0.3",
+    "ngx-facebook": "^2.4.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
