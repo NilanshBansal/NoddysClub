@@ -162,7 +162,7 @@ filterdata(order,equal){
       console.log(obj);
       //console.log(Object.keys(obj).length);
       itemRef.update(obj);
-      console.log("done");
+      // console.log("done");
     });
 
   }

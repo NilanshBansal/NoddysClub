@@ -266,21 +266,21 @@ export class DashboardComponent implements OnInit {
   }
 
   for(var i=0;i<items.length;i++){
-    console.log("i:" , i);
-    console.log(items.length);
-   console.log("out");
+    // console.log("i:" , i);
+    // console.log(items.length);
+  //  console.log("out");
    
     if(Date.parse(items[i]["upcoming_occurrences"][items[i]["upcoming_occurrences"].length -1]["date"].split(':')[0])<this.todayTimestamp){
-      console.log("in");
-      console.log(i);
-      console.log(Date.parse(items[i]["upcoming_occurrences"][items[i]["upcoming_occurrences"].length -1]["date"].split(':')[0]));
-     console.log(this.todayTimestamp);
+      // console.log("in");
+      // console.log(i);
+      // console.log(Date.parse(items[i]["upcoming_occurrences"][items[i]["upcoming_occurrences"].length -1]["date"].split(':')[0]));
+    //  console.log(this.todayTimestamp);
       //items.splice(i,1);
       if(spliceIndex.indexOf(i)==-1){
        spliceIndex.push(i);
      
      }
-    console.log(items.length);
+    // console.log(items.length);
     
     }
   }

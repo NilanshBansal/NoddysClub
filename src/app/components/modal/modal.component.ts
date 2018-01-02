@@ -19,10 +19,10 @@ import {Component,OnInit} from '@angular/core';
         <span *ngIf="allEvents[keyname].myCategory!=''"><b>Category: </b>{{allEvents[keyname]?.myCategory}}</span><br>
         <span ><b>Age Group: </b>{{allEvents[keyname]?.myAge["lower"] + ' - ' + allEvents[keyname]?.myAge["upper"]}}  Yrs</span><br>
         <span  style="font-size: 13px"><b>Price:</b> ₹ {{allEvents[keyname]?.price[0]['value']}}</span><br>
-        <span><b>Date: </b> {{allEvents[keyname]?.upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
+        <span><b>Date: </b> {{allEvents[keyname]?.upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
         
-        <span><b>Starts: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-        <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
+        <span><b>Starts: </b>{{(allEvents[keyname]?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+        <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
         <span><b>Venue: </b>{{allEvents[keyname]?.venue["name"] + ", " }}</span><br>
         <span>{{allEvents[keyname]?.venue["address"] + ", " + allEvents[keyname]?.venue["city"]}}</span><br>
         <span *ngIf="allEvents[keyname].myLocation!=''"><b>Locality: </b>{{allEvents[keyname]?.myLocation}}</span>
@@ -57,12 +57,14 @@ export class ModalComponent {
   public visible = false;
   public visibleAnimate = false;
   public keyname;
+  public occurrence;
   public display:boolean=false;
   public allEvents={};
-  public show(key,allEvents,display): void {
+  public show(key,allEvents,display,occurrence): void {
     this.keyname=key;
     this.allEvents=allEvents;
     this.display=display;
+    this.occurrence=occurrence;
     console.log(this.allEvents);
     
     this.visible = true;

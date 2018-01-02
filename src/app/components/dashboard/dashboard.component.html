@@ -1502,9 +1502,11 @@
             <span>Featured</span>
           </div>
         </div> -->
-          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp">
+        <div *ngFor="let occurrence of objectKeys(allEvents[key].upcoming_occurrences)">
+        <div *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp">
+          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0])>=todayTimestamp">
 
-            <div class="col-sm-10 ">
+            <div class="col-sm-10 " >
               <h5>
                 <a class="" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
@@ -1516,15 +1518,15 @@
               <!-- <br> -->
               <span>
                 
-                <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
+                <b>Date: </b> {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
 
               <span>
                 
-                <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+                <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
 
               <span>
                 
-                <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+                <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
               <br>
               <span>
                 <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
@@ -1535,8 +1537,8 @@
               </span>
 
               <br>
-              <button class="btn btn-primary" (click)="modal.show(key,allEvents,true)">View More</button>
-              <button id="interestedBtn" (click)="modal2.show(key,allEvents,false)" [hidden]="true"></button>
+              <button class="btn btn-primary" (click)="modal.show(key,allEvents,true,occurrence)">View More</button>
+              <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
               <button class="btn btn-info" (click)="interested(key,allEvents)">I am interested</button>
               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
 
@@ -1563,7 +1565,9 @@
               </span> -->
               <!-- </p> -->
             </div>
-          </div>         
+          </div>  
+          </div> 
+          </div>      
         </div>
       </div>
       <div *ngIf="allEvents.length==0">
