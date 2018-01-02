@@ -32,7 +32,7 @@ import {Component,OnInit} from '@angular/core';
         <span *ngIf="allEvents[keyname].myContactDetails['telephoneNo']!=''"><b>Tel : </b>{{ allEvents[keyname]?.myContactDetails["telephoneNo"]}}</span><br>
         
         <span  style="font-size: 13px" [innerHTML]="allEvents[keyname]?.description"></span>
-        <span *ngIf="allEvents[keyname].url!=''"><b>Booking Url : </b><a [href]="allEvents[keyname]?.url">{{allEvents[keyname]?.url}}</a></span>
+        <span *ngIf="allEvents[keyname].url!=''"><b>Booking Url : </b><a target="_blank" [href]="allEvents[keyname]?.url">{{allEvents[keyname]?.url}}</a></span>
         
         
         

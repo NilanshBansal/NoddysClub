@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   todayTimestamp=Date.parse(this.today.toString());
   interestedEventTitle;
   interestedEventId;
+  interestedOccurrenceDate;
   locationsForm: FormGroup;
   agesForm: FormGroup;
   userInfoForm:FormGroup;
@@ -478,10 +479,11 @@ export class DashboardComponent implements OnInit {
     data["phone"]=phone;
     data["eventId"]=this.interestedEventId;
     data["eventTitle"]=this.interestedEventTitle;
+    data['eventOccurrenceDate']=this.interestedOccurrenceDate;
     this.fs.addData("interested",data);
     var closeModal=document.getElementById("closeModal");
     closeModal.click();
-    this.httpservice.postEmail(emailAddress,phone,this.interestedEventId,this.interestedEventTitle).subscribe((data)=>{
+    this.httpservice.postEmail(emailAddress,phone,this.interestedEventId,this.interestedEventTitle,this.interestedOccurrenceDate).subscribe((data)=>{
       console.log(data);
     },(err)=>{
       console.log(err);
@@ -491,11 +493,12 @@ export class DashboardComponent implements OnInit {
 
   
   
-  interested(key,allEvents){
+  interested(key,allEvents,occurrence){
     var btn=document.getElementById("interestedBtn");
     btn.click();
     this.interestedEventTitle=allEvents[key].title;
     this.interestedEventId=allEvents[key].id;
+    this.interestedOccurrenceDate=allEvents[key]['upcoming_occurrences'][occurrence]["date"].split(':')[0];
 
   }
 

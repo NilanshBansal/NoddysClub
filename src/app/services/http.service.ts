@@ -15,7 +15,7 @@ export class HttpService {
     .map((res:Response) => res.json());
   } */
 
-  postEmail(emailAddress: String, phone: String, interestedEventId: String,interestedEventTitle:String): Observable<string>{
+  postEmail(emailAddress: String, phone: String, interestedEventId: String,interestedEventTitle:String,interestedOccurrenceDate:String): Observable<string>{
     alert("inside post email");
           let headers = new Headers({ 
             'Accept': 'application/json',
@@ -34,7 +34,7 @@ export class HttpService {
           // }
     
           // RIGHT
-          let data = `email=${emailAddress}&phone=${phone}&interestedEventId=${interestedEventId}&interestedEventTitle=${interestedEventTitle}`;
+          let data = `email=${emailAddress}&phone=${phone}&EventId=${interestedEventId}&EventTitle=${interestedEventTitle}&OccurrenceDate=${interestedOccurrenceDate}`;
     
      
           return this.http.post(url,data,options).map((res:Response) => res.json()) // ...and calling .json() on the response to return data

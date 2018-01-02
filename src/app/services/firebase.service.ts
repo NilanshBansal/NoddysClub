@@ -139,7 +139,7 @@ filterdata(order,equal){
         //console.log(element["title"] );
         if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
           //console.log("dekhoji");
-          element["myAdminApproved"] = false;
+          element["myAdminApproved"] = true;
           element["myDisplayTitle"]=element["title"];
           element["myLocation"]="";
           element["myPincode"]="";
@@ -153,7 +153,7 @@ filterdata(order,equal){
           };
           element["myAge"]={
            "lower":0,
-           "upper":0
+           "upper":18
           };
           obj[element["myDisplayTitle"]] = element;
           //console.log(element["myDisplayTitle"]);
