@@ -9,7 +9,7 @@ export class HttpService {
   constructor (
     private http: Http
   ) {}
-
+  public allEvents={};
  /*  getUser() {
     return this.http.get(`https://conduit.productionready.io/api/profiles/eric`)
     .map((res:Response) => res.json());

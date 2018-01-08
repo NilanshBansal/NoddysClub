@@ -21,6 +21,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { AddEventComponent } from './components/add-event/add-event.component'; 
 import { HttpService } from './services/http.service';
+import { ViewEventComponent } from './components/view-event/view-event.component';
 export const firebaseConfig = {
   
   
@@ -41,6 +42,7 @@ const appRoutes:Routes=[
   {path:'',component:DashboardComponent},
   {path:'login',component:HomeComponent},
   {path:'addevent',component:AddEventComponent},
+  {path:'viewEvent',component:ViewEventComponent}
 ]
 
 @NgModule({
@@ -50,13 +52,14 @@ const appRoutes:Routes=[
     NavbarComponent,
     ModalComponent,
     DashboardComponent,
-    AddEventComponent
+    AddEventComponent,
+    ViewEventComponent
   ],
   imports: [
     BrowserModule,
     MomentModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,

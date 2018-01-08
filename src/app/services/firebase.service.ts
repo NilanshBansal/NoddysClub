@@ -48,6 +48,12 @@ export class FirebaseService {
 
 
   }
+  findEvent(eventid){
+    // return this.db.list('/events',ref=>ref.orderByKey().equalTo(eventid));
+   // return this.db.list('/events',ref=>ref.child(eventid));
+    return this.db.object('/events/' + eventid);
+  
+  }
   findObjects(stringvar) {
     return this.db.object('/' + stringvar);
   }

@@ -35,7 +35,8 @@
 
 
 <!-- <button (click)="removeitem()">Clear Db</button> -->
-<!-- <button (click)="share('http://13.126.181.44:8080/')">FAce</button> -->
+<!-- <button (click)="share('http://13.126.181.44:8080/hello')">FAce</button> -->
+<!-- <button (click)="share('http://www.noddys.club.s3-website.ap-south-1.amazonaws.com/#/viewEvent?title=The%20Science%20Fiction%20Walk%20&occurrence=0')">FAce 2</button> -->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
 
@@ -522,7 +523,7 @@
     </div>
 
     <div class="col-sm-8 listings">
-      <b style="font-weight: 600">Events happening in</b>
+      <b style="font-weight: 600">Kids Events happening in</b>
       <select style="font-size: 1.5rem; display: inline-block; position: relative; color: rgb(119, 119, 119); cursor: pointer;" data-radium="true"  id="cityDropdown" class="selectpicker" (change)="cityChanged($event.target.value)" >
         <option data-radium="true"  *ngFor="let key of objectKeys(locations)" >
             <span style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
@@ -562,7 +563,10 @@
 
             <div class="col-sm-10 " >
               <h5>
-                <a class="" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+                <!-- Uncomment below to  view event Page-->
+                <!-- <a  (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
+                <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+                
                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
 
               </h5>
@@ -1076,10 +1080,10 @@
 
         <div class="col-sm-8 col-xs-12">
           <p class="footer-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="typography.html">Typography</a>
-            <a href="terms.html">Terms and Conditions</a>
-            <a href="contact.html">Contact Us</a>
+            <a href="" class="active">Home</a>
+            <a >Typography</a>
+            <a>Terms and Conditions</a>
+            <a href="">Contact Us</a>
           </p>
         </div>
       </div>
@@ -1205,7 +1209,7 @@
           </div>
 
           <div class="input-container PosR">
-            <input class="w100" id="reset-email" formControlName="phone" placeholder="Phone" required type="text" pattern="[789][0-9]{9}">
+            <input class="w100"  formControlName="phone" placeholder="Phone" required type="text" pattern="[789][0-9]{9}">
 
             <input class="btn btn-block btn-primary btn-login center-block" id="submitReset" type="submit" value="Submit" [disabled]="userInfoForm.invalid">
 

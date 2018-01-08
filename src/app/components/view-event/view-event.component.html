@@ -1,0 +1,41 @@
+
+<div class="container" *ngIf="eventObj">
+  <br><br>
+ <div class="row">
+ <span><strong>{{eventObj.myDisplayTitle}}</strong></span>
+   <br>
+ </div>
+ 
+ <div class="row">
+   <br>
+ <img [src]="eventObj.img_url">
+ <br><br>
+ <span *ngIf="eventObj.myCategory!=''"><b>Category: </b>{{eventObj?.myCategory}}</span><br>
+ <span ><b>Age Group: </b>{{eventObj?.myAge["lower"] + ' - ' + eventObj?.myAge["upper"]}}  Yrs</span><br>
+ <span  style="font-size: 13px"><b>Price:</b> ₹ {{eventObj?.price[0]['value']}}</span><br>
+ 
+ <span><b>Date: </b> {{eventObj?.upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
+ 
+ <span><b>Starts: </b>{{(eventObj?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+ <span><b>Ends: </b>{{(eventObj?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
+ <span><b>Venue: </b>{{eventObj?.venue["name"] + ", " }}</span><br>
+ <span>{{eventObj?.venue["address"] + ", " + eventObj?.venue["city"]}}</span><br>
+ <span *ngIf="eventObj.myLocation!=''"><b>Locality: </b>{{eventObj?.myLocation}}</span>
+ <span *ngIf="eventObj.myPincode!=''"><b>Pincode: </b>{{ eventObj?.myPincode}}</span><br>
+
+ <span *ngIf="eventObj.myContactDetails['contactPerson']!=''"><b>Contact Person : </b>{{ eventObj?.myContactDetails["contactPerson"]}}</span>
+ <span *ngIf="eventObj.myContactDetails['telephoneNo']!=''"><b>Tel : </b>{{ eventObj?.myContactDetails["telephoneNo"]}}</span><br>
+ 
+ <span  style="font-size: 13px" [innerHTML]="eventObj?.description"></span>
+ <span *ngIf="eventObj.url!=''"><b>Booking Url : </b><a target="_blank" [href]="eventObj?.url">{{eventObj?.url}}</a></span>
+ 
+ </div>
+ <br>
+ </div>
+ <div class="container" *ngIf="noEvent">
+   <div class="row">
+     <br><br>
+     <h1>No event</h1>
+   </div>
+ </div>
+ 

@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { FacebookService, UIParams, UIResponse ,InitParams} from 'ngx-facebook';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class DashboardComponent implements OnInit {
     private fs: FirebaseService,
     public fb: FormBuilder,
     public httpservice:HttpService,
-    private facebookService: FacebookService
+    private facebookService: FacebookService,
+    private router:Router
   ) {
     this.Math=Math;
     let initParams: InitParams = {
@@ -139,8 +141,21 @@ export class DashboardComponent implements OnInit {
   ngAfterViewChecked(){
     var cityDropdown=(<HTMLInputElement>document.getElementById("cityDropdown"));
     cityDropdown.value=this.city;
-  }
+    //console.log("dekh bhai dekh");
   
+   
+  }
+
+  viewEventPage(title,allEventsClicked,occurrenceClicked){
+    this.httpservice.allEvents=allEventsClicked;
+    console.log(title);
+
+    /* this.fs.findEvent(title).valueChanges().subscribe(eventObj=>{
+      console.log(eventObj);
+    }); */
+    this.router.navigate(['/viewEvent'],{queryParams:{'title':title, 'occurrence':occurrenceClicked}});
+    
+  }
   
   removeitem(){
     alert("hi");
@@ -385,14 +400,10 @@ export class DashboardComponent implements OnInit {
     this.reqEventsApi();
     let that=this;
     setTimeout(function () {
-      if(that.allData.length!=0){
         that.getEventsFromDb(null,null,null,null,null,null,null);
         
-        }
-        else{
-          that.allEvents=[];
-        }
-      
+        
+       
   }, 500);
     
   }
