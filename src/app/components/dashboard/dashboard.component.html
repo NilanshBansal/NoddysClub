@@ -602,7 +602,8 @@
               <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
               <button class="btn btn-info" (click)="interested(key,allEvents,occurrence)" style="font-size:13px;">I am interested</button>
               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
-              <button class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence)" style="font-size:13px;"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button>
+             <!-- Uncomment to share  -->
+              <!-- <button class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence)" style="font-size:13px;"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button> -->
               
               <!-- <p class="muted">Located in
             <strong>Richmond, London</strong>

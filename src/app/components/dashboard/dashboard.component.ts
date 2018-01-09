@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { FacebookService, UIParams, UIResponse ,InitParams} from 'ngx-facebook';
-import {Router,ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
     public httpservice:HttpService,
     private facebookService: FacebookService,
     private router:Router,
-    private route: ActivatedRoute
   ) {
     this.Math=Math;
     let initParams: InitParams = {
