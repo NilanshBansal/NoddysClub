@@ -7,8 +7,7 @@ import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { FacebookService, UIParams, UIResponse ,InitParams} from 'ngx-facebook';
-import {Router} from '@angular/router';
-
+import {Router,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +22,8 @@ export class DashboardComponent implements OnInit {
     public fb: FormBuilder,
     public httpservice:HttpService,
     private facebookService: FacebookService,
-    private router:Router
+    private router:Router,
+    private route: ActivatedRoute
   ) {
     this.Math=Math;
     let initParams: InitParams = {
@@ -62,10 +62,19 @@ export class DashboardComponent implements OnInit {
   startAt=null;
   pageNo=1;
   endAt=null;
+  currentUrl;
   //selectedCity="";
-
-  share(url: string) {
+ /*  check(par){
+    console.log(par);
+    // par=par.replace(" ","%20");
+    par=par.split(" ").join("%20");
+    console.log(par);
     
+
+  } */
+  share(url: string) {
+    url=url.split(" ").join("%20");
+    console.log(url);
      let params: UIParams = {
       // href: 'https://github.com/zyra/ngx-facebook',
        href:url,
@@ -86,7 +95,7 @@ export class DashboardComponent implements OnInit {
     
     this.reqEventsApi();
 
-
+    this.currentUrl=window.location.href;
    this.getEventsFromDb(null,null,null,null,null,null,null);
 
      
