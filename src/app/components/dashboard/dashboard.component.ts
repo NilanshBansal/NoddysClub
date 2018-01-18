@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
   td = new Date();
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   todaysDate = this.td.getDate() + this.months[this.td.getMonth()] + this.td.getFullYear();
-  city = "Delhi";
+  city = "Delhi NCR";
   locations;
   eventsArray = [];
   ages;
@@ -74,14 +74,14 @@ export class DashboardComponent implements OnInit {
   share(url: string,title:string,imgUrl:string,venueName:string,price,date) {
     url=url.split(" ").join("%20");
     
-    /*  let params: UIParams = {
+     let params: UIParams = {
       // href: 'https://github.com/zyra/ngx-facebook',
        href:url,
        method: 'share'
-     }; */
+     };
 
 
-      let params: UIParams = {
+      /* let params: UIParams = {
         // href: 'https://github.com/zyra/ngx-facebook',
         // href:url,
          method: 'share_open_graph',
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
               // 'og:image:type': 'image/jpeg'
           }
         })
-       };
+       }; */
     
      this.facebookService.ui(params)
        .then((res: UIResponse) => console.log(res))
@@ -108,7 +108,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     /* if(localStorage.getItem('city')==null){
-      this.city=prompt("Enter city","Delhi");
+      this.city=prompt("Enter city","Delhi NCR");
       localStorage.setItem('city',this.city);
     } */
     
@@ -349,7 +349,11 @@ export class DashboardComponent implements OnInit {
 
   reqEventsApi(){
     this.allData=[];
-    this.http.get('https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids').subscribe((data) => {
+    var url='https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids';
+    if(this.city=='Delhi NCR'){
+      url='https://developer.eventshigh.com/events/' + 'Delhi' + '?key=ev3nt5h1ghte5tK3y&cf=kids';
+    }
+    this.http.get(url).subscribe((data) => {
       console.log(data.json());
       this.allData = (data.json()).events;
       console.log(this.allData);

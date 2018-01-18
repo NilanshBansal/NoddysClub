@@ -150,7 +150,14 @@ filterdata(order,equal){
           element["myLocation"]="";
           element["myPincode"]="";
           // element["myLocationCaps"]="";
-          element["myCityCaps"]=element["city"].toUpperCase();
+          if(element["city"]=='Delhi'){
+            element["myCity"]='Delhi NCR';
+            element["myCityCaps"]=element["myCity"].toUpperCase();
+          }
+          else{
+            element["myCityCaps"]=element["city"].toUpperCase();
+          
+          }
           element["myCategory"]="";
           // element["myCategoryCaps"]="";
           element["myContactDetails"]={
