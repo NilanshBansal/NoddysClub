@@ -603,7 +603,7 @@
               <button class="btn btn-info" (click)="interested(key,allEvents,occurrence)" style="font-size:13px;">I am interested</button>
               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
              <!-- Uncomment to share  -->
-              <!-- <button class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )" style="font-size:13px;"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button> -->
+              <button class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )" style="font-size:13px;"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button>
               
               <!-- <p class="muted">Located in
             <strong>Richmond, London</strong>
