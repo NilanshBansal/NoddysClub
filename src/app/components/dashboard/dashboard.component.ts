@@ -74,14 +74,14 @@ export class DashboardComponent implements OnInit {
   share(url: string,title:string,imgUrl:string,venueName:string,price,date) {
     url=url.split(" ").join("%20");
     
-     let params: UIParams = {
+     /* let params: UIParams = {
       // href: 'https://github.com/zyra/ngx-facebook',
        href:url,
        method: 'share'
-     };
+     }; */
 
 
-      /* let params: UIParams = {
+      let params: UIParams = {
         // href: 'https://github.com/zyra/ngx-facebook',
         // href:url,
          method: 'share_open_graph',
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
               // 'og:image:type': 'image/jpeg'
           }
         })
-       }; */
+       };
     
      this.facebookService.ui(params)
        .then((res: UIResponse) => console.log(res))
