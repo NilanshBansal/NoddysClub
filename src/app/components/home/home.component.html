@@ -43,17 +43,15 @@
             </form>
 
 
-            <div class="container" style="display:flex; justify-content:center;margin-top:20px;width:100%;">
+            <!-- <div class="container" style="display:flex; justify-content:center;margin-top:20px;width:100%;">
                 <div>
                     <button class="btn btn-lg  btn-default" (click)="signinWithFb()">
-                        <!--<i class="fa fa-facebook-square" aria-hidden="true" style="width:50px;"></i>-->
                         <img src="assets/images/fblogo.png" width="24px">FACEBOOK</button>
 
                     <button class="btn btn-lg btn-default" (click)="signinWithGoogle()">
-                        <!--<i class="fa fa-google-plus-square" aria-hidden="true" style="width:50px;"></i>-->
                         <img src="assets/images/googlelogo.png" width="24px"> GOOGLE </button>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -72,7 +70,7 @@
                         Name cannot be greater than 30 characters .
                     </div>
                 </div>
-                <label for="phone" class="sr-only">Phone no:</label>
+                <!-- <label for="phone" class="sr-only">Phone no:</label>
                 <input type="tel" id="inputPhone" name="phone" formControlName="phone" class="form-control" placeholder="Phone" required>
                 <div *ngIf="signupForm.controls.phone.invalid && (signupForm.controls.phone.dirty || signupForm.controls.phone.touched)"
                     class="alert alert-danger">
@@ -82,8 +80,9 @@
                     <div *ngIf="signupForm.controls.email.errors.pattern">
                         Invalid Phone No
                     </div>
-                </div>
-                <label for="address" class="sr-only">Address</label>
+                </div> -->
+
+                <!-- <label for="address" class="sr-only">Address</label>
                 <input type="text" id="inputAddress" name="phone" formControlName="address" class="form-control" placeholder="Address" required>
                 <div *ngIf="signupForm.controls.address.invalid && (signupForm.controls.address.dirty || signupForm.controls.address.touched)"
                     class="alert alert-danger">
@@ -93,8 +92,9 @@
                     <div *ngIf="signupForm.controls.email.errors.pattern">
                         Invalid Address
                     </div>
-                </div>
-                <label for="pin" class="sr-only">Pin Code: </label>
+                </div> -->
+
+               <!--  <label for="pin" class="sr-only">Pin Code: </label>
                 <input type="text" id="inputPin" name="pin" formControlName="pin" class="form-control" placeholder="Pin Code" required>
                 <div *ngIf="signupForm.controls.pin.invalid && (signupForm.controls.pin.dirty || signupForm.controls.pin.touched)" class="alert alert-danger">
                     <div *ngIf="signupForm.controls.email.errors.required">
@@ -103,7 +103,7 @@
                     <div *ngIf="signupForm.controls.email.errors.pattern">
                         Invalid Pin Code
                     </div>
-                </div>
+                </div> -->
                 <label for="inputEmail" class="sr-only">Email </label>
                 <input type="email" id="inputEmail" name="email" formControlName="email" class="form-control" placeholder="Email address"
                     autocomplete="off" autocomplete="new-password" required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
@@ -152,16 +152,14 @@
                 </div>
                 <input class="btn btn-lg btn-primary " type="submit" value="Sign Up" [disabled]="signupForm.invalid ">
             </form>
-            <div class="container" class="col-md-4 col-md-offset-4" style="display:flex; justify-content:center;margin-top:20px;">
+            <!-- <div class="container" class="col-md-4 col-md-offset-4" style="display:flex; justify-content:center;margin-top:20px;">
                 <div>
                     <button class="btn btn-lg  btn-default" (click)="signinWithFb()">
-                        <!--<i class="fa fa-facebook-square" aria-hidden="true" style="width:50px;"></i>-->
                         <img src="assets/images/fblogo.png" width="24px">FACEBOOK</button>
                     <button class="btn btn-lg btn-default" (click)="signinWithGoogle()">
-                        <!--<i class="fa fa-google-plus-square" aria-hidden="true" style="width:50px;"></i>-->
                         <img src="assets/images/googlelogo.png" width="24px"> GOOGLE </button>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!--<button (click)="verifyEmail()">CLICK ME TO VERIFY EMAIL</button>
@@ -174,22 +172,22 @@
         <app-modal #modal>
             <div class="app-modal-header">
                 <!-- header-->
-                <button type="button" class="btn btn-default" (click)="modal.hide()" ><i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i></button>
+                <!-- <button type="button" class="btn btn-default" (click)="modal.hide()" ><i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i></button> -->
             </div>
             <div class="app-modal-body">
                 <!--Whatever content you like, form fields, anything-->
 
                 <div class="remodal">
-                    <div class="reset-password-modal--info">
+                    <!-- <div class="reset-password-modal--info"> -->
                         <div class="reset-password-modal--header">
                             Reset Your Password
                         </div>
                         <div class="reset-password-modal--description">
-                            Please provide the email address you used when you signed up for your Noddy's Club account.
-                            <br>
-                            <br> We will send you an email with a link to reset your password.
+                            Please provide the email address registered with Noddy's Club
+                            <!-- <br> -->
+                            <!-- <br> We will send you an email with a link to reset your password. -->
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <form class="reset__form" [formGroup]="resetForm" (submit)="resetPassword()" novalidate>
 
 
