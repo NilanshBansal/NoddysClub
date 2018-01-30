@@ -126,14 +126,14 @@ export class HomeComponent implements OnInit {
     let earlierPassword = "";
     let earlierConfirmPassword = "";
     let earliername="";
-    let earlieraddress="";
-    let earlierpin="";
-    let earlierphone="";
+    // let earlieraddress="";
+    // let earlierpin="";
+    // let earlierphone="";
     console.log(this.signupForm);
     if (this.signupForm) {
-      earlieraddress=this.signupForm.value["address"];
-      earlierpin=this.signupForm.value["pin"];
-      earlierphone=this.signupForm.value["phone"];
+      // earlieraddress=this.signupForm.value["address"];
+      // earlierpin=this.signupForm.value["pin"];
+      // earlierphone=this.signupForm.value["phone"];
       earliername=this.signupForm.value["name"];
       earlierEmail = this.signupForm.value["email"];
       earlierPassword = this.signupForm.value["password"];
@@ -143,9 +143,9 @@ export class HomeComponent implements OnInit {
     if (this.signupVar == false) {
       this.signupVar = true;
       this.signupForm = this.fb.group({
-        address:[earlieraddress,Validators.required],
-        pin:[earlierpin,Validators.required],
-        phone:[earlierphone,Validators.required],
+        // address:[earlieraddress,Validators.required],
+        // pin:[earlierpin,Validators.required],
+        // phone:[earlierphone,Validators.required],
         name:[earliername,[Validators.required,Validators.maxLength(30)]],
         email: [earlierEmail, Validators.required],
         pass:this.fb.group({
@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit {
 
   submitSignup() {
     if (this.signupForm.value["password"] != this.signupForm.value["confirmPassword"]) {
-      alert("Paaword not matched!");
+      alert("Password not matched!");
       return;
     }
     alert("creating user:");
