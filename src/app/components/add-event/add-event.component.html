@@ -260,11 +260,13 @@
                     <option value="">Choose a city</option>
                     <option *ngFor="let location of objectKeys(locations)">{{location}}</option>
                     </select>
+                    <br>
                     <label>Place</label>
                     <select id="place" class="form-control " name="place">
                       <option value="">Choose a place</option>
                       <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
                       </select>
+                      <br>
                       <label>Address</label>
                   <textarea class="form-control col-sm-8 expand" rows="2" style="width: 99%"></textarea>
                 </div>
