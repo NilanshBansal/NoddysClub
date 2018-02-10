@@ -238,20 +238,7 @@
                   <label>End Time</label>
                   <input type="time" value={{nowTime}} class="form-control ">
                 </div>
-                <div class="col-sm-6">
-                  <br />
-                  <label>Price</label>
-                  <input type="number" class="form-control " min=0 placeholder="How much do you want it to be listed for?">
-                </div>
-                <div class="col-sm-6">
-                  <br />
-                  <label>Branch Address</label>
-                  <select id="address" class="form-control " name="address">
-                    <option value="">Choose an address</option>
-                    <option *ngFor="let category of categories">{{category}}</option>
-
-                  </select>
-                </div>
+              
                 <div class="col-sm-12">
                   <br />
                   <label>Event Venue</label>
@@ -307,6 +294,24 @@
               </p>
             </div>
           </div> -->
+
+          <div class="panel panel-default">
+              <div class="panel-heading">Your price</div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control " placeholder="How much do you want it to be listed for?">
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+    
+    
+    
+    
+            </div>
 
         <div class="panel panel-default">
           <div class="panel-heading">Complete ad</div>
