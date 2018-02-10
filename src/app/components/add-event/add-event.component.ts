@@ -54,6 +54,18 @@ export class AddEventComponent implements OnInit {
   addOccurrence(){
     this.count++;
     this.numbers.push(this.count);
+    console.log(this.count);
+    console.log(this.numbers);
+  }
+  deleteOccurrence(){
+    this.count--;
+    this.numbers.pop();
+    console.log(this.count);
+    console.log(this.numbers);
+    var occurrenceDiv=(<HTMLCollectionOf<Element>>document.getElementsByClassName("occurrenceDiv"));
+    if(occurrenceDiv.length>1){
+      occurrenceDiv[occurrenceDiv.length-1].remove();
+    }
   }
 
 }

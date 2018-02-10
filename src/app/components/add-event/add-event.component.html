@@ -214,8 +214,12 @@
           </div>
         </div>
 
-        <div class="panel panel-default" *ngFor="let no of numbers">
-          <div class="panel-heading">Event Occurrence - {{no}}</div>
+        <div class="panel panel-default" *ngFor="let no of numbers" class="occurrenceDiv">
+          <div class="panel-heading">Event Occurrence 
+            <span *ngIf="count>1">
+                - {{no}}<button (click)="deleteOccurrence()" class="btn-danger pull-right"><span class="glyphicon glyphicon-trash "></span></button>
+            </span>
+          </div>
           <div class="panel-body">
 
             <div class="form-group">
