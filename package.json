@@ -23,6 +23,7 @@
     "@angular/router": "^4.2.4",
     "angular2-flash-messages": "^1.0.8",
     "angular2-fullcalendar": "^1.0.19",
+    "angular2-image-upload": "^1.0.0-rc.0",
     "angular2-moment": "^1.7.0",
     "angularfire2": "^5.0.0-rc.3",
     "bootstrap": "^3.3.7",

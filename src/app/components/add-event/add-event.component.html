@@ -238,33 +238,67 @@
                   <label>End Time</label>
                   <input type="time" value={{nowTime}} class="form-control ">
                 </div>
+                <div class="col-sm-6">
+                  <br />
+                  <label>Price</label>
+                  <input type="number" class="form-control ">
+                </div>
+                <div class="col-sm-6">
+                  <br />
+                  <label>Branch Address</label>
+                  <select id="address" class="form-control " name="address">
+                    <option value="">Choose an address</option>
+                    <option *ngFor="let category of categories">{{category}}</option>
+
+                  </select>
+                </div>
+                <div class="col-sm-12">
+                  <br />
+                  <label>Event Venue</label><br>
+                  <label>City</label>
+                  <select id="cityDropdown" (change)="cityChanged($event.target.value)" class="form-control " name="city">
+                    <option value="">Choose a city</option>
+                    <option *ngFor="let location of objectKeys(locations)">{{location}}</option>
+                    </select>
+                    <label>Place</label>
+                    <select id="place" class="form-control " name="place">
+                      <option value="">Choose a place</option>
+                      <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
+                      </select>
+                      <label>Address</label>
+                  <textarea class="form-control col-sm-8 expand" rows="2" style="width: 99%"></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- IMAGE UPLOAD -->
+          <!-- <div class="panel panel-default">
+            <div class="panel-heading">Add photos</div>
+            <div class="panel-body">
+              <div id="my-dropzone" action="upload.php" class="dropzone">
+                <image-upload [url]="'https://www.noddys.club/assets/'" [max]="2" [extensions]="['jpeg','png']" (uploadFinished)="onUploadFinished($event)"></image-upload>
+                
+              </div>
+              <br />
+              <p>
+                <small>* please note that the displayed images are cropped/resized only for display purposes</small>
+              </p>
+            </div>
+          </div> -->
 
         <div class="panel panel-default">
-          <div class="panel-heading">Add photos</div>
-          <div class="panel-body">
-            <div id="my-dropzone" action="upload.php" class="dropzone"></div>
-            <br />
-            <p>
-              <small>* please note that the displayed images are cropped/resized only for display purposes</small>
-            </p>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">Your price</div>
+          <div class="panel-heading">NOT SET</div>
           <div class="panel-body">
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-6">
-                  <input type="text" class="form-control " placeholder="How much do you want it to be listed for?">
+                  <label>Price</label><input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
                 </div>
                 <div class="col-sm-6">
-                  <p>You can adjust your price anytime you like, even after your listing is published.</p>
+                  <!-- <p>You can adjust your price anytime you like, even after your listing is published.</p> -->
+                  <label>Price</label><input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
                 </div>
               </div>
             </div>

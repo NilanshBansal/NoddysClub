@@ -525,7 +525,9 @@ export class DashboardComponent implements OnInit {
     
         this.getEventsFromDb(locationInput,categoryInput,minPriceInputno,maxPriceInputno,startAge,endAge,parsedDate);
         
-       
+       if(input=="mob"){
+        document.getElementById("filterBtnMob").click();
+       }
   }
 
   submitUserForm(){

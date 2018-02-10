@@ -22,6 +22,8 @@ import * as $ from 'jquery';
 import { AddEventComponent } from './components/add-event/add-event.component'; 
 import { HttpService } from './services/http.service';
 import { ViewEventComponent } from './components/view-event/view-event.component';
+
+import { ImageUploadModule } from "angular2-image-upload";
 export const firebaseConfig = {
   
   
@@ -68,6 +70,7 @@ const appRoutes:Routes=[
     IonRangeSliderModule,
     AngularFirestoreModule,
     FacebookModule.forRoot(),
+    ImageUploadModule.forRoot(),
   
   ],
   providers: [FirebaseService,AuthService,HttpService],
