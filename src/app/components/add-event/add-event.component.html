@@ -214,8 +214,8 @@
           </div>
         </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">Event Occurrence </div>
+        <div class="panel panel-default" *ngFor="let no of numbers">
+          <div class="panel-heading">Event Occurrence - {{no}}</div>
           <div class="panel-body">
 
             <div class="form-group">
@@ -290,6 +290,7 @@
 
               </div>
             </div>
+            <button (click)="addOccurrence()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-plus"></span></button>
           </div>
         </div>
 

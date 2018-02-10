@@ -9,7 +9,7 @@ import { FirebaseService } from '../../services/firebase.service';
 export class AddEventComponent implements OnInit {
 
   constructor(private fs: FirebaseService,) { }
-  
+  count=1;
   city = "Delhi NCR";
   categories;
   locations;
@@ -18,6 +18,7 @@ export class AddEventComponent implements OnInit {
   curMonth=this.curDate.getMonth() + 1;
   nowDate=this.curDate.getFullYear() + "-" +  ("0" + this.curMonth).slice(-2) + "-" + ("0" + this.curDate.getDate()).slice(-2);
   nowTime=new Date().toLocaleTimeString();
+  numbers=[1];
   ngOnInit() {  
     
     this.fs.findObjects("categories").valueChanges().subscribe(data => {
@@ -28,6 +29,7 @@ export class AddEventComponent implements OnInit {
       console.log("locations: ",data);
       this.locations = data;
     });
+
   }
 
   ngAfterViewChecked(){
@@ -48,6 +50,10 @@ export class AddEventComponent implements OnInit {
     this.city=cityInput;
     let that=this;
 
+  }
+  addOccurrence(){
+    this.count++;
+    this.numbers.push(this.count);
   }
 
 }
