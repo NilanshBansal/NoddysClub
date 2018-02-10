@@ -156,7 +156,7 @@
         </div> -->
 
 
-        
+
 
 
         <div class="panel panel-default">
@@ -181,38 +181,38 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Event Category</div>
-            <div class="panel-body">
-  
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label>Category</label>
-                    <select id="category" class="form-control " name="category">
-                      <option value="">Choose a category</option>
-                      <option *ngFor="let category of categories">{{category}}</option>
-  
-                    </select>
-                  </div>
-                  <div class="col-sm-6">
-                    <label>Any other category</label>
-                    <input type="text" class="form-control ">
-                  </div>
-                  <div class="col-sm-6">
-                    <br>
-                    <label>Age (in Yrs) From: </label>
-                    <input type="number" class="form-control " min=0>
-                  </div>
-                  <div class="col-sm-6">
-                    <br>
-                    <label>To: </label>
-                    <input type="number" class="form-control " min=1>
-                  </div>
-  
+          <div class="panel-heading">Event Category</div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Category</label>
+                  <select id="category" class="form-control " name="category">
+                    <option value="">Choose a category</option>
+                    <option *ngFor="let category of categories">{{category}}</option>
+
+                  </select>
                 </div>
+                <div class="col-sm-6">
+                  <label>Any other category</label>
+                  <input type="text" class="form-control ">
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Age (in Yrs) From </label>
+                  <input type="number" class="form-control " min=0>
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>To </label>
+                  <input type="number" class="form-control " min=1>
+                </div>
+
               </div>
             </div>
           </div>
+        </div>
 
         <div class="panel panel-default">
           <div class="panel-heading">Event Schedule</div>
@@ -254,29 +254,47 @@
                 </div>
                 <div class="col-sm-12">
                   <br />
-                  <label>Event Venue</label><br>
+                  <label>Event Venue</label>
+                  <br>
                   <label>City</label>
                   <select id="cityDropdown" (change)="cityChanged($event.target.value)" class="form-control " name="city">
                     <option value="">Choose a city</option>
                     <option *ngFor="let location of objectKeys(locations)">{{location}}</option>
-                    </select>
-                    <br>
-                    <label>Place</label>
-                    <select id="place" class="form-control " name="place">
-                      <option value="">Choose a place</option>
-                      <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
-                      </select>
-                      <br>
-                      <label>Address</label>
-                  <textarea class="form-control col-sm-8 expand" rows="2" style="width: 99%"></textarea>
+                  </select>
                 </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Place</label>
+                  <select id="place" class="form-control " name="place">
+                    <option value="">Choose a place</option>
+                    <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Any Other Place</label>
+                  <input type="text" class="form-control">
+                </div>
+
+
+                <div class="col-sm-6">
+                  <br>
+                  <label>Address</label>
+                  <textarea class="form-control col-sm-8 expand" rows="1" style="width: 99%"></textarea>
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Pincode</label>
+                  <input type="text" class="form-control">
+                </div>
+
               </div>
             </div>
           </div>
         </div>
 
         <!-- IMAGE UPLOAD -->
-          <!-- <div class="panel panel-default">
+        <!-- <div class="panel panel-default">
             <div class="panel-heading">Add photos</div>
             <div class="panel-body">
               <div id="my-dropzone" action="upload.php" class="dropzone">
@@ -296,11 +314,13 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-6">
-                  <label>Price</label><input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
+                  <label>Price</label>
+                  <input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
                 </div>
                 <div class="col-sm-6">
                   <!-- <p>You can adjust your price anytime you like, even after your listing is published.</p> -->
-                  <label>Price</label><input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
+                  <label>Price</label>
+                  <input type="number" class="form-control " placeholder="How much do you want it to be listed for?">
                 </div>
               </div>
             </div>
