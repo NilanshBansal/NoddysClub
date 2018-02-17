@@ -158,7 +158,7 @@ filterdata(order,equal){
             element["myCityCaps"]=element["city"].toUpperCase();
           
           }
-          element["myCategory"]="";
+          element["myCategory"]=element["cats"][0];
           // element["myCategoryCaps"]="";
           element["myContactDetails"]={
             "telephoneNo":"",
@@ -179,11 +179,53 @@ filterdata(order,equal){
     });
 
   }
+  addObject(stringvar,element){
+    const itemRef = this.db.object("/" + stringvar);
+    var obj={};
+    itemRef.snapshotChanges().subscribe(snapshot => {
+
+      element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
+      //console.log(element["title"] );
+      if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
+        //console.log("dekhoji");
+        element["myAdminApproved"] = true;
+        element["myDisplayTitle"]=element["title"];
+        element["myLocation"]="";
+        // element["myPincode"]="";
+        // element["myLocationCaps"]="";
+        if(element["city"]=='Delhi'){
+          element["myCity"]='Delhi NCR';
+          element["myCityCaps"]=element["myCity"].toUpperCase();
+        }
+        else{
+          element["myCityCaps"]=element["city"].toUpperCase();
+        
+        }
+        // element["myCategory"]=element["cats"][0];
+        // element["myCategoryCaps"]="";
+        element["myContactDetails"]={
+          "telephoneNo":"",
+          "contactPerson":""
+        };
+        // element["myAge"]={
+        //  "lower":0,
+        //  "upper":18
+        // };
+        obj[element["myDisplayTitle"]] = element;
+        //console.log(element["myDisplayTitle"]);
+      }
+      console.log(obj);
+      itemRef.update(obj);
+    });
+    
+  }
 
   addData(stringvar, objvar) {
     var obj = {};
     const itemRef = this.db.list("/" + stringvar);
     console.log(objvar);
+    console.log(itemRef);
+    
     itemRef.push(objvar);
   }
   removeData(){

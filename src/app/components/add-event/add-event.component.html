@@ -45,7 +45,7 @@
             <!-- <a href="register.html">Register</a> | -->
             <br>
             <a class="btn btn-warning post-ad-btn" [routerLink]="['/']">Home</a>
-            <a class="btn btn-default" href="account_dashboard.html">My account</a>
+            <!-- <a class="btn btn-default" href="account_dashboard.html">My account</a> -->
             <!-- <a href="account_ad_create.html" class="btn btn-default post-ad-btn">Post an ad</a> -->
 
           </div>
@@ -110,7 +110,7 @@
 
 
     <div class="col-sm-9">
-      <form class="form-vertical" action="">
+      <form class="form-vertical" [formGroup]="addForm" (submit)="submitEvent()" novalidate>
 
         <!-- <div class="panel panel-default">
           <div class="panel-heading">Choose category</div>
@@ -168,12 +168,23 @@
 
                 <div class="col-sm-12">
                   <label>Title </label>
-                  <input type="text" class="form-control ">
+                  <input type="text" class="form-control " required formControlName="title" name="title">
+                  <div *ngIf="addForm.controls.title.invalid && (addForm.controls.title.dirty || addForm.controls.title.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.title.errors.required">
+                      Title is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-12">
                   <br />
                   <label>Description </label>
-                  <textarea class="form-control col-sm-8 expand" rows="6" style="width: 99%"></textarea>
+                  <textarea class="form-control col-sm-8 expand" rows="6" style="width: 99%" required formControlName="description" name="description"></textarea>
+                  <div *ngIf="addForm.controls.description.invalid && (addForm.controls.description.dirty || addForm.controls.description.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addForm.controls.description.errors.required">
+                      Description is required.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -188,33 +199,49 @@
               <div class="row">
                 <div class="col-sm-6">
                   <label>Category</label>
-                  <select id="category" class="form-control " name="category">
+                  <select id="category" class="form-control " formControlName="category" name="category">
                     <option value="">Choose a category</option>
                     <option *ngFor="let category of categories">{{category}}</option>
 
                   </select>
+
                 </div>
                 <div class="col-sm-6">
                   <label>Any other category</label>
-                  <input type="text" class="form-control ">
+                  <input type="text" class="form-control " formControlName="anyOtherCategory" name="anyOtherCategory">
                 </div>
-                <div class="col-sm-6">
+                <div formGroupName="age">
+                <div class="col-sm-6" >
                   <br>
                   <label>Age (in Yrs) From </label>
-                  <input type="number" class="form-control " min=0>
+                  <input type="number" class="form-control " min="0" required formControlName="startAge" name="startAge">
+                  <div *ngIf="addForm.get('age.startAge').invalid && (addForm.get('age.startAge').dirty || addForm.get('age.startAge').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addForm.get('age.startAge').errors.required">
+                      Age is required & should be numeric.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-6">
                   <br>
                   <label>To </label>
-                  <input type="number" class="form-control " min=1>
+                  <input type="number" class="form-control " min="1" required formControlName="endAge" name="endAge">
+                  <div *ngIf="addForm.get('age.endAge').invalid && (addForm.get('age.endAge').dirty || addForm.get('age.endAge').touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.get('age.endAge').errors.required">
+                      Age is required & should be numeric.
+                    </div>
+                  </div>
                 </div>
-
+                <div class="alert alert-danger" *ngIf="addForm.get('age').touched && addForm.get('age').hasError('nomatch')">
+                  Start Age must be less than End Age!
+              </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="panel panel-default" >
+        <div class="panel panel-default">
           <div class="panel-heading">Event Occurrence</div>
           <div class="panel-body">
 
@@ -222,29 +249,42 @@
               <div class="row">
                 <div class="col-sm-6">
                   <label>Start Date</label>
-                  <input type="date" value={{nowDate}} class="form-control ">
+                  <input type="date" value={{nowDate}} class="form-control " formControlName="startDate" name="startDate">
+                  <!-- <div *ngIf="addForm.controls.startDate.invalid && (addForm.controls.startDate.dirty || addForm.controls.startDate.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addForm.controls.startDate.errors.required">
+                      Date is required.
+                    </div>
+                  </div> -->
+
                 </div>
+
                 <div class="col-sm-6">
                   <label>End Date</label>
-                  <input type="date" value={{nowDate}} class="form-control ">
+                  <input type="date" value={{nowDate}} class="form-control " formControlName="endDate" name="endDate">
+                  <!-- <div *ngIf="addForm.controls.endDate.invalid && (addForm.controls.endDate.dirty || addForm.controls.endDate.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.endDate.errors.required">
+                        Date is required. 
+                    </div>             
+                  </div> -->
                 </div>
                 <div class="col-sm-6">
                   <br />
                   <label>Start Time</label>
-                  <input type="time" value={{nowTime}} class="form-control ">
+                  <input type="time" value={{nowTime}} class="form-control " formControlName="startTime" name="startTime">
                 </div>
                 <div class="col-sm-6">
                   <br />
                   <label>End Time</label>
-                  <input type="time" value={{nowTime}} class="form-control ">
+                  <input type="time" value={{nowTime}} class="form-control " formControlName="endTime" name="endTime">
                 </div>
-              
+
                 <div class="col-sm-12">
                   <br />
                   <label>Event Venue</label>
                   <br>
                   <label>City</label>
-                  <select id="cityDropdown" (change)="cityChanged($event.target.value)" class="form-control " name="city">
+                  <select id="cityDropdown" (change)="cityChanged($event.target.value)" class="form-control " formControlName="city" name="city">
                     <option value="">Choose a city</option>
                     <option *ngFor="let location of objectKeys(locations)">{{location}}</option>
                   </select>
@@ -252,7 +292,7 @@
                 <div class="col-sm-6">
                   <br>
                   <label>Place</label>
-                  <select id="place" class="form-control " name="place">
+                  <select id="place" class="form-control " formControlName="place" name="place">
                     <option value="">Choose a place</option>
                     <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
                   </select>
@@ -260,19 +300,30 @@
                 <div class="col-sm-6">
                   <br>
                   <label>Any Other Place</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="anyOtherPlace" name="anyOtherPlace">
                 </div>
 
 
                 <div class="col-sm-6">
                   <br>
                   <label>Address</label>
-                  <textarea class="form-control col-sm-8 expand" rows="1" style="width: 99%"></textarea>
+                  <textarea class="form-control col-sm-8 expand" rows="1" style="width: 99%" formControlName="address" name="address"></textarea>
+                  <div *ngIf="addForm.controls.address.invalid && (addForm.controls.address.dirty || addForm.controls.address.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.address.errors.required">
+                      Address is required.
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-sm-6">
                   <br>
                   <label>Pincode</label>
-                  <input type="text" class="form-control">
+                  <input type="number" class="form-control" formControlName="pinCode" name="pinCode">
+                  <div *ngIf="addForm.controls.pinCode.invalid && (addForm.controls.pinCode.dirty || addForm.controls.pinCode.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.pinCode.errors.required">
+                      Pin Code is required.
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -295,44 +346,47 @@
             </div>
           </div> -->
 
-          <div class="panel panel-default">
-              <div class="panel-heading">Your price</div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control " placeholder="How much do you want it to be listed for?">
+        <div class="panel panel-default">
+          <div class="panel-heading">Your price</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <input type="number" min="0" class="form-control " formControlName="price" name="price" placeholder="How much do you want it to be listed for?">
+                  <div *ngIf="addForm.controls.price.invalid && (addForm.controls.price.dirty || addForm.controls.price.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.price.errors.required">
+                      Price is required.
                     </div>
                   </div>
                 </div>
-    
               </div>
-    
-    
-    
-    
             </div>
-            
-          <div >
 
-            <!-- <div class="checkbox">
+          </div>
+
+
+
+
+        </div>
+
+        <div>
+
+          <!-- <div class="checkbox">
               <label>
                 <input type="checkbox"> I agree to the terms and conditions and regulations.
               </label>
             </div> -->
 
-            <!-- <br /> -->
-            <!-- <button type="submit" class="btn btn-default hidden-xs">Save draft</button>
-              <button type="submit" class="btn btn-default hidden-xs">Preview ad</button> -->
-            <a href="account_credits.html" class="btn btn-primary ">
-              <i class="icon-ok"></i> Publish ad</a>
-            <br />
-            <br>
-            <p class=" hidden-xs" >
-              <small>* event will be published
-                <br /> once our team approves it </small>
-            </p>
-          </div>
+
+          <!-- <a href="account_credits.html" class="btn btn-primary ">
+              <i class="icon-ok"></i> Publish ad</a> -->
+          <input type="submit" class="btn btn-primary" value="Submit" [disabled]="addForm.invalid ">
+          <br>
+          <p class=" hidden-xs">
+            <small>* event will be published
+              <br /> once our team approves it </small>
+          </p>
+        </div>
 
 
 
