@@ -23,7 +23,7 @@ import {Component,OnInit} from '@angular/core';
         
         <span><b>Starts: </b>{{(allEvents[keyname]?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
         <span><b>Ends: </b>{{(allEvents[keyname]?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
-        <span><b>Venue: </b>{{allEvents[keyname]?.venue["name"] + ", " }}</span><br>
+        <span><b>Venue: </b><span *ngIf="allEvents[keyname].venue['name']!=''">{{allEvents[keyname]?.venue["name"] + ", " }}<br></span></span>
         <span>{{allEvents[keyname]?.venue["address"] + ", " + allEvents[keyname]?.venue["city"]}}</span><br>
         <span *ngIf="allEvents[keyname].myLocation!=''"><b>Locality: </b>{{allEvents[keyname]?.myLocation}}</span>
         <span *ngIf="allEvents[keyname].myPincode!=''"><b>Pincode: </b>{{ allEvents[keyname]?.myPincode}}</span><br>
