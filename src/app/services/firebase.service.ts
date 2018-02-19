@@ -179,6 +179,56 @@ filterdata(order,equal){
     });
 
   }
+  addEventsFb(stringvar, arrEvents){
+    let obj={};
+    const itemRef = this.db.object("/" + stringvar);
+    itemRef.snapshotChanges().subscribe(snapshot => {
+      //console.log("checking");
+      obj={};
+      arrEvents.forEach(element => {
+        element["title"] = element["name"].replace(/[\.,#,$,/,\[,\]]/g, '');
+        //console.log(element["title"] );
+        if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
+          //console.log("dekhoji");
+          element["booking_enquiry_url"]='';
+          element["booking_url"]='';
+          element["category"]='';
+          element["myCategory"]='';
+          
+          element["myAdminApproved"] = true;
+          element["myDisplayTitle"]=element["title"];
+          element["myLocation"]="";
+          element["myPincode"]="";
+          // element["myLocationCaps"]="";
+          if(element["city"]=='Delhi'){
+            element["myCity"]='Delhi NCR';
+            element["myCityCaps"]=element["myCity"].toUpperCase();
+          }
+          else{
+            element["myCityCaps"]=element["city"].toUpperCase();
+          
+          }
+          element["myCategory"]=element["cats"][0];
+          // element["myCategoryCaps"]="";
+          element["myContactDetails"]={
+            "telephoneNo":"",
+            "contactPerson":""
+          };
+          element["myAge"]={
+           "lower":0,
+           "upper":18
+          };
+          obj[element["myDisplayTitle"]] = element;
+          //console.log(element["myDisplayTitle"]);
+        }
+      });
+      console.log(obj);
+      //console.log(Object.keys(obj).length);
+      itemRef.update(obj);
+      // console.log("done");
+    });
+
+  }
   addObject(stringvar,element){
     const itemRef = this.db.object("/" + stringvar);
     var obj={};

@@ -363,16 +363,35 @@ export class DashboardComponent implements OnInit {
 
   reqEventsApi(){
     this.allData=[];
-    var url='https://developer.eventshigh.com/events/' + this.city + '?key=ev3nt5h1ghte5tK3y&cf=kids';
+    var alternateCity;
     if(this.city=='Delhi NCR'){
-      url='https://developer.eventshigh.com/events/' + 'Delhi' + '?key=ev3nt5h1ghte5tK3y&cf=kids';
+      alternateCity= 'Delhi';
     }
-    this.http.get(url).subscribe((data) => {
+    else{
+      alternateCity=this.city;
+    }
+    
+    var urlEventsHigh='https://developer.eventshigh.com/events/' + alternateCity + '?key=ev3nt5h1ghte5tK3y&cf=kids';
+    
+    this.http.get(urlEventsHigh).subscribe((data) => {
       console.log(data.json());
       this.allData = (data.json()).events;
       console.log(this.allData);
       this.fs.addEvents("events", this.allData);
     })
+    //for fb events 
+    /* var urlFb='https://graph.facebook.com/search?fields=name,%20description,place,start_time,end_time,picture.type(large)&oauth_token=EAAbttzk8FyABAIfOXVCv7agDpiPDBXeWEY4uFXShhQeZC6F94qJgYSAz3Q1DUuoYbLC3tDRL63Cg4X8rixZCZAnGsaWh6veqy88GlAd5KOUTubQ5C8EMpGCoYbKo0NmdNck9BkyFZBBWq59bfstAKi1kQ1TCi5YZD&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1517140071&oauth_nonce=sbHLDt&oauth_version=1.0&oauth_signature=kK2UFjbk4GQQtzYPMzmZIbrr8q0=&type=event&limit=100&q={kids,' + alternateCity + '}'
+    let that=this;
+    setTimeout(function(){
+
+      that.http.get(urlFb).subscribe((data) => {
+        console.log(data.json());
+        that.allData = (data.json()).events;
+        console.log(that.allData);
+        that.fs.addEventsFb("events", that.allData);
+      })
+
+    },2000); */
   }
   nextPage(){
     // console.log(this.startAt["$key"]);
