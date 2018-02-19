@@ -23,10 +23,12 @@
 
 
     <div class="collapse navbar-collapse">
-      <br><br><br>
+      <br>
+      <br>
+      <br>
       <ul class="nav navbar-nav navbar-right visible-xs">
         <li class="active">
-          <a  [routerLink]="['/']">Home</a>
+          <a [routerLink]="['/']">Home</a>
         </li>
 
 
@@ -211,30 +213,31 @@
                   <input type="text" class="form-control " formControlName="anyOtherCategory" name="anyOtherCategory">
                 </div>
                 <div formGroupName="age">
-                <div class="col-sm-6" >
-                  <br>
-                  <label>Age (in Yrs) From </label>
-                  <input type="number" class="form-control " min="0" required formControlName="startAge" name="startAge">
-                  <div *ngIf="addForm.get('age.startAge').invalid && (addForm.get('age.startAge').dirty || addForm.get('age.startAge').touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="addForm.get('age.startAge').errors.required">
-                      Age is required & should be numeric.
+                  <div class="col-sm-6">
+                    <br>
+                    <label>Age (in Yrs) From </label>
+                    <input type="number" class="form-control " min="0" required formControlName="startAge" name="startAge">
+                    <div *ngIf="addForm.get('age.startAge').invalid && (addForm.get('age.startAge').dirty || addForm.get('age.startAge').touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="addForm.get('age.startAge').errors.required">
+                        Age is required & should be numeric.
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
-                  <br>
-                  <label>To </label>
-                  <input type="number" class="form-control " min="1" required formControlName="endAge" name="endAge">
-                  <div *ngIf="addForm.get('age.endAge').invalid && (addForm.get('age.endAge').dirty || addForm.get('age.endAge').touched)" class="alert alert-danger">
-                    <div *ngIf="addForm.get('age.endAge').errors.required">
-                      Age is required & should be numeric.
+                  <div class="col-sm-6">
+                    <br>
+                    <label>To </label>
+                    <input type="number" class="form-control " min="1" required formControlName="endAge" name="endAge">
+                    <div *ngIf="addForm.get('age.endAge').invalid && (addForm.get('age.endAge').dirty || addForm.get('age.endAge').touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="addForm.get('age.endAge').errors.required">
+                        Age is required & should be numeric.
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="alert alert-danger" *ngIf="addForm.get('age').touched && addForm.get('age').hasError('nomatch')">
-                  Start Age must be less than End Age!
-              </div>
+                  <div class="alert alert-danger" *ngIf="addForm.get('age').touched && addForm.get('age').hasError('nomatch')">
+                    Start Age must be less than End Age!
+                  </div>
                 </div>
               </div>
             </div>
@@ -341,25 +344,34 @@
             </div>
           </div> -->
 
-          <div class="panel panel-default">
-            <div class="panel-heading">Contact Details</div>
-            <div class="panel-body">
-  
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label>Phone</label>
-                    <input type="tel" id="phone" class="form-control " formControlName="phone" name="phone">
-                  </div>
-                  <div class="col-sm-6">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control " formControlName="email" name="email">
-                  </div>
-                 
+        <div class="panel panel-default">
+          <div class="panel-heading">Contact Details</div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Phone</label>
+                  <input type="tel" id="phone" class="form-control " formControlName="phone" name="phone" placeholder="123-4567-890" pattern="^[789]\d{9}$">
                 </div>
+                <div class="col-sm-6">
+                  <label>E-mail</label>
+                  <input type="email" class="form-control " formControlName="email" name="email" placeholder="Email address" autocomplete="off"
+                    autocomplete="new-password" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+                  <div *ngIf="addForm.controls.email.invalid && (addForm.controls.email.dirty || addForm.controls.email.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="addForm.controls.email.errors.pattern">
+                      Invalid Email !
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
+        </div>
 
 
 
@@ -382,7 +394,7 @@
           </div>
         </div>
 
-        
+
 
         <div>
 

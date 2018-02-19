@@ -61,6 +61,8 @@ export class AddEventComponent implements OnInit {
       address:['',Validators.required],
       pinCode:[''],
       price:['',Validators.required],
+      email:[''],
+      phone:[''],
 
       
     });
