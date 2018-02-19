@@ -592,7 +592,7 @@
                 <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
               <br>
               <span>
-                <b>Venue: </b>{{allEvents[key].venue["name"] + ", " + allEvents[key].venue["city"]}}</span>
+                <b>Venue: </b><span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
               <span *ngIf="allEvents[key].myLocation!=''">
                 <b>Locality: </b>{{allEvents[key].myLocation}}
                 
