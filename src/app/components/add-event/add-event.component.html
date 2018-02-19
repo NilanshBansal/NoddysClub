@@ -319,11 +319,6 @@
                   <br>
                   <label>Pincode</label>
                   <input type="number" class="form-control" formControlName="pinCode" name="pinCode">
-                  <div *ngIf="addForm.controls.pinCode.invalid && (addForm.controls.pinCode.dirty || addForm.controls.pinCode.touched)" class="alert alert-danger">
-                    <div *ngIf="addForm.controls.pinCode.errors.required">
-                      Pin Code is required.
-                    </div>
-                  </div>
                 </div>
 
               </div>
@@ -346,6 +341,28 @@
             </div>
           </div> -->
 
+          <div class="panel panel-default">
+            <div class="panel-heading">Contact Details</div>
+            <div class="panel-body">
+  
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" class="form-control " formControlName="phone" name="phone">
+                  </div>
+                  <div class="col-sm-6">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control " formControlName="email" name="email">
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
         <div class="panel panel-default">
           <div class="panel-heading">Your price</div>
           <div class="panel-body">
@@ -363,11 +380,9 @@
             </div>
 
           </div>
-
-
-
-
         </div>
+
+        
 
         <div>
 

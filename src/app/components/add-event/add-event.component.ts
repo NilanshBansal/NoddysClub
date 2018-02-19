@@ -59,7 +59,7 @@ export class AddEventComponent implements OnInit {
       // },{validator:this.placeValidator}),
       
       address:['',Validators.required],
-      pinCode:['',Validators.required],
+      pinCode:[''],
       price:['',Validators.required],
 
       
@@ -155,6 +155,8 @@ export class AddEventComponent implements OnInit {
     var address=this.addForm.value["address"];
     var pinCode=this.addForm.value["pinCode"];
     var price=this.addForm.value["price"];
+    var email=this.addForm.value["email"];
+    var phone=this.addForm.value["phone"];
     var myCategory;
     console.log("see",title);
     if(anyOtherCategory==""){
@@ -241,6 +243,11 @@ export class AddEventComponent implements OnInit {
             "sgst": ""
         }
         
+      },
+      "myContactDetails":{
+        "contactPerson":"",
+        "telephoneNo":phone,
+        "email":email
       }
     };
 
