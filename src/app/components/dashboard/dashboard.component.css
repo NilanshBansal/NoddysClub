@@ -565,13 +565,21 @@ LISTINGS
   background: #fafafa;
 }
 .listings .premium.listing-row {
-  background: #FFFFDD;
-  background: #E0F4FF;
+  /* background: #FFFFDD; */
+  /* background: #E0F4FF; */
   /* border-bottom: 1px solid #c6ebff; */
-  border-bottom: 7px solid white;
+  border-bottom: 1px solid white;
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
+  /* background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  
+}
+.eachListing{
+  padding:10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .listings .listing-row.last {
   border-bottom: 1px solid #fff;

@@ -566,7 +566,7 @@
         <div *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp && allEvents[key]['myAdminApproved']">
           <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0])>=todayTimestamp">
 
-            <div class="col-sm-10 " >
+            <div class="col-sm-10" class="eachListing" >
               <h5>
                 <!-- Uncomment below to  view event Page-->
                 <a  (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
