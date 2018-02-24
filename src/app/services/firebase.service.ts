@@ -148,7 +148,10 @@ filterdata(order,equal){
           element["myAdminApproved"] = true;
           element["myDisplayTitle"]=element["title"];
           element["myLocation"]="";
-          element["myPincode"]="";
+          if(element["myPincode"]==null || element["myPincode"]==undefined){
+            element["myPincode"]="";
+          }
+            
           // element["myLocationCaps"]="";
           if(element["city"]=='Delhi'){
             element["myCity"]='Delhi NCR';
