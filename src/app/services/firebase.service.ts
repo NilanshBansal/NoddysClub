@@ -276,10 +276,15 @@ filterdata(order,equal){
           // element["myLocationCaps"]="";
         }
         obj[element["title"]] = element;
+        
       }); 
-      console.log(obj);
+      setTimeout(function () {
+        itemRef.update(obj);
+        console.log(obj);
+      },1000);
+      
       //console.log(Object.keys(obj).length);
-      itemRef.update(obj);
+      // itemRef.update(obj);
       // console.log("done");
     });
 
