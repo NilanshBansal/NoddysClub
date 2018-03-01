@@ -175,7 +175,7 @@ filterdata(order,equal){
         var endTime=(endDateTime.getHours()<10?'0':'') + endDateTime.getHours() +"-"+ (endDateTime.getMinutes()<10?'0':'') + endDateTime.getMinutes();
         var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDay()).toString() + ":" + endTime;
         element["title"] = element["name"].replace(/[\.,#,$,/,\[,\]]/g, '');
-       if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
+       
           element["booking_enquiry_url"]='';
           element["booking_url"]='';
           element["category"]='';
@@ -274,14 +274,12 @@ filterdata(order,equal){
             "contactPerson":""
           };  
           // element["myLocationCaps"]="";
-        }
+        
         obj[element["title"]] = element;
         
       }); 
-      setTimeout(function () {
         itemRef.update(obj);
         console.log(obj);
-      },1000);
       
       //console.log(Object.keys(obj).length);
       // itemRef.update(obj);
