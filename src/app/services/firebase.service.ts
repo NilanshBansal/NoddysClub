@@ -171,9 +171,9 @@ filterdata(order,equal){
         var startDateTime=new Date(element["start_time"]);
         var endDateTime=new Date(element["end_time"]);
         var startTime=(startDateTime.getHours()<10?'0':'') + startDateTime.getHours() +"-"+ (startDateTime.getMinutes()<10?'0':'') + startDateTime.getMinutes(); 
-        var startDate=(startDateTime.getFullYear()).toString()+"-"+(startDateTime.getMonth()+1).toString()+"-"+(startDateTime.getDay()).toString() + ":" + startTime;
+        var startDate=(startDateTime.getFullYear()).toString()+"-"+(startDateTime.getMonth()+1).toString()+"-"+(startDateTime.getDate()).toString() + ":" + startTime;
         var endTime=(endDateTime.getHours()<10?'0':'') + endDateTime.getHours() +"-"+ (endDateTime.getMinutes()<10?'0':'') + endDateTime.getMinutes();
-        var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDay()).toString() + ":" + endTime;
+        var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDate()).toString() + ":" + endTime;
         element["title"] = element["name"].replace(/[\.,#,$,/,\[,\]]/g, '');
        
           element["booking_enquiry_url"]='';
