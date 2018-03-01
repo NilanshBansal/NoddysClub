@@ -576,7 +576,7 @@
 
               </h5>
 
-              <span>
+              <span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
                 <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
               <!-- <br> -->
               <span>

@@ -121,37 +121,17 @@ filterdata(order,equal){
     let obj = {};
     // const itemRef = this.db.object("/" + stringvar, { preserveSnapshot: true });
     const itemRef = this.db.object("/" + stringvar);
-    /* itemRef.subscribe(snapshot => {
-      arrEvents.forEach(element => {
-        element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
-
-        if (snapshot.val() == null || (snapshot.val() != null && snapshot.val()[element["title"]] == undefined)) {
-          element["adminApproved"] = false;
-          obj[element["title"]] = element;
-
-          console.log(element["title"]);
-        }
-      });
-       console.log(obj);
-       console.log(Object.keys(obj).length);
-      itemRef.update(obj);
-    }); */
-
+  
+  
     itemRef.snapshotChanges().subscribe(snapshot => {
-      //console.log("checking");
       obj={};
       arrEvents.forEach(element => {
         element["title"] = element["title"].replace(/[\.,#,$,/,\[,\]]/g, '');
-        //console.log(element["title"] );
         if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
-          //console.log("dekhoji");
           element["myAdminApproved"] = true;
           element["myDisplayTitle"]=element["title"];
           element["myLocation"]="";
-          if(element["myPincode"]==null || element["myPincode"]==undefined){
-            element["myPincode"]="";
-          }
-            
+         
           // element["myLocationCaps"]="";
           if(element["city"]=='Delhi'){
             element["myCity"]='Delhi NCR';
@@ -186,24 +166,99 @@ filterdata(order,equal){
     let obj={};
     const itemRef = this.db.object("/" + stringvar);
     itemRef.snapshotChanges().subscribe(snapshot => {
-      //console.log("checking");
       obj={};
       arrEvents.forEach(element => {
+        var startDateTime=new Date(element["start_time"]);
+        var endDateTime=new Date(element["end_time"]);
+        var startTime=(startDateTime.getHours()<10?'0':'') + startDateTime.getHours() +"-"+ (startDateTime.getMinutes()<10?'0':'') + startDateTime.getMinutes(); 
+        var startDate=(startDateTime.getFullYear()).toString()+"-"+(startDateTime.getMonth()+1).toString()+"-"+(startDateTime.getDay()).toString() + ":" + startTime;
+        var endTime=(endDateTime.getHours()<10?'0':'') + endDateTime.getHours() +"-"+ (endDateTime.getMinutes()<10?'0':'') + endDateTime.getMinutes();
+        var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDay()).toString() + ":" + endTime;
         element["title"] = element["name"].replace(/[\.,#,$,/,\[,\]]/g, '');
-        //console.log(element["title"] );
-        if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
-          //console.log("dekhoji");
+       if (snapshot.payload.val() == null || (snapshot.payload.val() != null && snapshot.payload.val()[element["title"]] == undefined)) {
           element["booking_enquiry_url"]='';
           element["booking_url"]='';
           element["category"]='';
           element["myCategory"]='';
-          
-          element["myAdminApproved"] = true;
+          if("picture" in element && "data" in  element["picture"] && "url" in element["picture"]["data"])
+            element["img_url"] = element["picture"]["data"]["url"];
+
+           element["myAdminApproved"] = true;
           element["myDisplayTitle"]=element["title"];
           element["myLocation"]="";
           element["myPincode"]="";
-          // element["myLocationCaps"]="";
-          if(element["city"]=='Delhi'){
+          if("place" in element && "location" in element["place"] && "zip" in element["place"]["location"])
+            element["myPincode"]=element["place"]["location"]["zip"];
+          
+         
+          element["price"] = {
+            0: {
+              "currency": "INR",
+              "value": "Not Specified",
+              "date": "",
+              "time": "",
+              "all_occurrences": 1,
+              "end_date": "",
+              "end_time": "",
+              "is_valid": "Y",
+              "occurrences": [
+                {
+                  "date": "",
+                  "time": "",
+                  "end_date": "",
+                  "end_time": "",
+                }
+              ],
+              "convenience_fees": "",
+              "cgst": "",
+              "sgst": ""
+            }
+          };
+         
+          element["url"] = "";
+          var street="";
+          var city="";
+          var latitude="";
+          var longitude="";
+          if(("place" in element && "location" in element["place"]) && "street" in element["place"]["location"])
+            street=element["place"]["location"]["street"];
+          
+          if(("place" in element && "location" in element["place"]) && "city" in element["place"]["location"])
+            city=element["place"]["location"]["city"];
+          
+          if(("place" in element && "location" in element["place"]) && "latitude" in element["place"]["location"])
+            latitude=element["place"]["location"]["latitude"];
+          
+          if(("place" in element && "location" in element["place"]) && "longitude" in element["place"]["location"])
+            longitude=element["place"]["location"]["longitude"];
+
+          element["venue"]={};
+          element["venue"] = {
+            "name": "",
+            "address": street,
+            "city": city,
+            "lat": latitude,
+            "lon": longitude
+          };
+          
+          element["upcoming_occurrences"] = {
+            0: {
+              "date": startDate,
+              "start_time": startTime,
+              "end_time": endTime,
+              "end_date": endDate,
+              "single_occurrence": "",
+              "timezone": "",
+              "enable_ticketing": "",
+            }
+          };
+          
+          element["myAge"]={
+            "lower":0,
+            "upper":18
+           };
+           element["city"]=city;
+           if(element["city"]=='Delhi' || element["city"]=='New Delhi'){
             element["myCity"]='Delhi NCR';
             element["myCityCaps"]=element["myCity"].toUpperCase();
           }
@@ -211,20 +266,14 @@ filterdata(order,equal){
             element["myCityCaps"]=element["city"].toUpperCase();
           
           }
-          element["myCategory"]=element["cats"][0];
-          // element["myCategoryCaps"]="";
           element["myContactDetails"]={
             "telephoneNo":"",
             "contactPerson":""
-          };
-          element["myAge"]={
-           "lower":0,
-           "upper":18
-          };
-          obj[element["myDisplayTitle"]] = element;
-          //console.log(element["myDisplayTitle"]);
+          };  
+          // element["myLocationCaps"]="";
         }
-      });
+        obj[element["title"]] = element;
+      }); 
       console.log(obj);
       //console.log(Object.keys(obj).length);
       itemRef.update(obj);

@@ -380,86 +380,18 @@ export class DashboardComponent implements OnInit {
     //for fb events 
     var urlFb = 'https://graph.facebook.com/search?fields=name,%20description,place,start_time,end_time,picture.type(large)&oauth_token=EAAbttzk8FyABAIfOXVCv7agDpiPDBXeWEY4uFXShhQeZC6F94qJgYSAz3Q1DUuoYbLC3tDRL63Cg4X8rixZCZAnGsaWh6veqy88GlAd5KOUTubQ5C8EMpGCoYbKo0NmdNck9BkyFZBBWq59bfstAKi1kQ1TCi5YZD&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1517140071&oauth_nonce=sbHLDt&oauth_version=1.0&oauth_signature=kK2UFjbk4GQQtzYPMzmZIbrr8q0=&type=event&limit=100&q={kids,' + alternateCity + '}'
     let that = this;
-    setTimeout(function () {
+    // setTimeout(function () {
       that.allData=[];
       that.http.get(urlFb).subscribe((data) => {
         console.log("fb api data: ");
         console.log(data.json());
         fbAllData = (data.json()).data;
         console.log("dekh bhai",fbAllData);
-        fbAllData.forEach(element => {
-          fbEventObj={};
-          var startDateTime=new Date(element["start_time"]);
-          var endDateTime=new Date(element["end_time"]);
-          var startTime=(startDateTime.getHours()<10?'0':'') + startDateTime.getHours() +"-"+ (startDateTime.getMinutes()<10?'0':'') + startDateTime.getMinutes(); 
-          var startDate=(startDateTime.getFullYear()).toString()+"-"+(startDateTime.getMonth()+1).toString()+"-"+(startDateTime.getDay()).toString() + ":" + startTime;
-          var endTime=(endDateTime.getHours()<10?'0':'') + endDateTime.getHours() +"-"+ (endDateTime.getMinutes()<10?'0':'') + endDateTime.getMinutes();
-          var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDay()).toString() + ":" + endTime;
-          fbEventObj["booking_enquiry_url"] = "";
-          fbEventObj["booking_url"] = "";
-          // element["booking_enquiry_url"]="";
-          //element["booking_url"]="";
-          //element["cats"][0]="";
-          fbEventObj["cats"] = { 0: "" };
-          fbEventObj["city"] = element["place"]["location"]["city"];
-          fbEventObj["description"] = element["description"];
-          fbEventObj["img_url"] = element["picture"]["data"]["url"];
-          fbEventObj["title"] = element["name"];
-          fbEventObj["price"] = {
-            0: {
-              "currency": "INR",
-              "value": "Not Specified",
-              "date": "",
-              "time": "",
-              "all_occurrences": 1,
-              "end_date": "",
-              "end_time": "",
-              "is_valid": "Y",
-              "occurrences": [
-                {
-                  "date": "",
-                  "time": "",
-                  "end_date": "",
-                  "end_time": "",
-                }
-              ],
-              "convenience_fees": "",
-              "cgst": "",
-              "sgst": ""
-            }
-          };
-
-          fbEventObj["upcoming_occurrences"] = {
-            0: {
-              "date": startDate,
-              "start_time": startTime,
-              "end_time": endTime,
-              "end_date": endDate,
-              "single_occurrence": "",
-              "timezone": "",
-              "enable_ticketing": "",
-            }
-          };
-          fbEventObj["url"] = "";
-          fbEventObj["venue"] = {
-            "name": "",
-            "address": element["place"]["location"]["street"],
-            "city": element["place"]["location"]["city"],
-            "lat": element["place"]["location"]["latitude"],
-            "lon": element["place"]["location"]["longitude"]
-          };
-          fbEventObj["myPincode"]=element["place"]["location"]["zip"];
-          console.log(fbEventObj);
-          fbEventObj={};
-          //that.allData.push(fbEventObj);
-        });
+        this.fs.addEventsFb("events",fbAllData);
         
-        // that.allData = (data.json()).data;
-        // console.log(that.allData);
-        // that.fs.addEventsFb("events", that.allData);
       });
 
-    },2000);
+    // },2000);
   }
   nextPage() {
     // console.log(this.startAt["$key"]);
