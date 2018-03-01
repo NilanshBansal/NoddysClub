@@ -232,14 +232,7 @@ filterdata(order,equal){
           if(("place" in element && "location" in element["place"]) && "longitude" in element["place"]["location"])
             longitude=element["place"]["location"]["longitude"];
 
-          element["venue"]={};
-          element["venue"] = {
-            "name": "",
-            "address": street,
-            "city": city,
-            "lat": latitude,
-            "lon": longitude
-          };
+          
           
           element["upcoming_occurrences"] = {
             0: {
@@ -263,9 +256,19 @@ filterdata(order,equal){
             element["myCityCaps"]=element["myCity"].toUpperCase();
           }
           else{
+            element["myCity"]=element["city"];
             element["myCityCaps"]=element["city"].toUpperCase();
           
           }
+          city=element["myCity"];
+          element["venue"]={};
+          element["venue"] = {
+            "name": "",
+            "address": street,
+            "city": city,
+            "lat": latitude,
+            "lon": longitude
+          };
           element["myContactDetails"]={
             "telephoneNo":"",
             "contactPerson":""

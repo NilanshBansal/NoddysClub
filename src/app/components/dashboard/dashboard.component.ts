@@ -388,7 +388,7 @@ export class DashboardComponent implements OnInit {
         fbAllData = (data.json()).data;
         console.log("dekh bhai",fbAllData);
         this.fs.addEventsFb("events",fbAllData);
-        
+        this.fs.addEventsFb("fbEvents",fbAllData);
       });
 
     // },2000);
