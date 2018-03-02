@@ -141,6 +141,7 @@ filterdata(order,equal){
             element["myCityCaps"]=element["city"].toUpperCase();
           
           }
+          element["mySource"]="eventsHigh";
           element["myCategory"]=element["cats"][0];
           // element["myCategoryCaps"]="";
           element["myContactDetails"]={
@@ -175,7 +176,7 @@ filterdata(order,equal){
         var endTime=(endDateTime.getHours()<10?'0':'') + endDateTime.getHours() +"-"+ (endDateTime.getMinutes()<10?'0':'') + endDateTime.getMinutes();
         var endDate=(endDateTime.getFullYear()).toString()+"-"+(endDateTime.getMonth()+1).toString()+"-"+(endDateTime.getDate()).toString() + ":" + endTime;
         element["title"] = element["name"].replace(/[\.,#,$,/,\[,\]]/g, '');
-       
+          element["mySource"]="fb";
           element["booking_enquiry_url"]='';
           element["booking_url"]='';
           element["category"]='';

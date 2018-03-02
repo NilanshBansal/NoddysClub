@@ -205,6 +205,7 @@ export class AddEventComponent implements OnInit {
         "lon":"",
         "city":city
       },
+      "mySource":"noddysApp",
       "upcoming_occurrences":{
         0:{
           "date":startDate,
