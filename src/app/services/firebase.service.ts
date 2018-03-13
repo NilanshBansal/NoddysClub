@@ -138,6 +138,7 @@ filterdata(order,equal){
             element["myCityCaps"]=element["myCity"].toUpperCase();
           }
           else{
+            element["myCity"]=element["city"];
             element["myCityCaps"]=element["city"].toUpperCase();
           
           }
