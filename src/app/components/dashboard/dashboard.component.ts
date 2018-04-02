@@ -377,8 +377,11 @@ export class DashboardComponent implements OnInit {
       console.log(this.allData);
       this.fs.addEvents("events", this.allData);
     })
+    
     //for fb events 
-    var urlFb = 'https://graph.facebook.com/search?fields=name,%20description,place,start_time,end_time,picture.type(large)&oauth_token=EAAbttzk8FyABAIfOXVCv7agDpiPDBXeWEY4uFXShhQeZC6F94qJgYSAz3Q1DUuoYbLC3tDRL63Cg4X8rixZCZAnGsaWh6veqy88GlAd5KOUTubQ5C8EMpGCoYbKo0NmdNck9BkyFZBBWq59bfstAKi1kQ1TCi5YZD&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1517140071&oauth_nonce=sbHLDt&oauth_version=1.0&oauth_signature=kK2UFjbk4GQQtzYPMzmZIbrr8q0=&type=event&limit=100&q={kids,' + alternateCity + '}'
+    let fbAccessToken="EAAbttzk8FyABAGhLVsQ4ZCUq3XM71F6NtZCezXQxnZA1liANjtET422fb8nUZB53jHvd2QRmCE5rgYDH0ZBO8MPoyt1GeONpJsbvaWPncTQXcKfZCbH38pM7oSZCsjqYsQD8Ing5VdsIwTxIbmXEMzoZCkwFQ9WZBapU9U8h5C8KyogZDZD";
+    var urlFb = `https://graph.facebook.com/search?fields=name,%20description,place,start_time,end_time,picture.type(large)&oauth_token=${fbAccessToken}&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1517140071&oauth_nonce=sbHLDt&oauth_version=1.0&oauth_signature=kK2UFjbk4GQQtzYPMzmZIbrr8q0=&type=event&limit=100&q={kids,${alternateCity}}`
+    
     let that = this;
     // setTimeout(function () {
       that.allData=[];
