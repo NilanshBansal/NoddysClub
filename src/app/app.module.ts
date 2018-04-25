@@ -24,6 +24,7 @@ import { HttpService } from './services/http.service';
 import { ViewEventComponent } from './components/view-event/view-event.component';
 
 import { ImageUploadModule } from "angular2-image-upload";
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 export const firebaseConfig = {
   
   
@@ -44,7 +45,8 @@ const appRoutes:Routes=[
   {path:'',component:DashboardComponent},
   {path:'login',component:HomeComponent},
   {path:'addevent',component:AddEventComponent},
-  {path:'viewEvent',component:ViewEventComponent}
+  {path:'viewEvent',component:ViewEventComponent},
+  {path:'landingPage',component:LandingPageComponent}
 ]
 
 @NgModule({
@@ -55,7 +57,8 @@ const appRoutes:Routes=[
     ModalComponent,
     DashboardComponent,
     AddEventComponent,
-    ViewEventComponent
+    ViewEventComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
