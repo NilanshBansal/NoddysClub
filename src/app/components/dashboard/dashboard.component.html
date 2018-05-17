@@ -1,246 +1,69 @@
-<!--<div class="btn-group btn-group-justified" >
-  <button type="button" class="btn btn-primary">Kids' Events</button>
-  <button type="button" class="btn btn-primary">Providers</button>
-  <button type="button" class="btn btn-primary">Classes</button>
-</div>-->
-<!--<div class="btn-group btn-group-justified">
-  <a href="#" class="btn btn-default">Kids' Events</a>
-  <a href="#" class="btn btn-default">Providers</a>
-  <a href="#" class="btn btn-default">Classes</a>
-</div>-->
 
-
-<!--
-<ion-range-slider #sliderElement
-          type="double"
-          [min]="myMinVar"
-          max="100"
-          from="28"
-          from_min="10"
-          from_max="30"
-          from_shadow="true"
-          to="40"
-          to_min="40"
-          to_max="90"
-          to_shadow="true"
-          grid="true"
-          grid_num="10"
-          prefix="Weight: "
-          postfix=" million pounds"
-          decorate_both="false"
-          (onUpdate)="myOnUpdate($event)"
-          (onChange)="myOnChange($event)"
-          (onFinish)="myOnFinish($event)"></ion-range-slider>
--->
-
-
-<!-- <button (click)="removeitem()">Clear Db</button> -->
-
-
-
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-
-    <div class="navbar-header">
-      <div class="btn-group fa-pull-right">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <button type="button" id="filterBtnMob" class="navbar-toggle" data-target=".navbar-collap" data-toggle="collapse">
+<div class="nav">
+  <div class="nav-header">
+    <div class="nav-title">
+        <img src="assets/images/logoBeta1.png" style="height:50px; padding-bottom:5px;width:150px">
+      
+  </div>
+  </div>
+  <div class="nav-btn" style="margin-top:10px">
+    <button type="button" id="filterBtnMob" class="navbar-toggle" data-target=".navbar-collap" data-toggle="collapse">
           <i class="fa fa-filter" aria-hidden="true"></i>
         </button>
-      </div>
-
-
-
-
-
-      <a class="navbar-brand " >
-        <span class="logo">
-          <!-- <strong>Noddy's Club</strong>
-          <span class="handwriting"></span>
-          <br />
-          <small>something that makes difference </small> -->
-          <img src="assets/images/logoBeta.png" height="180px">
-          <!-- <img src="assets/images/logo.png" height="80px"> -->
-        </span>
-      </a>
-
-    </div>
-    <br>
-
-<!-- <div  class="navbar-left" data-radium="true" data-reactid="56"> -->
+    
+    <button type="button" id="cityBtnMob" class="navbar-toggle" data-target=".city-collap" data-toggle="collapse">
+      <i class="fa fa-bars" style="font-size:18px; padding-left:5px" aria-hidden="true"></i>
+        </button>
   
-           
-              
-          <!-- <select style="font-size: 1.5rem; display: inline-block; position: relative; color: rgb(119, 119, 119); cursor: pointer;" data-radium="true"  id="cityDropdown" class="selectpicker" (change)="cityChanged($event.target.value)" >
-                <option data-radium="true"  *ngFor="let key of objectKeys(locations)" >
-                    <span style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
-                        class="dropdown-city" data-radium="true" data-reactid="63" >{{key}}</span>
-                </option>
-                
-              </select> -->
-              <!-- <span  style="color: rgb(119, 119, 119); cursor: pointer; padding-left: 0.7rem;" aria-hidden="true" class="fa fa-caret-down hidden-xs"
-              data-radium="true" data-reactid="58"></span> -->
-    <!-- </div> -->
 
-
-    <div class="collapse navbar-collapse">
-      <br><br><br><br>
-      <ul class="nav navbar-nav navbar-right visible-xs">
-       <!--  <li class="active">
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="my_account.html">Login</a>
-        </li>
-        <li>
-          <a href="register.html">Classes</a>
-        </li>
-        <li>
-          <a href="listings.html">Listings</a>
-        </li>
-        <li>
-          <a href="account_dashboard.html">My account</a>
-        </li> -->
-        <li>
-          <a [routerLink]="['/addevent']">Add Event</a>
-        </li>
-      </ul>
-      <div class="nav navbar-nav navbar-right hidden-xs">
-        <div class="row">
-
-          <div class="pull-right">
-
-
-            <!-- <a data-toggle="modal" data-target="#modalLogin" href="#">Login</a>  -->
-
-
-            <!-- <a [routerLink]="['/login']">Login</a> |
-            <a href="register.html">Classes</a> |
-            <a href="listings.html">Listings</a> |
-            <a href="account_dashboard.html">My account</a> -->
-            <a class="btn btn-warning post-ad-btn" [routerLink]="['/addevent']">Add Event</a>
-
-          </div>
-        </div>
-
-
-
-
-      </div>
-
-    </div>
+  
   </div>
+   <div class="nav-links">
+  <div class="dropdown" style="padding-top:8px">
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
+  <div class="dropdown-content">
 
-
-
-
-
-</nav>
-
-
-
-
-<!-- <div class=" home-tron-search  "> -->
-  <div class="container">
-    <div class="row">
-
-      <div class="col-sm-12">
-        <div class="home-tron-search-inner">
-
-          <div class="row">
-
-            <!-- <div class="col-sm-8 col-xs-9" style="text-align: center">
-              <div class="row">
-
-                <div class="col-sm-12 col-sm-offset-1">
-                  <div class="input-group">
-                  
-
-                  </div>
-
-                </div>
-
-
-              </div>
-            </div> -->
-
-            <!--  <div class="dropdown visible-xs">
-  <button class="btn btn-primary dropdown-toggle" data-target=".navbar-collap" data-toggle="collapse">
-      <i class="fa fa-filter" aria-hidden="true" style="font-size:15px;"></i>
-  </button>
+  <div data-radium="true"  *ngFor="let key of objectKeys(locations)" >
+            
+      
+      <a style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
+        
+  </div>
+</div> 
+  </div>
+<div class="dropdown">
+  <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+  </div>
+  </div>
  
- 
-</div> -->
+</div>
+  
+<div class="collapse city-collap hidden-lg hidden-md hidden-sm">
+ <button type="button" id="citiesBtnMob" class="navbar-toggle" data-target=".cities-collap" data-toggle="collapse" style="float:left">
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
+        </button><br>
+        <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
 
-            <div class="collapse navbar-collap">
+  <div class="collapse cities-collap">
+<br>
+  <div data-radium="true"  *ngFor="let key of objectKeys(locations)" class="citiesHover">
+            
+      
+      <a  style="font-size: 16px; cursor: pointer; text-decoration:none; margin-left:5px "
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
+        
+  </div>
+</div> 
+</div>
+                       
+                        <div class="collapse navbar-collap">
 
-              <ul class="nav navbar-nav navbar-right visible-xs">
-                <div class="panel panel-default">
+                <div class="panel panel-default hidden-md hidden-lg hidden-sm visible-xs" >
                   <div class="panel-heading">Filters</div>
                   <div class="panel-body">
-                    <form class="form-inline mini" style="margin-bottom: 0px;">
+                    <form class="form-inline mini" >
                       <fieldset>
-
-                       <!--  <div class="row filter-row">
-                          <div class="col-sm-6">
-                            <label style="font-weight: 500;">Cities</label>
-                          </div>
-                          <div class="col-sm-6">
-                            <select class="col-sm-10 form-control" id="cityInputmob" #cityInputmobValue>
-                              <option>No selection</option>
-                              <optgroup></optgroup>
-                              <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
-                            </select>
-                          </div>
-                        </div> -->
-
-                        <div class="row filter-row" >
-                          <div class="col-sm-6">
-                            <label style="font-weight: 600;">Locations</label>
-                          </div>
-                          <div class="col-sm-6">
-                            <select class="form-control " id="locationInputmob">
-                              <option>No selection</option>
-                              <optgroup></optgroup>
-                              <!-- <optgroup *ngIf="checkObject(locations[city])"> -->
-                                <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
-                              <!-- </optgroup> -->
-                            </select>
-                          </div>
-                        </div>
-
-
-                        <!-- <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Locations</label>
-                      </div>
-                      <div class="col-sm-6">
-                        
-
-                        <select class="form-control " id="locationInputmob">
-                          <option>No selection</option>
-                          <optgroup></optgroup>
-                          <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
-                            <ng-container *ngIf="checkObject(locations[key])">
-                              <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
-
-                            </ng-container>
-                          </optgroup>
-                          <optgroup label="other places">
-                            <option *ngFor="let key of objectKeys(locations)" [hidden]="checkObject(locations[key])">{{key}}</option>
-                          </optgroup>
-                        </select>
-                      </div>
-                    </div>
- -->
-
-
-
 
                         <div class="row filter-row">
                           <div class="col-sm-6">
@@ -302,7 +125,7 @@
                           <div class="col-sm-2 pull-right" style="margin-top: 10px;">
 
                             <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')" [disabled]="cityInputmobValue.value=='No selection'">Update results</button> -->
-                            <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')">Update results</button>
+                            <button class="btn btn-danger pull-right" type="submit" (click)="updateFilter('mob')">Update</button>
 
                           </div>
                         </div>
@@ -315,51 +138,16 @@
 
 
 
-              </ul>
+              
             </div>
-            <!-- <div class="hidden-sm hidden-md hidden-lg col-xs-3" style="text-align: center">
-              <div class="row">
-                <div class="col-sm-11 pull-right">
-                  <button class="btn btn-primary search-btn" data-toggle="collapse" data-target=".navbar-collap">
-                    <i class="fa fa-filter" aria-hidden="true" style="font-size: 25px;"></i>
-                  </button>
+            
+            
 
-                </div>
-              </div>
-            </div> -->
-
-
-      </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- </div> -->
-<!-- </div> -->
-
-
+     
+  
 <div class="container">
 
-  <br>
-  <br>
-  <!-- <div class="row">
-    <div class="col-sm-12">
-      <ol class="breadcrumb">
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Vehicles</a>
-        </li>
-        <li class="active">Cars</li>
-        <li class="active">4,699 results for
-          <strong>"Cars"</strong> in London</li>
-      </ol>
-    </div>
-  </div> -->
-
-
-
+  
   <div class="row">
     <div class="col-sm-4  hidden-xs">
       <div class="sidebar ">
@@ -375,79 +163,8 @@
               <div class="panel-body">
                 <form class="form-inline mini" style="margin-bottom: 0px;">
                   <fieldset>
-                    <!-- <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Cities</label>
-                      </div>
-                      <div class="col-sm-6">
-                        <select class="col-sm-10 form-control" id="cityInputdesk" #cityInputdeskValue>
-                          <option>No selection</option>
-                          <optgroup></optgroup>
-                          <option *ngFor="let key of objectKeys(locations)">{{key}}</option>
-                        </select>
-                      </div>
-                    </div> -->
-                    <!-- <div class="row filter-row">
-                      <div class="col-sm-6">
-                        <label style="font-weight: 500;">Locations</label>
-                      </div>
-                      <div class="col-sm-6"> -->
-                    <!-- <select class=" form-control ">
-                            <option *ngFor="let key of objectKeys(locations)" [disabled]="locations[key]['$value']==undefined">{{locations[key]["$key"]}}</option>        
-                        </select> -->
-
-                    <!-- <select class=" form-control ">
-                          <optgroup *ngFor="let key of objectKeys(locations)" label="{{locations[key]['$key']}}" [hidden]="locations[key]['$value']!==undefined">
-                            <ng-container *ngIf="locations[key]['$value']==undefined">
-                              <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
-
-                            </ng-container>
-                          </optgroup>
-                          <optgroup label="other places">
-                            <option *ngFor="let key of objectKeys(locations)" [hidden]="locations[key]['$value']==undefined">{{locations[key]["$key"]}}</option>
-                          </optgroup>
-                        </select> -->
-
-                    <!-- NEW CODE -->
-                    <!-- <div class="row filter-row">
-                            <div class="col-sm-6">
-                              <label style="font-weight: 500;">Locations</label>
-                            </div>
-                            <div class="col-sm-6">
-
-                        <select class="form-control " id="locationInputdesk">
-                          <option>No selection</option>
-                          <optgroup></optgroup>
-                          <optgroup *ngFor="let key of objectKeys(locations)" label="{{key}}" [hidden]="checkNotObject(locations[key])">
-                            <ng-container *ngIf="checkObject(locations[key])">
-                              <option *ngFor="let innerkeys of objectKeys(locations[key])">{{innerkeys}}</option>
-
-                            </ng-container>
-                          </optgroup>
-                          <optgroup label="other places">
-                            <option *ngFor="let key of objectKeys(locations)" [hidden]="checkObject(locations[key])">{{key}}</option>
-                          </optgroup>
-                        </select>
-                      </div>
-                    </div>  -->
-
-                    <div class="row filter-row" >
-                      <div class="col-sm-6">
-                        <label style="font-weight: 600;">Locations</label>
-                      </div>
-                      <div class="col-sm-6">
-                        <select class="form-control " id="locationInputdesk">
-                          <option>No selection</option>
-                          <optgroup></optgroup>
-                          <!-- <optgroup *ngIf="checkObject(locations[city])"> -->
-                            <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
-                          <!-- </optgroup> -->
-                        </select>
-                      </div>
-                    </div>
-
-
-                    <div class="row filter-row">
+                                       
+                     <div class="row filter-row">
                       <div class="col-sm-6">
                         <label style="font-weight: 600;">Categories</label>
                       </div>
@@ -507,7 +224,7 @@
 
                       <div class="col-sm-2 pull-right" style="margin-top: 10px;">
                         <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')" [disabled]="cityInputdeskValue.value=='No selection'">Update results</button> -->
-                        <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')" >Update results</button>
+                        <button class="btn btn-danger pull-right" type="submit" (click)="updateFilter('desk')" >Update</button>
                         
                       </div>
                     </div>
@@ -523,467 +240,193 @@
         </div>
       </div>
     </div>
+  <br>
 
-    <div class="col-sm-8 listings">
-      <b style="font-weight: 600">Kids Events happening in</b>
-      <select style="font-size: 1.5rem; display: inline-block; position: relative; color: rgb(119, 119, 119); cursor: pointer;" data-radium="true"  id="cityDropdown" class="selectpicker" (change)="cityChanged($event.target.value)" >
-        <option data-radium="true"  *ngFor="let key of objectKeys(locations)" >
-            <span style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
-                class="dropdown-city" data-radium="true" data-reactid="63" >{{key}}</span>
-        </option>
-        
-      </select>
-      <br><br>
+    <div class="col-sm-8 listings" align="left">
+     
 
 
 
-      <!-- <div class="row listing-row" style="margin-top: -10px;">
-        <div class="pull-left">
-          <strong>Today, Saturday 14th September</strong>
-        </div>
-        <div class="pull-right">
-          <span style="">Sort by:&nbsp;&nbsp;&nbsp;</span>
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Sort from newest to oldest"> Date
-            <i class="fa fa-chevron-up"></i>
-          </a>
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Sort from lowest price to highest price"> Price
-            <i class="fa fa-chevron-down"></i>
-          </a>
-        </div>
-      </div> -->
-      <div *ngIf="allEvents.length>0">
+     
+        <div *ngIf="allEvents.length>0">
         <div *ngFor="let key of objectKeys(allEvents)">
-          <!-- {{count++}} -->
-          <!-- <div class="ribbon-wrapper-red">
-          <div class="ribbon-red">&nbsp;
-            <span>Featured</span>
-          </div>
-        </div> -->
+         
         <div *ngFor="let occurrence of objectKeys(allEvents[key].upcoming_occurrences)">
-        <div *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp && allEvents[key]['myAdminApproved']">
-          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0])>=todayTimestamp">
+        <div *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp && allEvents[key]['myAdminApproved']" >
+          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0])>=todayTimestamp" style="-webkit-box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);
+            -moz-box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);
+            box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);border-bottom:1px solid #fff;margin-top: 20px;margin-bottom:20px;">
 
             <div class="col-sm-10" class="eachListing" >
-              <h5>
-                <!-- Uncomment below to  view event Page-->
-                <a  (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
-                <!-- <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
-                
-                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹ {{allEvents[key].price[0]["value"]}} -->
+            
+       <!-- Uncomment below to  view event Page-->
+   <!--Large Devices-->
 
-              </h5>
+  <div class="col-lg-6 hidden-xs hidden-sm hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:200px; max-width:300px height:200px; width:300px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+    <!-- Medium Devices-->	
+<div class="col-md-12 hidden-xs hidden-lg hidden-sm">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:200px; width:500px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+ <!-- Small Devices-->	
 
-              <span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
-                <b>Price: </b>₹ {{Math.round(allEvents[key].price[0]["value"])}}</span>
-              <!-- <br> -->
-              <span>
-                
-                <b>Date: </b> {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
+ <div class="col-sm-12 hidden-xs hidden-lg hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:200px; width:400px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+<!--Extra Small Devices-->	
+<div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container">
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:190px; width:100%; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
 
-              <span>
-                
-                <b>Starts: </b>{{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-
-              <span>
-                
-                <b>Ends: </b>{{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-              <br>
-              <span>
-                <b>Venue: </b><span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
-              <span *ngIf="allEvents[key].myLocation!=''">
-                <b>Locality: </b>{{allEvents[key].myLocation}}
-                
-              </span>
-
-              <br><br>
-              <button class="btn btn-primary" (click)="modal.show(key,allEvents,true,occurrence)" style="font-size:13px;">View More</button>
-              <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
-              <button class="btn btn-info" (click)="interested(key,allEvents,occurrence)" style="font-size:13px;">I am interested</button>
-              <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
-             <!-- Uncomment to share  -->
-              <button class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )" style="font-size:13px;"><i class="fa fa-facebook" aria-hidden="true"></i> Share</button>
+      <div class="col-sm-12 col-lg-6 col-md-12">
+      <div class="hidden-xs" style="padding-left:10px">
+      <br>
+      <span style="color:#a8a8a8; text-transform:uppercase"><b>
               
-              <!-- <p class="muted">Located in
-            <strong>Richmond, London</strong>
-          </p>
-          <p class="muted">Posted Feb 05, 2014 to
-            <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-          </p>
-          <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-            Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-          <p class="ad-description">
-            <strong>2006</strong> |
+              {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</b></span>
+      <br /> 
+      <a (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+              <!-- <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
+              <br /> <br />
+        
+        <i class="fa fa-clock-o"></i><span>
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
 
-            <strong>98,000 miles</strong> |
+            <span>to
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+       <br />
+        <i class="fa fa-rupee"></i><span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
+               {{Math.round(allEvents[key].price[0]["value"])}}</span>
+            <!-- <br> -->
+            
 
-            <strong>2,696 cc</strong> |
+            
+            <br>
+      <i class="fa fa-map"></i>
+            <span>
+             <span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
+           
+      
+            <br><br>
+        <div class="social-icon" style="align:right; padding-right:10px; float:right">
+                <a class="btn btn-default" (click)="modal.show(key,allEvents,true,occurrence)"><i class="fa fa-plus"></i></a>
+               <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
 
-            <strong>Diesel</strong>
-          </p> -->
-              <!-- <p> -->
-             <!--  <span class="classified_links pull-right">
-                <a class="link-info underline" href="#">Share</a>&nbsp;
-              </span> -->
-              <!-- </p> -->
-            </div>
-          </div>  
-          </div> 
-          </div>      
+        <a class="btn btn-default" (click)="interested(key,allEvents,occurrence)"><i class="fa fa-heart"></i></a>                   
+               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+
+                <a class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )"><i class="fa fa-facebook"></i></a>
+              </div>
+           <!-- Uncomment to share  -->
+            
+      </div>
+  
+  <div class="hidden-lg hidden-md hidden-sm" style="padding-left:10px">
+      
+      <br><br>
+      <span style="color:#a8a8a8; text-transform:uppercase"><b>
+              
+              {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</b></span>
+      <br /> 
+      <a (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+              <!-- <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
+              <br /> <br />
+        
+        <i class="fa fa-clock-o"></i><span>
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+
+            <span>to
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+       <br />
+        <i class="fa fa-rupee"></i><span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
+               {{Math.round(allEvents[key].price[0]["value"])}}</span>
+            <!-- <br> -->
+            
+
+            
+            <br>
+      <i class="fa fa-map"></i>
+            <span>
+             <span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
+           
+      
+            <br><br>
+        <div class="social-icon" style="align:right; padding-right:10px; float:right">
+                <a class="btn btn-default" (click)="modal.show(key,allEvents,true,occurrence)"><i class="fa fa-plus"></i></a>
+               <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
+
+        <a class="btn btn-default" (click)="interested(key,allEvents,occurrence)"><i class="fa fa-heart"></i></a>                   
+               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+
+                <a class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )"><i class="fa fa-facebook"></i></a>
+              </div>
+           <!-- Uncomment to share  -->
+            
+      </div>
+  
+  
+  
+  </div>
+  
+        </div>  
+        </div> 
+   
+        </div>  
+   
+    </div>      
         </div>
       </div>
       <div *ngIf="allEvents.length==0">
-        <h1>No Events Found</h1>
+        <h3>No Events Found</h3>
       </div>
-      <!-- <div class="row premium listing-row">
-
-
-        <div class="col-sm-10">
-          <h3>
-            <a class="" href="details.html">
-              <strong>&pound;9,950</strong>
-            </a>
-          </h3>
-          <p class="muted">Located in
-            <strong>Richmond, London</strong>
-          </p>
-          <p class="muted">Posted Feb 05, 2014 to
-            <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-          </p>
-          <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-            Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-          <p class="ad-description">
-            <strong>2006</strong> |
-
-            <strong>98,000 miles</strong> |
-
-            <strong>2,696 cc</strong> |
-
-            <strong>Diesel</strong>
-          </p>
-          <p>
-            <span class="classified_links pull-right">
-              <a class="link-info underline" href="#">Share</a>&nbsp;
-              <a class="link-info underline" href="#">Add to favorites</a>
-              &nbsp;
-              <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-              <a class="link-info underline" href="#">Contact</a>
-            </span>
-          </p>
-        </div>
-      </div>
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Volkswangen golf as 2002 1.6 Automatic 5 Door -
-            <strong>&pound;22,250</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Renault Clio Dynamique 16v 1.2 51 plate -
-            <strong>&pound;5,000</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Mercedes-Benz C Class C220 CDI Avantgarde SE -
-            <strong>&pound;15,000</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Range rover sport hse 2.7 tdv6 2005 -
-            <strong>&pound;10,000</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Honda CR-V 2.0 i-VTEC Executive PETROL AUTOMATIC 2006 -
-            <strong>&pound;12,950</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">HONDA ACCORD 2.0 I-VTEC ES 4dr Auto Saloon -
-            <strong>&pound;19,950</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">AUDI A6 2.0 TDI S Line TOP SPEC 2008 08 4dr AUTO DSG -
-            <strong>&pound;50,000</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="row  listing-row">
-
-
-      <div class="col-sm-10">
-        <h3>
-          <a class="" href="details.html">Ford Mondeo Zetec 2.0 Automatic -
-            <strong>&pound;35,000</strong>
-          </a>
-        </h3>
-        <p class="muted">Located in
-          <strong>Richmond, London</strong>
-        </p>
-        <p class="muted">Posted Feb 05, 2014 to
-          <a href="#" class="underline">Cars, Vans & Motorbikes</a>
-        </p>
-        <p>Excellent Condition. Displacement: 2,900 cc Power Output: 250 bhp Drivetrain: 2-WD Second hand car for sale – 7377790212
-          Available car – beat – blue color, Honda city –white /black Indica ecs – white Alto – white Nano – red /white...</p>
-        <p class="ad-description">
-          <strong>2006</strong> |
-
-          <strong>98,000 miles</strong> |
-
-          <strong>2,696 cc</strong> |
-
-          <strong>Diesel</strong>
-        </p>
-        <p>
-          <span class="classified_links pull-right">
-            <a class="link-info underline" href="#">Share</a>&nbsp;
-            <a class="link-info underline" href="#">Add to favorites</a>
-            &nbsp;
-            <a class="link-info underline" href="details.html">Details</a>&nbsp; &nbsp;
-            <a class="link-info underline" href="#">Contact</a>
-          </span>
-        </p>
-      </div>
-    </div> -->
-      <!-- PAGINATION  BUTTONS -->
-      <!-- <div>
-        <ul class="pagination pull-right">
-          <li>
-            <a (click)="prevPage()">Prev</a>
-          </li>
-
-          <li>
-            <a (click)="nextPage()">Next</a>
-          </li>
-        </ul>
-      </div> -->
+      
 
     </div>
-
   </div>
-  <!-- Modal -->
+  </div>
+  
+   <!-- Modal -->
   <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
@@ -1075,97 +518,13 @@
 
       <div class="row">
 
-        <!-- <div class="col-sm-4 col-xs-12">
-            <p>
-              <strong>&copy; Bootstrap Classifieds 2014</strong>
-            </p>
-            <p>All rights reserved</p>
-          </div> -->
-
-       <!--  <div class="col-sm-8 col-xs-12">
-          <p class="footer-links">
-            <a href="" class="active">Home</a>
-            <a >Typography</a>
-            <a>Terms and Conditions</a>
-            <a href="">Contact Us</a>
-          </p>
-        </div> -->
+       
       </div>
     </div>
   </div>
 
 
 
-
-
-
-  <!-- <div class="container">
-  <div class="btn-group btn-group-justified topnav">
-    <a href="#" class="btn btn-info">Kids' Events</a>
-    <a href="#" class="btn btn-success">Providers</a>
-    <a href="#" class="btn btn-warning">Classes</a>
-  </div>
-
-
-  <div class="content" style="display:flex;width:100%">
-    <div class="col-xs-3 col-sm-3">
-      <ion-range-slider #sliderElement width="500px" min="0" max="10" grid="true" grid_num="10" (onChange)="myOnChange($event)"></ion-range-slider>
-      <div class="well">
-        
-        <div><strong>Locations</strong><br>
-        <div class=".h3" *ngFor="let location of locations">
-          {{location}}
-        </div>
-      </div>
-        <br>
-        <br>
-        <div><strong>Ages</strong><br>
-        <div *ngFor="let age of ages">
-          {{age}}
-        </div>
-        </div>
-        <div><strong>Categories</strong><br>
-        <div *ngFor="let category of categories">
-          {{category}}
-        </div>
-        </div>
-        <span>
-          <b>Today: </b>{{todaysDate}}</span>
-      </div>
-
-    </div>
-
-    <div class="col-xs-9 col-sm-9">
-      <div class="well" *ngFor="let key of objectKeys(allEvents)" style="background-color: wheat;"> -->
-  <!-- <div class=".left" style="display:flex;justify-content:center">
-          <img src={{allEvents[key].img_url}} height="250px" width="250px">
-        </div> -->
-  <!-- <div class=".right">
-          <b>Title: </b>{{allEvents[key].myDisplayTitle}}
-          <br>
-          <span>
-            <b>Price: </b>₹ {{allEvents[key].price[0]["value"]}}</span>
-          <br>
-          <span>
-            <b>Date: </b> {{allEvents[key].upcoming_occurrences[0]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>
-          <br>
-          <span>
-            <b>Start Time: </b>{{(allEvents[key].upcoming_occurrences[0]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-          <br>
-          <span>
-            <b>End Time: </b>{{(allEvents[key].upcoming_occurrences[0]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
-          <br>
-          <span>
-            <b>Venue: </b>{{allEvents[key].venue["name"] + allEvents[key].venue["address"]}}</span>
-          <br>
-          
-          <br>
-          <button class="btn btn-primary" (click)="modal.show(key,allEvents)">View More</button>
-        </div>
-        
-      </div>
-    </div>
-  </div> -->
 
   <app-modal #modal>
     <div class="app-modal-header">
@@ -1241,128 +600,62 @@
     </div>
   </app-modal>
 
+  <!-- Footer Section Start -->
+    <footer>
+      <!-- Footer Area Start -->
+      <section class="footer-Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <div class="textwidget">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis. Etiam euismod ornare elementum. Sed ex est, consectetur eget facilisis sed.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <h3 class="block-title">Quick Links</h3>
+                <ul class="menu">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Support</a></li>
+                  <li><a href="#">License</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <h3 class="block-title">Follow Us</h3>
+                <div class="bottom-social-icons social-icon">  
+                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>                   
+                  <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                </div>	
+                <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
+                <form class="subscribe-box">
+                  <input type="text" placeholder="Your email">
+                  <input type="submit" class="btn-system" value="Send">
+                </form>	
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer area End -->
+      
+      <!-- Copyright Start  -->
+      <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright End -->
 
-
-
-
-
-
-
-
-
-  <!-- Bootstrap core CSS -->
-  <!-- <link id="switch_style" href="../../../WB0C342C2/css/bootstrap.css" rel="stylesheet"> -->
-
-
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-        <script src="../../assets/js/html5shiv.js"></script>
-        <script src="../../assets/js/respond.min.js"></script>
-        <![endif]-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!--
-
-{
-  "id": "d3b0c429b35c045f1be96aa79de02a8c",
-  "city": "Delhi",
-  "title": "An Evening walk with Djinns of Ferozshah Kotla Fort",
-  "description": "<p>&nbsp;DAY, DATE &amp; TIME: Sunday, 8th October, 05:00 PM - 07:00 PM MEETING POINT: Ferozshah Kotla Fort Ticket Counter, on Bahadur Shah Zafar Road, near the Times of India Office Building.</p>\n<p>CHARGES: Rs 300/person</p>\n<p>Children below 8 yrs are free and till 12 are charged 50%</p>\n<p>ESSENTIALS TO WEAR &amp; CARRY:</p>\n<p>1- The terrain sometimes involves climbing atop fort walls &amp; sometimes walking sedately on rolling grass, so preferably wear a pair of good walking shoes. Not that we will stop any flip-flop wearers from joining us!</p>\n<p>2- A bottle of drinking water.</p>\n<p>3- A cloth covering/cap for head.</p>\n<p>4- A camera for capturing the 'monumental' ruins</p>\n<p>BEST WAY TO REACH:</p>\n<p>Nearest Metro Station is ITO Station on Violet Line (Faridabad track) OR Pragati Maidan station on Blue Line (Dwarka Track) and a 1.5 KM Auto-rickshaw ride will bring you to the Fort. Those driving in can easily park their vehicles as there is ample parking space.</p>",
-  "img_url": "https://lh3.googleusercontent.com/Hm4dMklh0yQDFmVKDZf5vFrtfuIEUeUJ27s1u1NemT7TPJnj_hN_yDCxWLMiXSPDN80hhh_c-7piWUNrxKdMYZc",
-  "upcoming_occurrences": [
-    {
-      "occurrence_id": 36286976,
-      "date": "2017-10-08:12-00",
-      "start_time": "17:00:00",
-      "end_time": "19:00:00",
-      "end_date": "2017-10-08:12-00",
-      "single_occurrence": 1,
-      "timezone": "Asia/Calcutta",
-      "enable_ticketing": true
-    }
-  ],
-  "url": "https://www.eventshigh.com/detail/Delhi/d3b0c429b35c045f1be96aa79de02a8c-An-Evening-walk-with-Djinns?src=eh-test",
-  "cats": [
-    "outdoors",
-    "city walks and tours"
-  ],
-  "venue": {
-    "name": "Ferozeshah Kotla Ground",
-    "address": "Bahadur Shah Zafar Marg, Vikram Nagar New Delhi, Delhi 110002",
-    "lat": 28.637834,
-    "lon": 77.243209,
-    "city": "Delhi"
-  },
-  "price": [
-    {
-      "id": 3493403,
-      "eid": "d3b0c429b35c045f1be96aa79de02a8c",
-      "name": "Lets Explore",
-      "currency": "INR",
-      "value": 300,
-      "discount_pct": 0,
-      "discount_value": 0,
-      "validity_start": null,
-      "validity_end": null,
-      "note": "",
-      "capacity": 0,
-      "min_quantity": 1,
-      "is_multi": 0,
-      "is_individual": 1,
-      "date": "2017-10-08",
-      "time": "17:00:00",
-      "all_occurrences": 1,
-      "rank": 0,
-      "occurrence_id": 36286976,
-      "end_date": "2017-10-08",
-      "end_time": "19:00:00",
-      "donation_ticket": 0,
-      "extra_data": {},
-      "group_id": "7a1920d61156abc05a60135aefe8bc67",
-      "group_name": "Default",
-      "group_note": "",
-      "group_icon": "",
-      "is_valid": "Y",
-      "tax": {
-        "taxes": []
-      },
-      "occurrences": [
-        {
-          "date": "2017-10-08",
-          "time": "17:00:00",
-          "end_date": "2017-10-08",
-          "end_time": "19:00:00",
-          "occurrence_id": 36286976,
-          "group_id": "7a1920d61156abc05a60135aefe8bc67",
-          "is_valid": "Y",
-          "id": 3493403
-        }
-      ],
-      "convenience_fees": 0,
-      "cgst": 300,
-      "sgst": 300
-    }
-  ],
-  "booking_url": "https://ticketing.eventshigh.com/checkout.jsp?eid=d3b0c429b35c045f1be96aa79de02a8c&src=eh-test",
-  "booking_enquiry_url": "https://www.eventshigh.com/reqbook?eid=d3b0c429b35c045f1be96aa79de02a8c&src=eh-test"
-}
-
-
-
-
--->
+    </footer>
+    <!-- Footer Section End --> 
