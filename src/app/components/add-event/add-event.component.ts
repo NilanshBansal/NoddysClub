@@ -66,33 +66,6 @@ export class AddEventComponent implements OnInit {
 
       
     });
-
-    /*
-
-    {
-  "title": "xcc",
-  "description": "ccz",
-  "category": "Sports & Outdoors",
-  "anyOtherCategory": "cxzc",
-  "startAge": 1,
-  "endAge": 12,
-  "startDate": "2018-02-17",
-  "endDate": "2018-02-17",
-  "startTime": "16:19:45",
-  "endTime": "16:19:45",
-  "city": "Delhi NCR",
-  "place": "Delhi NCR",
-  "anyOtherPlace": "xz",
-  "address": "xZ",
-  "pinCode": 1111,
-  "price": 11
-}
-
-
-
-    */
-
-
   }
 
   placeValidator = (control: AbstractControl): {[key: string]: boolean} => {
