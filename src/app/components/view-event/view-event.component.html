@@ -1,63 +1,172 @@
-<nav >
-<a class="navbar-brand " href='/'>
-  <span class="logo">
-    <!-- <strong>Noddy's Club</strong>
-    <span class="handwriting"></span>
-    <br />
-    <small>something that makes difference </small> -->
-    <img src="assets/images/logoBeta.png" height="140px">
-  </span>
-</a>
-
-
-<br><br>
-    <div class="pull-right" style="margin-right: 30px;">
-      <a class="btn btn-info" [routerLink]="['/']">Home</a>
-
+<body>
+  
+   <!-- Navbar -->
+   
+         <div class="nav">
+      <div class="nav-header">
+        <div class="nav-title">
+            <img src="assets/images/logoBeta1.png" style="height:50px; padding-bottom:5px;width:150px">
+          
+      </div>
+      </div>
+      <div class="nav-btn" style="margin-top:10px">
+      
+        
+        <button type="button" id="cityBtnMob" class="navbar-toggle" data-target=".city-collap" data-toggle="collapse">
+          <i class="fa fa-bars" style="font-size:18px; padding-left:5px" aria-hidden="true"></i>
+            </button>
+      
+    
+      
+      </div>
+       <div class="nav-links">
+      
+      <a style="cursor:pointer" [routerLink]="['/']"><i class="fa fa-home"></i><b>Home</b></a>
+      <a style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i><b>Add Event</b></a>
+      </div>
+     
     </div>
-
-
-
-
-</nav>
-<br><br>
-<div class="container" *ngIf="eventObj">
-  <br><br>
- <div class="row">
- <span><strong>{{eventObj.myDisplayTitle}}</strong></span>
-   <br>
- </div>
- 
- <div class="row">
-   <br>
- <img [src]="eventObj.img_url">
- <br><br>
- <span *ngIf="eventObj.myCategory!=''"><b>Category: </b>{{eventObj?.myCategory}}</span><br>
- <span ><b>Age Group: </b>{{eventObj?.myAge["lower"] + ' - ' + eventObj?.myAge["upper"]}}  Yrs</span><br>
- <span  style="font-size: 13px"><b>Price:</b> ₹ {{eventObj?.price[0]['value']}}</span><br>
- 
- <span><b>Date: </b> {{eventObj?.upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span>  
- 
- <span><b>Starts: </b>{{(eventObj?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
- <span><b>Ends: </b>{{(eventObj?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br>
- <span><b>Venue: </b>{{eventObj?.venue["name"] + ", " }}</span><br>
- <span>{{eventObj?.venue["address"] + ", " + eventObj?.venue["city"]}}</span><br>
- <span *ngIf="eventObj.myLocation!=''"><b>Locality: </b>{{eventObj?.myLocation}}</span>
- <span *ngIf="eventObj.myPincode!=''"><b>Pincode: </b>{{ eventObj?.myPincode}}</span><br>
-
- <span *ngIf="eventObj.myContactDetails['contactPerson']!=''"><b>Contact Person : </b>{{ eventObj?.myContactDetails["contactPerson"]}}</span>
- <span *ngIf="eventObj.myContactDetails['telephoneNo']!=''"><b>Tel : </b>{{ eventObj?.myContactDetails["telephoneNo"]}}</span><br>
- 
- <span  style="font-size: 13px" [innerHTML]="eventObj?.description"></span>
- <span *ngIf="eventObj.url!=''"><b>Booking Url : </b><a target="_blank" [href]="eventObj?.url">{{eventObj?.url}}</a></span>
- 
- </div>
- <br>
- </div>
- <div class="container" *ngIf="noEvent">
-   <div class="row">
-     <br><br>
-     <h1>No event</h1>
+    
+      <div class="collapse city-collap hidden-lg hidden-md hidden-sm">
+    <div class="view-container">
+    <a [routerLink]="['/']"><i class="fa fa-home"></i>Home</a>
+      <a [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+    </div>
+    </div>
+  <!-- Description -->
+  <div class="container description-container" *ngIf="eventObj">
+  
+    <div class="container">
+    <br />
+   <div class="container">
+    <div class="row col-lg-12">
+      <h3 class="card-title"><b>{{eventObj.myDisplayTitle}}</b></h3>
+      <h5 class="card-subtitle text-muted" style="text-transform:uppercase; color:#a8a8a8;"><span *ngIf="eventObj.myCategory!=''">{{eventObj?.myCategory}}</span></h5>
+    
+    <hr></div>
+    
+    <div class="row col-lg-8 col-md-6 col-sm-12 col-xs-12"> <!--Image Div-->
+    <img style="max-height: auto; width: 100%; display: block; " [src]="eventObj.img_url" alt="Card image">
+    </div>
+   
+  
+   <div class="row col-lg-4 col-md-6 hidden-sm hidden-xs" style="margin-left:5px; font-size:15px;">
+            <span style="text-transform:uppercase; font-size:18px">
+  <i class="fa fa-calendar"></i> {{eventObj?.upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span><br /><br />
+  
+  <span style="text-transform:uppercase; font-size:14px"><i class="fa fa-child"></i> {{eventObj?.myAge["lower"] + ' - ' + eventObj?.myAge["upper"]}}  Years </span><br/> <br />
+  <span style="text-transform:uppercase; font-size:14px"><i class="fa fa-clock-o"></i>{{(eventObj?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+  <span> to {{(eventObj?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br /><br />
+  
+  
+  <span><i class="fa fa-map-marker"></i> {{eventObj?.venue["name"] + ", " }} {{eventObj?.venue["address"] + ", " + eventObj?.venue["city"]}}</span><br /><br />
+   
+  <span><i class="fa fa-rupee"></i> {{eventObj?.price[0]['value']}}</span><br /><br />
+  
+   <span *ngIf="eventObj.url!=''"><a class="btn btn-danger" target="_blank" [href]="eventObj?.url"><i class="fa fa-external-link"></i> Book Here!</a></span>
+  
+  
+    </div>
+    <div class="row col-xs-12 col-sm-12 hidden-lg hidden-md hidden-sm" style="margin-top:5px; font-size:15px;">
+    <hr>
+            <span style="text-transform:uppercase; font-size:18px">
+  <i class="fa fa-calendar"></i> {{eventObj?.upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</span><br /><br />
+  
+  <span style="text-transform:uppercase; font-size:14px"><i class="fa fa-child"></i> {{eventObj?.myAge["lower"] + ' - ' + eventObj?.myAge["upper"]}}  Years </span><br/> <br />
+  <span style="text-transform:uppercase; font-size:14px"><i class="fa fa-clock-o"></i>{{(eventObj?.upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+  <span> to {{(eventObj?.upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span><br /><br />
+  
+  
+  <span><i class="fa fa-map-marker"></i> {{eventObj?.venue["name"] + ", " }} {{eventObj?.venue["address"] + ", " + eventObj?.venue["city"]}}</span><br /><br />
+   
+  <span><i class="fa fa-rupee"></i> {{eventObj?.price[0]['value']}}</span><br /><br />
+  
+  <!--URL HERE-->
+  
+   <span *ngIf="eventObj.url!=''"><a class="btn btn-danger" target="_blank" [href]="eventObj?.url"><i class="fa fa-external-link"></i> Book Here!</a></span> 
+  
+  
+    </div>
+    <hr>
+   
    </div>
- </div>
- 
+    <div class="container">
+    <div class="row col-lg-12">
+    <hr>
+    <h4 style="text-transform:uppercase"><b>About this event</b></h4>
+    <p><span [innerHTML]="eventObj?.description"></span>
+   
+  </div>
+  <div class="row col-lg-12"> <!--Map Div-->
+  <hr> 
+  <!-- Map Goes Here-->
+  </div>
+  </div>
+  
+  </div>
+  
+   
+  
+   </div>
+   
+   
+   <!-- Footer Section Start -->
+        
+      <footer>
+       <br />
+  
+          <!-- Footer Area Start -->
+          <section class="footer-Content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="widget">
+          <h3 class="block-title">About Us</h3>
+                    <div class="textwidget">
+                      <p>Explore and book awesome activities for your kids!"</div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="widget">
+                    <h3 class="block-title">Quick Links</h3>
+                    <ul class="menu">
+                      
+                      <li><a href="#">Terms & Conditions</a></li>
+                      <li><a href="#">Contact: care@noddys.club</a></li>
+                    </ul>
+                  </div>
+                </div>
+              
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="widget">
+                    <h3 class="block-title">Follow Us</h3>
+                    <div class="bottom-social-icons social-icon">  
+                      <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>                   
+                    </div>	
+                    <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
+                    <form class="subscribe-box">
+                      <input type="text" placeholder="Your email">
+                      <input type="submit" class="btn-system" value="Send">
+                    </form>	
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Footer area End -->
+          
+          <!-- Copyright Start  -->
+          <div id="copyright">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright End -->
+    
+        </footer>
+        <!-- Footer Section End --> 
+  </body>
