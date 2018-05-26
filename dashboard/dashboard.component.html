@@ -1,0 +1,663 @@
+
+
+<div class="nav">
+  <div class="nav-header">
+    <div class="nav-title">
+        <img src="assets/images/logoBeta1.png" style="height:50px; padding-bottom:5px;width:150px">
+      
+  </div>
+  </div>
+  <div class="nav-btn" style="margin-top:10px">
+    <button type="button" id="filterBtnMob" class="navbar-toggle" data-target=".navbar-collap" data-toggle="collapse">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+        </button>
+    
+    <button type="button" id="cityBtnMob" class="navbar-toggle" data-target=".city-collap" data-toggle="collapse">
+      <i class="fa fa-bars" style="font-size:18px; padding-left:5px" aria-hidden="true"></i>
+        </button>
+  
+
+  
+  </div>
+   <div class="nav-links">
+  <div class="dropdown" style="padding-top:8px">
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
+  <div class="dropdown-content">
+
+  <div data-radium="true"  *ngFor="let key of objectKeys(locations)" >
+            
+      
+      <a style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
+        
+  </div>
+</div> 
+  </div>
+<div class="dropdown">
+  <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+  </div>
+  </div>
+ 
+</div>
+  
+<div class="collapse city-collap hidden-lg hidden-md hidden-sm">
+ <button type="button" id="citiesBtnMob" class="navbar-toggle" data-target=".cities-collap" data-toggle="collapse" style="float:left">
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
+        </button><br>
+        <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+
+  <div class="collapse cities-collap">
+<br>
+  <div data-radium="true"  *ngFor="let key of objectKeys(locations)" class="citiesHover">
+            
+      
+      <a  style="font-size: 16px; cursor: pointer; text-decoration:none; margin-left:5px "
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
+        
+  </div>
+</div> 
+</div>
+                       
+                        <div class="collapse navbar-collap">
+
+                <div class="panel panel-default hidden-md hidden-lg hidden-sm visible-xs" >
+                  <div class="panel-heading">Filters</div>
+                  <div class="panel-body">
+                    <form class="form-inline mini" >
+                      <fieldset>
+
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 600;">Categories</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="col-sm-10 form-control " id="categoryInputmob">
+                              <option>No selection</option>
+                              <optgroup></optgroup>
+                              <option *ngFor="let category of categories">{{category}}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 600;">Ages</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <select class="col-sm-10 form-control " id="ageInputmob">
+                              <option>No selection</option>
+                              <optgroup></optgroup>
+                              <option *ngFor="let age of ages">{{age}}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row filter-row">
+                          <div class="col-sm-6">
+                            <label style="font-weight: 600;">Date</label>
+                          </div>
+                          <div class="col-sm-6">
+
+                            <input type="date" class="col-sm-10 form-control " id="dateInputmob">
+                          </div>
+                        </div>
+
+                        <div class="row filter-row">
+                          <div class="col-sm-12">
+                            <label style="font-weight: 600;">Price range</label>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="input-group">
+                              <span class="input-group-addon">₹</span>
+                              <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputmob" />
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="input-group">
+                              <span class="input-group-addon">₹</span>
+                              <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputmob" />
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="row filter-row">
+
+                          <div class="col-sm-2 pull-right" style="margin-top: 10px;">
+
+                            <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('mob')" [disabled]="cityInputmobValue.value=='No selection'">Update results</button> -->
+                            <button class="btn btn-danger pull-right" type="submit" (click)="updateFilter('mob')">Update</button>
+
+                          </div>
+                        </div>
+
+
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+
+
+
+              
+            </div>
+            
+            
+
+     
+  
+<div class="container">
+
+  
+  <div class="row">
+    <div class="col-sm-4  hidden-xs">
+      <div class="sidebar ">
+        
+
+        <div class="row ">
+
+
+          <div class="col-sm-11">
+            <br><br>
+            <div class="panel panel-default">
+              <div class="panel-heading">Filters</div>
+              <div class="panel-body">
+                <form class="form-inline mini" style="margin-bottom: 0px;">
+                  <fieldset>
+                                       
+                     <div class="row filter-row">
+                      <div class="col-sm-6">
+                        <label style="font-weight: 600;">Categories</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <select class="col-sm-10 form-control " id="categoryInputdesk">
+                          <option>No selection</option>
+                          <optgroup></optgroup>
+                          <option *ngFor="let category of categories">{{category}}</option>
+                          <!-- <option *ngFor="let key of objectKeys(categories)">{{categories[key]["$value"]}}</option> -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row filter-row">
+                      <div class="col-sm-6">
+                        <label style="font-weight: 600;">Ages</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <select class="col-sm-10 form-control " id="ageInputdesk">
+                          <option>No selection</option>
+                          <optgroup></optgroup>
+                          <option *ngFor="let age of ages">{{age}}</option>
+                          <!-- <option *ngFor="let key of objectKeys(ages)">{{ages[key]["$value"]}}</option> -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row filter-row">
+                      <div class="col-sm-6">
+                        <label style="font-weight: 600;">Date</label>
+                      </div>
+                      <div class="col-sm-6">
+                    
+                        <input type="date" class="col-sm-10 form-control " id="dateInputdesk">
+                      </div>
+                    </div>
+
+                    <div class="row filter-row">
+                      <div class="col-sm-12">
+                        <label style="font-weight: 600;">Price range</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="input-group">
+                          <span class="input-group-addon">₹</span>
+                          <input type="number" class="form-control price-input" placeholder="min" id="minPriceInputdesk" />
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="input-group">
+                          <span class="input-group-addon">₹</span>
+                          <input type="number" class="form-control price-input" placeholder="max" id="maxPriceInputdesk" />
+                        </div>
+                      </div>
+                    </div>
+            
+                    <div class="row filter-row">
+
+                      <div class="col-sm-2 pull-right" style="margin-top: 10px;">
+                        <!-- <button class="btn btn-primary pull-right" type="submit" (click)="updateFilter('desk')" [disabled]="cityInputdeskValue.value=='No selection'">Update results</button> -->
+                        <button class="btn btn-danger pull-right" type="submit" (click)="updateFilter('desk')" >Update</button>
+                        
+                      </div>
+                    </div>
+
+
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <br>
+
+    <div class="col-sm-8 listings" align="left">
+     
+
+
+
+     
+        <div *ngIf="allEvents.length>0">
+        <div *ngFor="let key of objectKeys(allEvents)">
+         
+        <div *ngFor="let occurrence of objectKeys(allEvents[key].upcoming_occurrences)">
+        <div *ngIf="parseDate(allEvents[key].upcoming_occurrences[allEvents[key].upcoming_occurrences.length -1]['date'].split(':')[0])>=todayTimestamp && allEvents[key]['myAdminApproved']" >
+          <div class="row premium listing-row" *ngIf="parseDate(allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0])>=todayTimestamp" style="-webkit-box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);
+            -moz-box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);
+            box-shadow: 0px 0px 8px 1px rgba(163,161,163,1);border-bottom:1px solid #fff;margin-top: 20px;margin-bottom:20px;">
+
+            <div class="col-sm-10" class="eachListing" >
+            
+       <!-- Uncomment below to  view event Page-->
+   <!--Large Devices-->
+
+  <div class="col-lg-6 hidden-xs hidden-sm hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:200px; max-width:300px height:200px; width:300px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+    <!-- Medium Devices-->	
+<div class="col-md-12 hidden-xs hidden-lg hidden-sm">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:200px; width:500px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+ <!-- Small Devices-->	
+
+ <div class="col-sm-12 hidden-xs hidden-lg hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container" >
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:200px; width:400px; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+<!--Extra Small Devices-->	
+<div class="col-xs-12 hidden-sm hidden-lg hidden-md">
+ <div class="container">
+ <div class="row">
+ <div class="container">
+ 
+ <img class="eventimages"style=" display:block; max-height:auto; height:190px; width:100%; align:center" [src]="allEvents[key].img_url" alt="Card image">
+ 
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+
+      <div class="col-sm-12 col-lg-6 col-md-12">
+      <div class="hidden-xs" style="padding-left:10px">
+      <br>
+      <span style="color:#a8a8a8; text-transform:uppercase"><b>
+              
+              {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</b></span>
+      <br /> 
+      <a (click)="modal.show(key,allEvents,true,occurrence)"  style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+              <!-- <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
+              <br /> <br />
+        
+        <i class="fa fa-clock-o"></i><span>
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+
+            <span>to
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+       <br />
+        <i class="fa fa-rupee"></i><span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
+               {{Math.round(allEvents[key].price[0]["value"])}}</span>
+            <!-- <br> -->
+            
+
+            
+            <br>
+      <i class="fa fa-map"></i>
+            <span>
+             <span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
+           
+      
+            <br><br>
+        <div class="social-icon" style="align:right; padding-right:10px; float:right">
+          <a class="btn btn-default" (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)"><i class="fa fa-plus"></i></a>
+               <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
+
+        <a class="btn btn-default" (click)="interested(key,allEvents,occurrence)"><i class="fa fa-heart"></i></a>                   
+               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+
+                <a class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )"><i class="fa fa-facebook"></i></a>
+              </div>
+           <!-- Uncomment to share  -->
+            
+      </div>
+  
+  <div class="hidden-lg hidden-md hidden-sm" style="padding-left:10px">
+      
+      <br><br>
+      <span style="color:#a8a8a8; text-transform:uppercase"><b>
+              
+              {{allEvents[key].upcoming_occurrences[occurrence]["date"].split(':')[0] | amParse:'YYYY-MM-DD' | amDateFormat:'LL'}}</b></span>
+      <br /> 
+      <a  (click)="modal.show(key,allEvents,true,occurrence)" style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a>
+      <!-- <a style="color:#333333; font-weight:700"> {{allEvents[key].myDisplayTitle}}</a> -->
+              <br /> <br />
+        
+        <i class="fa fa-clock-o"></i><span>
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["start_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+
+            <span>to
+              
+             {{(allEvents[key].upcoming_occurrences[occurrence]["end_time"]| amParse:'hh:mm:ss' | amCalendar).split("at")[1]}}</span>
+       <br />
+        <i class="fa fa-rupee"></i><span *ngIf="allEvents[key].price[0]['value']!='Not Specified'">
+               {{Math.round(allEvents[key].price[0]["value"])}}</span>
+            <!-- <br> -->
+            
+
+            
+            <br>
+      <i class="fa fa-map"></i>
+            <span>
+             <span *ngIf="allEvents[key].venue['name']!=''">{{allEvents[key].venue["name"] + ", " }}</span> {{ allEvents[key].venue["city"]}}</span>
+           
+      
+            <br><br>
+        <div class="social-icon" style="align:right; padding-right:10px; float:right">
+                <a class="btn btn-default" (click)="viewEventPage(allEvents[key].title,allEvents,occurrence)"><i class="fa fa-plus"></i></a>
+                <button id="interestedBtn" (click)="modal2.show(key,allEvents,false,null)" [hidden]="true"></button>
+
+        <a class="btn btn-default" (click)="interested(key,allEvents,occurrence)"><i class="fa fa-heart"></i></a>                   
+               <button id="closeModal" (click)="modal2.hide()" [hidden]="true"></button>
+
+                <a class="btn btn-default" (click)="share(currentUrl + 'viewEvent?title=' + allEvents[key].title + '&occurrence=' + occurrence, allEvents[key].title,allEvents[key].img_url,allEvents[key].venue['name'] + ', '  + allEvents[key].venue['city'],allEvents[key].price[0]['value'],allEvents[key].upcoming_occurrences[occurrence]['date'].split(':')[0] )"><i class="fa fa-facebook"></i></a>
+              </div>
+           <!-- Uncomment to share  -->
+            
+      </div>
+  
+  
+  
+  </div>
+  
+        </div>  
+        </div> 
+   
+        </div>  
+   
+    </div>      
+        </div>
+      </div>
+      <div *ngIf="allEvents.length==0">
+        <h3>Oops! We could not find anything worthwhile at the moment in your city. Please come back later.</h3>
+      </div>
+      
+
+    </div>
+  </div>
+  </div>
+  
+   <!-- Modal -->
+  <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Sign in to your account</h4>
+        </div>
+        <div class="modal-body">
+          <p>If you have an account with us, please enter your details below.</p>
+
+          <form method="POST" action="account_dashboard.html" accept-charset="UTF-8" id="user-login-form" class="form ajax" data-replace=".error-message p">
+
+            <div class="form-group">
+              <input placeholder="Your username/email" class="form-control" name="email" type="text"> </div>
+
+            <div class="form-group">
+              <input placeholder="Your password" class="form-control" name="password" type="password" value=""> </div>
+
+            <div class="row">
+              <div class="col-md-6">
+
+              </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-primary pull-right">Login</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <a data-toggle="modal" href="#modalForgot">Forgot your password?</a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="modal-footer" style="text-align: center">
+          <div class="error-message">
+            <p style="color: #000; font-weight: normal;">Don't have an account?
+              <a class="link-info" href="register.html">Register now</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalForgot" tabindex="-1" role="dialog" aria-labelledby="modalForgot" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Forgot your password?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Enter your email to continue</p>
+
+          <form role="form">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your email address">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+
+              </div>
+              <div class="col-md-6">
+                <a href="my_account.html" class="btn btn-primary pull-right">Continue</a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="footer">
+    <div class="container">
+
+      <div class="row">
+
+       
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <app-modal #modal>
+    <div class="app-modal-header">
+
+     <!--  <button type="button" class="btn btn-default" (click)="modal.hide()">
+        <i class="fa fa-times" aria-hidden="true" style="font-size: 10px; "></i>
+      </button> -->
+    </div>
+
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+    </div>
+  </app-modal>
+
+
+  <app-modal #modal2 id="hello">
+   
+    <div class="app-modal-body">
+      <!--Whatever content you like, form fields, anything-->
+
+      <div class="remodal">
+          <div class="reset-password-modal--header" style="font-size:25px;">
+            We will contact you!<br><br>
+          </div>
+          
+        <form class="reset__form" [formGroup]="userInfoForm" (submit)="submitUserForm()" novalidate>
+
+
+          <div class="input-container PosR">
+            <input autocomplete="new-password" class="w100" id="reset-email" formControlName="email" placeholder="Email" required type="email"
+              pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+
+
+          </div>
+          <br>
+          <div *ngIf="userInfoForm.controls.email.invalid && (userInfoForm.controls.email.dirty || userInfoForm.controls.email.touched)"
+            class="alert alert-danger ">
+            <div *ngIf="userInfoForm.controls.email.errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="userInfoForm.controls.email.errors.pattern">
+              Invalid Email !
+            </div>
+
+          </div>
+
+          <div class="input-container PosR">
+            <input class="w100"  formControlName="phone" placeholder="Phone" required type="text" pattern="[789][0-9]{9}">
+
+            <input class="btn btn-block btn-primary btn-login center-block" id="submitReset" type="submit" value="Submit" [disabled]="userInfoForm.invalid">
+
+          </div>
+          <div *ngIf="userInfoForm.controls.phone.invalid && (userInfoForm.controls.phone.dirty || userInfoForm.controls.phone.touched)"
+            class="alert alert-danger ">
+            <div *ngIf="userInfoForm.controls.phone.errors.required">
+              Phone No is required.
+            </div>
+            <div *ngIf="userInfoForm.controls.phone.errors.pattern">
+              Invalid Phone No !
+            </div>
+
+          </div>
+
+          <!-- <input class="btn btn-block btn-primary btn-login center-block" id="submitReset" type="submit" value="Submit" [disabled]="userInfoForm.invalid"> -->
+        </form>
+
+      </div>
+
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal2.hide()">Close</button>
+      <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+    </div>
+  </app-modal>
+
+  <!-- Footer Section Start -->
+    <footer>
+   <br />
+
+      <!-- Footer Area Start -->
+      <section class="footer-Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+
+        <div class="textwidget">
+                  <p>Explore and book awesome activities for your kids!</p></div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <ul class="menu">
+                  
+                  <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us: care@noddys.club</a></li>
+                    <li><a href="#">Phone No: +91 9650441666, +91 9811871169 </a></li>
+                </ul>
+              </div>
+            </div>
+          
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <div class="bottom-social-icons social-icon">  
+				                  <a class="facebook" href="https://www.facebook.com/noddysclub/?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>                   
+
+                  <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>                   
+                </div>	
+                  <!--<p>Join our mailing list to stay up to date and get notices about our new releases!</p>-->
+                 <!-- <form class="subscribe-box">
+                  <input type="text" placeholder="Your email">
+                  <input type="submit" class="btn-system" value="Send">
+                </form>	-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer area End -->
+      
+      <!-- Copyright Start  -->
+      <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright End -->
+
+    </footer>
+    <!-- Footer Section End -->
+
