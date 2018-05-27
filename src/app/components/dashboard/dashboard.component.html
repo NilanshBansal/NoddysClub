@@ -19,20 +19,20 @@
   </div>
    <div class="nav-links">
   <div class="dropdown" style="padding-top:8px">
-        <a class="dropbtn" type="button" style="cursor:pointer"><b>{{city}}</b><i class="fa fa-angle-down"></i></a>
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
   <div class="dropdown-content">
 
   <div data-radium="true"  *ngFor="let key of objectKeys(locations)" >
             
       
       <a style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
-                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)"><b>{{key}}</b></a>
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
         
   </div>
 </div> 
   </div>
 <div class="dropdown">
-  <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i><b>Add Event</b></a>
+  <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
   </div>
   </div>
  
@@ -417,7 +417,7 @@
         </div>
       </div>
       <div *ngIf="allEvents.length==0">
-        <h3>No Events Found</h3>
+        <h3>Oops! We could not find anything worthwhile at the moment in your city. Please come back later.</h3>
       </div>
       
 
@@ -609,7 +609,6 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="widget">
-                <h3 class="block-title">About Us</h3>
 
         <div class="textwidget">
                   <p>Explore and book awesome activities for your kids!</p></div>
@@ -617,26 +616,27 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="widget">
-                <h3 class="block-title">Quick Links</h3>
                 <ul class="menu">
                   
                   <li><a href="#">Terms & Conditions</a></li>
-                  <li><a href="#">Contact: care@noddys.club</a></li>
+                    <li><a href="#">Contact Us: care@noddys.club</a></li>
+                    <li><a href="#">Phone No: +91 9650441666, +91 9811871169 </a></li>
                 </ul>
               </div>
             </div>
           
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="widget">
-                <h3 class="block-title">Follow Us</h3>
                 <div class="bottom-social-icons social-icon">  
-                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>                   
+				                  <a class="facebook" href="https://www.facebook.com/noddysclub/?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>                   
+
+                  <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>                   
                 </div>	
-                <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
-                <form class="subscribe-box">
+                  <!--<p>Join our mailing list to stay up to date and get notices about our new releases!</p>-->
+                 <!-- <form class="subscribe-box">
                   <input type="text" placeholder="Your email">
                   <input type="submit" class="btn-system" value="Send">
-                </form>	
+                </form>	-->
               </div>
             </div>
           </div>

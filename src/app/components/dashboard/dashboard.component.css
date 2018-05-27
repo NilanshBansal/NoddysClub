@@ -2724,7 +2724,7 @@ background: linear-gradient(7deg, rgb(255, 255, 255), rgb(255, 215, 0));
 
 
 
-border-bottom: 3px double #FF4500;
+border-bottom: 3px solid #FF4500;
   position: relative;
 }
 
