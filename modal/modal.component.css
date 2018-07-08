@@ -1,0 +1,13 @@
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    max-height: 300px;
+    overflow-y: auto;
+}
+/* 
+@media only screen and (max-height: 650px) {
+    .modal-body{
+        max-height: 300px;
+    }
+} */

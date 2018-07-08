@@ -1,0 +1,415 @@
+        <!-- Navbar -->
+ 
+       <div class="nav">
+    <div class="nav-header">
+      <div class="nav-title">
+          <img src="assets/images/logoBeta1.png" style="height:50px; padding-bottom:5px;width:150px">
+        
+    </div>
+    </div>
+    <div class="nav-btn" style="margin-top:10px">
+    
+		  
+		  <button type="button" id="cityBtnMob" class="navbar-toggle" data-target=".city-collap" data-toggle="collapse">
+        <i class="fa fa-bars" style="font-size:18px; padding-left:5px" aria-hidden="true"></i>
+          </button>
+    
+	
+    
+    </div>
+     <div class="nav-links">
+    
+    <a style="cursor:pointer" [routerLink]="['/']"><i class="fa fa-home"></i>Home</a>
+    <a style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+    </div>
+   
+  </div>
+  
+    <div class="collapse city-collap hidden-lg hidden-md hidden-sm">
+	<div class="view-container">
+	<a [routerLink]="['/']"><i class="fa fa-home"></i>Home</a>
+    <a [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+	</div>
+	</div>
+	<br/>
+	
+<div class="container" style="align:center">
+  <div class="row">
+   
+
+
+
+    <div class="col-sm-9">
+      <form class="form-vertical" [formGroup]="addForm" (submit)="submitEvent()" novalidate>
+
+        <!-- <div class="panel panel-default">
+          <div class="panel-heading">Choose category</div>
+          <div class="panel-body">
+
+
+            <div class="row">
+              <div class="col-sm-12 ">
+
+                <div class="form-group">
+
+                  <div class="row">
+                    <div class="col-sm-2" style="margin-top: 10px;">
+                      <label>Category</label>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                      <select id="category" class="form-control " name="category">
+                        <option value="">Choose a category</option>
+                        <option *ngFor="let category of categories">{{category}}</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+
+                  <div class="row">
+                    <div class="col-sm-2" style="margin-top: 10px;">
+                      <label>Any Other</label>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                      <input type="text" class="form-control ">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+
+
+
+        <div class="panel panel-default">
+          <!-- <div class="panel-heading">Ad details</div> -->
+          <div class="panel-heading">Event details</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="row">
+
+                <div class="col-sm-12">
+                  <label>Title </label>
+                  <input type="text" class="form-control " required formControlName="title" name="title">
+                  <div *ngIf="addForm.controls.title.invalid && (addForm.controls.title.dirty || addForm.controls.title.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.title.errors.required">
+                      Title is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <br />
+                  <label>Description </label>
+                  <textarea class="form-control col-sm-8 expand" rows="6" style="width: 99%" required formControlName="description" name="description"></textarea>
+                  <div *ngIf="addForm.controls.description.invalid && (addForm.controls.description.dirty || addForm.controls.description.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addForm.controls.description.errors.required">
+                      Description is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Event Category</div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Category</label>
+                  <select id="category" class="form-control " formControlName="category" name="category">
+                    <option value="">Choose a category</option>
+                    <option *ngFor="let category of categories">{{category}}</option>
+
+                  </select>
+
+                </div>
+                <div class="col-sm-6">
+                  <label>Any other category</label>
+                  <input type="text" class="form-control " formControlName="anyOtherCategory" name="anyOtherCategory">
+                </div>
+                <div formGroupName="age">
+                  <div class="col-sm-6">
+                    <br>
+                    <label>Age (in Yrs) From </label>
+                    <input type="number" class="form-control " min="0" required formControlName="startAge" name="startAge">
+                    <div *ngIf="addForm.get('age.startAge').invalid && (addForm.get('age.startAge').dirty || addForm.get('age.startAge').touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="addForm.get('age.startAge').errors.required">
+                        Age is required & should be numeric.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <br>
+                    <label>To </label>
+                    <input type="number" class="form-control " min="1" required formControlName="endAge" name="endAge">
+                    <div *ngIf="addForm.get('age.endAge').invalid && (addForm.get('age.endAge').dirty || addForm.get('age.endAge').touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="addForm.get('age.endAge').errors.required">
+                        Age is required & should be numeric.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="addForm.get('age').touched && addForm.get('age').hasError('nomatch')">
+                    Start Age must be less than End Age!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Event Occurrence</div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Start Date</label>
+                  <input type="date" value={{nowDate}} class="form-control " formControlName="startDate" name="startDate">
+                  <!-- <div *ngIf="addForm.controls.startDate.invalid && (addForm.controls.startDate.dirty || addForm.controls.startDate.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addForm.controls.startDate.errors.required">
+                      Date is required.
+                    </div>
+                  </div> -->
+
+                </div>
+
+                <div class="col-sm-6">
+                  <label>End Date</label>
+                  <input type="date" value={{nowDate}} class="form-control " formControlName="endDate" name="endDate">
+                  <!-- <div *ngIf="addForm.controls.endDate.invalid && (addForm.controls.endDate.dirty || addForm.controls.endDate.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.endDate.errors.required">
+                        Date is required. 
+                    </div>             
+                  </div> -->
+                </div>
+                <div class="col-sm-6">
+                  <br />
+                  <label>Start Time</label>
+                  <input type="time" value={{nowTime}} class="form-control " formControlName="startTime" name="startTime">
+                </div>
+                <div class="col-sm-6">
+                  <br />
+                  <label>End Time</label>
+                  <input type="time" value={{nowTime}} class="form-control " formControlName="endTime" name="endTime">
+                </div>
+
+                <div class="col-sm-12">
+                  <br />
+                  <label>Event Venue</label>
+                  <br>
+                  <label>City</label>
+                  <select id="cityDropdown" (change)="cityChanged($event.target.value)" class="form-control " formControlName="city" name="city">
+                    <option value="">Choose a city</option>
+                    <option *ngFor="let location of objectKeys(locations)">{{location}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Place</label>
+                  <select id="place" class="form-control " formControlName="place" name="place">
+                    <option value="">Choose a place</option>
+                    <option *ngFor="let innerkey of objectKeys(locations[city])">{{innerkey}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <br>
+                  <label>Any Other Place</label>
+                  <input type="text" class="form-control" formControlName="anyOtherPlace" name="anyOtherPlace">
+                </div>
+
+
+                <div class="col-sm-6">
+                  <br>
+                  <label>Address</label>
+                  <textarea class="form-control col-sm-8 expand" rows="1" style="width: 99%" formControlName="address" name="address"></textarea>
+                  <div *ngIf="addForm.controls.address.invalid && (addForm.controls.address.dirty || addForm.controls.address.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.address.errors.required">
+                      Address is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <br>
+                  <label>Pincode</label>
+                  <input type="number" class="form-control" formControlName="pinCode" name="pinCode">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IMAGE UPLOAD -->
+        <!-- <div class="panel panel-default">
+            <div class="panel-heading">Add photos</div>
+            <div class="panel-body">
+              <div id="my-dropzone" action="upload.php" class="dropzone">
+                <image-upload [url]="'https://www.noddys.club/assets/'" [max]="2" [extensions]="['jpeg','png']" (uploadFinished)="onUploadFinished($event)"></image-upload>
+                
+              </div>
+              <br />
+              <p>
+                <small>* please note that the displayed images are cropped/resized only for display purposes</small>
+              </p>
+            </div>
+          </div> -->
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Contact Details</div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Phone</label>
+                  <input type="tel" id="phone" class="form-control " formControlName="phone" name="phone" placeholder="123-4567-890" pattern="^[789]\d{9}$">
+                </div>
+                <div class="col-sm-6">
+                  <label>E-mail</label>
+                  <input type="email" class="form-control " formControlName="email" name="email" placeholder="Email address" autocomplete="off"
+                    autocomplete="new-password" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+                  <div *ngIf="addForm.controls.email.invalid && (addForm.controls.email.dirty || addForm.controls.email.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="addForm.controls.email.errors.pattern">
+                      Invalid Email !
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Your price</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <input type="number" min="0" class="form-control " formControlName="price" name="price" placeholder="How much do you want it to be listed for?">
+                  <div *ngIf="addForm.controls.price.invalid && (addForm.controls.price.dirty || addForm.controls.price.touched)" class="alert alert-danger">
+                    <div *ngIf="addForm.controls.price.errors.required">
+                      Price is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div>
+
+          <!-- <div class="checkbox">
+              <label>
+                <input type="checkbox"> I agree to the terms and conditions and regulations.
+              </label>
+            </div> -->
+
+
+          <!-- <a href="account_credits.html" class="btn btn-primary ">
+              <i class="icon-ok"></i> Publish ad</a> -->
+          <input type="submit" class="btn btn-primary" value="Submit" [disabled]="addForm.invalid ">
+          <br>
+          <p class=" hidden-xs">
+            <small>* event will be published
+              <br /> once our team approves it </small>
+          </p>
+        </div>
+
+
+
+
+      </form>
+    </div>
+
+
+
+
+  </div>
+</div>
+<br />
+
+<!-- Footer Section Start -->
+    <footer>
+    	<!-- Footer Area Start -->
+    	<section class="footer-Content">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+
+                <div class="textwidget">
+                    <p>Explore and book awesome activities for your kids!</p>
+                </div>
+              </div>
+            </div>
+    				<div class="col-md-3 col-sm-6 col-xs-12">
+    					<div class="widget">
+  							<ul class="menu">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us: care@noddys.club</a></li>
+                    <li><a href="#">Phone No: +91 9650441666, +91 9811871169 </a></li>
+                </ul>
+    					</div>
+    				</div>
+    			
+    				<div class="col-md-3 col-sm-6 col-xs-12">
+    					<div class="widget">
+                <div class="bottom-social-icons social-icon">  
+                  <a class="facebook" href="https://www.facebook.com/noddysclub/?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>                   
+                  <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>                   
+
+                </div>	
+                  <!--<p>Join our mailing list to stay up to date and get notices about our new releases!</p>-->
+               <!-- <form class="subscribe-box">
+                  <input type="text" placeholder="Your email">
+                  <input type="submit" class="btn-system" value="Send">
+                </form>	-->
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- Footer area End -->
+    	
+    	<!-- Copyright Start  -->
+    	<div id="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12">
+            
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<!-- Copyright End -->
+
+    </footer>
+    <!-- Footer Section End -->  
