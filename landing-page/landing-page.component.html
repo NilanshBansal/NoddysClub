@@ -1,0 +1,176 @@
+
+<div class="nav" style="z-index:9999">
+  <div class="nav-header">
+    <div class="nav-title">
+        <img src="assets/images/logoBeta1.png" style="height:50px; padding-bottom:5px;width:150px">
+      
+  </div>
+  </div>
+  <div class="nav-btn" style="margin-top:10px">
+    <button type="button" id="filterBtnMob" class="navbar-toggle" data-target=".navbar-collap" data-toggle="collapse">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+        </button>
+    
+    <button type="button" id="cityBtnMob" class="navbar-toggle" data-target=".city-collap" data-toggle="collapse">
+      <i class="fa fa-bars" style="font-size:18px; padding-left:5px" aria-hidden="true"></i>
+        </button>
+  
+
+  
+  </div>
+   <div class="nav-links">
+  <div class="dropdown" style="padding-top:8px">
+        <a class="dropbtn" type="button" style="cursor:pointer">{{city}}<i class="fa fa-angle-down"></i></a>
+  <div class="dropdown-content">
+
+  <div data-radium="true"  *ngFor="let key of objectKeys(locations)" >
+            
+      
+      <a style="display: block; padding-left: 1rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem; cursor: pointer;"
+                class="dropdown-city" data-radium="true" data-reactid="63" (click)="cityChanged(key)">{{key}}</a>
+        
+  </div>
+</div> 
+  </div>
+<div class="dropdown">
+  <a class="dropbtn" type="button" style="cursor:pointer" [routerLink]="['/addevent']"><i class="fa fa-pencil"></i>Add Event</a>
+  </div>
+  </div>
+ 
+</div>
+
+
+<div class="awesome_container" style="margin-top:80px">     
+<div class="awesome_child1">
+<p><b>Find that "awesome" event for your kid</b></p>
+<p style="font-size:24px"><b>More than 10,000 events await!</b></p>
+</div>
+
+</div>
+
+<div class="featured_events">     
+<div class="heading">
+<p><b>Featured Events</b></p>
+</div>
+<div class="row">
+<div class="featured_container col-lg-4">
+<div class="featured_image">
+<img style=" max-height:auto; width:100%; align:center;" alt="Card image"> <!--Insert the featured image here-->
+</div>
+<div class="featured_details">
+<font color="gray">EVENT NAME</font><br />
+<i class="fa fa-clock-o"></i><span> Enter Time here</span><br />
+<i class="fa fa-map"></i><span> Enter Location here</span><br/>
+<i class="fa fa-rupee"></i><span> Enter Price here</span><br/>
+<div align="right"><button class="btn btn-danger"><i class="fa fa-plus"></i><span> View More</span></button></div>
+
+</div>
+
+
+
+</div>
+
+<div class="featured_container col-lg-4">
+<div class="featured_image">
+<img style=" max-height:auto; width:100%; align:center;" alt="Card image"> <!--Insert the featured image here-->
+</div>
+<div class="featured_details">
+<font color="gray">EVENT NAME</font><br />
+<i class="fa fa-clock-o"></i><span> Enter Time here</span><br />
+<i class="fa fa-map"></i><span> Enter Location here</span><br/>
+<i class="fa fa-rupee"></i><span> Enter Price here</span><br/>
+<div align="right"><button class="btn btn-danger"><i class="fa fa-plus"></i><span> View More</span></button></div>
+
+</div>
+
+
+
+</div>
+
+<div class="featured_container col-lg-4">
+<div class="featured_image">
+<img style=" max-height:auto; width:100%; align:center;" alt="Card image"> <!--Insert the featured image here-->
+</div>
+<div class="featured_details">
+<font color="gray">EVENT NAME</font><br />
+<i class="fa fa-clock-o"></i><span> Enter Time here</span><br />
+<i class="fa fa-map"></i><span> Enter Location here</span><br/>
+<i class="fa fa-rupee"></i><span> Enter Price here</span><br/>
+<div align="right"><button class="btn btn-danger"><i class="fa fa-plus"></i><span> View More</span></button></div>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+  
+     
+    
+
+    
+<!-- Footer Section Start -->
+    <footer>
+   <br />
+
+      <!-- Footer Area Start -->
+      <section class="footer-Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+
+        <div class="textwidget">
+                  <p>Explore and book awesome activities for your kids!</p></div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <ul class="menu">
+                  
+                  <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us: care@noddys.club</a></li>
+                    <li><a href="#">Phone No: +91 9650441666, +91 9811871169 </a></li>
+                </ul>
+              </div>
+            </div>
+          
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="widget">
+                <div class="bottom-social-icons social-icon">  
+				                  <a class="facebook" href="https://www.facebook.com/noddysclub/?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>                   
+
+                  <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>                   
+                </div>	
+                  <!--<p>Join our mailing list to stay up to date and get notices about our new releases!</p>-->
+                 <!-- <form class="subscribe-box">
+                  <input type="text" placeholder="Your email">
+                  <input type="submit" class="btn-system" value="Send">
+                </form>	-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer area End -->
+      
+      <!-- Copyright Start  -->
+      <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright End -->
+
+    </footer>
+    <!-- Footer Section End -->
